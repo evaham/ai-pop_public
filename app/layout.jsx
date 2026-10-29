@@ -50,9 +50,9 @@ export default function RootLayout({ children }) {
                   <li role="menuitem">
                     <Link href="/aiStatics" className={tabClass("/aiStatics")}>AI이용현황</Link>
                   </li>
-                  <li role="menuitem">
+                  {/* <li role="menuitem">
                     <Link href="/uiView" className={tabClass("/uiView")}>UI 뷰</Link>
-                  </li>
+                  </li> */}
                 </ul>
                 <div className="tsmoney-info" ref={containerRef}>
                   <button className="tsmoney-info-btn">
