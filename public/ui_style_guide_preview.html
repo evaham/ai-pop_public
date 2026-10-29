@@ -1,0 +1,2158 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="첨부 CSS 기반 UI 디자인 시스템 데모">
+  <title>UI 스타일 가이드 | 솔루션 디자인 시스템</title>
+  <style>
+    /* UI Style Guide preview: standalone visual layer faithful to supplied Tailwind @apply values.
+   Source token values are copied from the user's CSS. */
+    :root {
+      --primary-50: #F2F5FB;
+      --primary-100: #E3EAF7;
+      --primary-200: #C5D2EC;
+      --primary-300: #9DB2DD;
+      --primary-400: #6687C5;
+      --primary-500: #26499D;
+      --primary-600: #203F89;
+      --primary-700: #1B3574;
+      --primary-800: #172D60;
+      --primary-900: #12234B;
+      --border: #E1E6EE;
+      --text-primary: #1F2937;
+      --text-secondary: #718096;
+      --button-selected-bg: #26499d;
+      --button-selected-color: #fff;
+      --sg-bg: #F5F7FB;
+      --sg-shadow: 0 2px 12px rgba(22, 44, 77, .045)
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit
+    }
+
+    button {
+      border: 0
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--primary-500);
+      outline-offset: 2px
+    }
+
+    .sg-root {
+      min-height: 100vh;
+      background: var(--sg-bg);
+      font: 500 14px/1.48 'Pretendard', -apple-system, BlinkMacSystemFont, 'Noto Sans KR', system-ui, sans-serif;
+      color: var(--text-primary)
+    }
+
+    .sg-appbar {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      height: 58px;
+      padding: 0 28px;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 30
+    }
+
+    .sg-brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 202px;
+      text-decoration: none;
+      color: inherit
+    }
+
+    .sg-brand-logo {
+      width: 31px;
+      height: 31px;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--primary-500);
+      color: #fff;
+      font-weight: 800;
+      font-size: 16px
+    }
+
+    .sg-brand strong {
+      display: block;
+      font-size: 15px;
+      letter-spacing: -.35px
+    }
+
+    .sg-brand small {
+      display: block;
+      color: var(--text-secondary);
+      font-size: 10px;
+      letter-spacing: .1px
+    }
+
+    .sg-appnav {
+      align-self: stretch;
+      display: flex;
+      gap: 8px
+    }
+
+    .sg-appnav a {
+      display: flex;
+      align-items: center;
+      padding: 0 13px;
+      text-decoration: none;
+      color: #617086;
+      white-space: nowrap;
+      font-size: 13px;
+      border-bottom: 3px solid transparent
+    }
+
+    .sg-appnav a.current {
+      border-bottom-color: var(--primary-500);
+      color: var(--primary-500);
+      font-weight: 750
+    }
+
+    .sg-appnav a:hover {
+      color: var(--primary-500)
+    }
+
+    .sg-app-meta {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      white-space: nowrap;
+      font-size: 12px;
+      color: #7A8799
+    }
+
+    .sg-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--primary-100);
+      color: var(--primary-500);
+      display: grid;
+      place-items: center;
+      font-weight: 800
+    }
+
+    .sg-layout {
+      display: grid;
+      grid-template-columns: 224px minmax(0, 1fr);
+      align-items: start;
+      min-height: calc(100vh - 58px)
+    }
+
+    .sg-sidebar {
+      position: sticky;
+      top: 58px;
+      overflow-y: auto;
+      height: calc(100vh - 58px);
+      padding: 24px 12px 35px;
+      background: #fff;
+      border-right: 1px solid var(--border)
+    }
+
+    .sg-navgroup {
+      margin: 20px 0 0
+    }
+
+    .sg-navgroup:first-child {
+      margin-top: 1px
+    }
+
+    .sg-navgroup-title {
+      padding: 0 12px;
+      margin-bottom: 10px;
+      font-size: 11px;
+      color: #95A0B0;
+      font-weight: 750;
+      letter-spacing: .7px
+    }
+
+    .sg-navitem {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 9px 12px;
+      margin: 3px 0;
+      border-radius: 7px;
+      text-decoration: none;
+      font-size: 13px;
+      color: #516176;
+      background: none;
+      cursor: pointer;
+      text-align: left
+    }
+
+    .sg-navitem svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linejoin: round
+    }
+
+    .sg-navitem:hover {
+      background: #F4F7FB
+    }
+
+    .sg-navitem.active {
+      color: var(--primary-500);
+      background: var(--primary-50);
+      font-weight: 750
+    }
+
+    .sg-navitem .sg-navcount {
+      margin-left: auto;
+      font-size: 10px;
+      color: #8794A7
+    }
+
+    .sg-sidebar-foot {
+      margin: 28px 6px 0;
+      padding: 14px 12px;
+      border-radius: 9px;
+      background: #F6F8FC;
+      color: #718096;
+      font-size: 11px;
+      line-height: 1.7
+    }
+
+    .sg-sidebar-foot strong {
+      display: block;
+      color: #44536A;
+      margin-bottom: 4px
+    }
+
+    .sg-main {
+      padding: 27px 34px 64px;
+      min-width: 0;
+      max-width: 1800px;
+      margin: auto;
+      width: 100%
+    }
+
+    .sg-pageheading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 23px
+    }
+
+    .sg-breadcrumb {
+      font-size: 11px;
+      color: #8492A5;
+      margin-bottom: 7px
+    }
+
+    .sg-pageheading h1 {
+      font-size: 26px;
+      line-height: 1.25;
+      letter-spacing: -1px;
+      margin: 0;
+      font-weight: 800;
+      color: #172945
+    }
+
+    .sg-pageheading p {
+      font-size: 12px;
+      color: #78879C;
+      margin: 8px 0 0
+    }
+
+    .sg-tools {
+      display: flex;
+      gap: 8px;
+      align-items: center
+    }
+
+    .sg-search-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: white;
+      padding: 0 11px;
+      height: 35px;
+      min-width: 217px;
+      color: #7B8AA0
+    }
+
+    .sg-search-wrap input {
+      border: 0;
+      outline: 0;
+      min-width: 0;
+      width: 100%;
+      font-size: 12px;
+      background: transparent;
+      color: var(--text-primary)
+    }
+
+    .sg-search-wrap svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+      fill: none
+    }
+
+    .sg-outlined-action {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      height: 35px;
+      padding: 0 12px;
+      white-space: nowrap;
+      color: #46546B;
+      font-size: 12px;
+      cursor: pointer
+    }
+
+    .sg-outlined-action:hover {
+      border-color: var(--primary-400);
+      color: var(--primary-500)
+    }
+
+    .sg-intro {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      background: linear-gradient(103deg, #1D3C83, #294F9D 62%, #355DB0);
+      color: #fff;
+      border-radius: 11px;
+      padding: 18px 25px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 22px rgba(31, 73, 157, .11)
+    }
+
+    .sg-intro h2 {
+      margin: 0 0 4px;
+      font-size: 17px;
+      font-weight: 750
+    }
+
+    .sg-intro p {
+      margin: 0;
+      color: #DDE7FA;
+      font-size: 12px
+    }
+
+    .sg-intro-side {
+      display: flex;
+      gap: 24px
+    }
+
+    .sg-intro-metric {
+      text-align: center;
+      min-width: 60px
+    }
+
+    .sg-intro-metric strong {
+      font-size: 18px;
+      display: block;
+      line-height: 1.2
+    }
+
+    .sg-intro-metric span {
+      font-size: 10px;
+      color: #D5E1F7
+    }
+
+    .sg-section {
+      scroll-margin-top: 77px;
+      margin-bottom: 27px
+    }
+
+    .sg-sectionhead {
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      margin: 0 0 12px
+    }
+
+    .sg-sectionhead h2 {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -.3px;
+      margin: 0
+    }
+
+    .sg-sectionhead p {
+      font-size: 12px;
+      color: #8A98AB;
+      margin: 0
+    }
+
+    .sg-sectionhead .sg-section-number {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--primary-500)
+    }
+
+    .sg-subhead-right {
+      margin-left: auto;
+      font-size: 11px;
+      color: #9DA8B5
+    }
+
+    .sg-grid {
+      display: grid;
+      gap: 12px
+    }
+
+    .sg-foundation {
+      grid-template-columns: minmax(420px, 1.25fr) minmax(340px, 1fr) minmax(224px, .69fr)
+    }
+
+    .sg-aside-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px
+    }
+
+    .sg-card {
+      background: #fff;
+      border: 1px solid #E7EBF2;
+      border-radius: 10px;
+      padding: 16px 18px;
+      box-shadow: var(--sg-shadow);
+      min-width: 0
+    }
+
+    .sg-card-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 2px
+    }
+
+    .sg-card-title h3 {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: -.2px;
+      margin: 0
+    }
+
+    .sg-card-title .sg-smalllink {
+      margin-left: auto;
+      cursor: pointer;
+      background: transparent;
+      color: var(--primary-500);
+      font-size: 11px;
+      font-weight: 650;
+      padding: 4px 0
+    }
+
+    .sg-card-title .sg-smalllink:hover {
+      text-decoration: underline
+    }
+
+    .sg-card-des {
+      font-size: 11px;
+      color: #8A97A9;
+      margin: 0 0 18px
+    }
+
+    .sg-card h4 {
+      font-size: 11px;
+      margin: 0 0 10px;
+      color: #526078;
+      font-weight: 750
+    }
+
+    .sg-divider {
+      border: 0;
+      border-top: 1px solid #EDF0F5;
+      margin: 17px 0
+    }
+
+    .sg-token-row {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 7px
+    }
+
+    .sg-color-token {
+      flex: 1;
+      min-width: 0;
+      text-align: left;
+      cursor: pointer;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      background: transparent;
+      padding: 3px 2px 6px
+    }
+
+    .sg-color-token:hover {
+      border-color: #B8C6E6;
+      background: var(--primary-50)
+    }
+
+    .sg-chip {
+      height: 38px;
+      width: 100%;
+      border-radius: 5px;
+      display: block;
+      margin-bottom: 7px;
+      border: 1px solid rgba(18, 35, 75, .055)
+    }
+
+    .sg-color-token strong {
+      display: block;
+      font-size: 10px;
+      line-height: 1.4;
+      text-align: center;
+      color: #536176
+    }
+
+    .sg-color-token small {
+      display: block;
+      font-size: 10px;
+      text-align: center;
+      color: #8997A9;
+      margin-top: 2px;
+      white-space: nowrap
+    }
+
+    .sg-token-mini {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .sg-token-mini>div {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      color: #77869B
+    }
+
+    .sg-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      display: inline-block
+    }
+
+    .sg-font-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #F7F9FC;
+      padding: 13px 14px;
+      border-radius: 8px;
+      margin: 14px 0
+    }
+
+    .sg-font-hero strong {
+      font-size: 27px;
+      letter-spacing: -.8px;
+      font-weight: 700;
+      color: #1C2A43
+    }
+
+    .sg-font-hero small {
+      font-size: 10px;
+      color: #8792A5
+    }
+
+    .sg-type-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px
+    }
+
+    .sg-type-table thead th {
+      color: #8290A3;
+      font-size: 10px;
+      font-weight: 650;
+      border-bottom: 1px solid var(--border);
+      padding: 8px 6px;
+      text-align: left;
+      background: #FBFCFE
+    }
+
+    .sg-type-table tbody td {
+      padding: 9px 6px;
+      border-bottom: 1px solid #F0F2F6;
+      color: #5E6F83
+    }
+
+    .sg-type-table tbody tr:last-child td {
+      border-bottom: 0
+    }
+
+    .sg-type-table tbody td:first-child {
+      font-weight: 750;
+      color: #36465D
+    }
+
+    .sg-text-example {
+      color: #28354B !important;
+      white-space: nowrap
+    }
+
+    .sg-mini-card {
+      padding: 15px 16px
+    }
+
+    .sg-mini-card .sg-card-des {
+      margin-bottom: 12px
+    }
+
+    .sg-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 9px;
+      height: 62px;
+      padding: 4px 3px 0
+    }
+
+    .sg-bar-item {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+      height: 100%;
+      font-size: 9px;
+      color: #7F8DA2
+    }
+
+    .sg-bar-item span {
+      display: block;
+      width: 85%;
+      background: var(--primary-300);
+      border-radius: 2px 2px 0 0
+    }
+
+    .sg-bar-item:nth-child(5) span,
+    .sg-bar-item:nth-child(6) span,
+    .sg-bar-item:nth-child(7) span {
+      background: var(--primary-500)
+    }
+
+    .sg-radius-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 12px
+    }
+
+    .sg-radius {
+      flex: 1;
+      text-align: center;
+      font-size: 9px;
+      color: #8795A9
+    }
+
+    .sg-radius span {
+      display: block;
+      border: 1px solid #AFBED6;
+      background: #F7F9FC;
+      width: 28px;
+      height: 26px;
+      margin: 0 auto 6px
+    }
+
+    .sg-shadow-list {
+      display: flex;
+      gap: 10px;
+      justify-content: space-around
+    }
+
+    .sg-shadow-item {
+      text-align: center;
+      font-size: 10px;
+      color: #8290A4
+    }
+
+    .sg-shadow-box {
+      width: 44px;
+      height: 35px;
+      background: white;
+      border: 1px solid #F0F1F4;
+      border-radius: 5px;
+      margin: 0 auto 6px
+    }
+
+    .sg-component-layout {
+      grid-template-columns: 1.1fr 1fr
+    }
+
+    .sg-button-matrix {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 7px 10px;
+      margin: -4px -7px;
+      width: calc(100% + 14px);
+      font-size: 11px
+    }
+
+    .sg-button-matrix th {
+      color: #7E8DA0;
+      font-weight: 600;
+      padding: 0 4px 3px;
+      text-align: center
+    }
+
+    .sg-button-matrix td {
+      text-align: center;
+      padding: 0 2px;
+      vertical-align: middle
+    }
+
+    .sg-button-matrix td:first-child {
+      min-width: 80px;
+      text-align: left;
+      color: #46546C;
+      font-weight: 700;
+      font-size: 11px
+    }
+
+    .sg-button-matrix td button {
+      width: 100%;
+      white-space: nowrap
+    }
+
+    .form-btn,
+    .form-btn-primary,
+    .form-btn-secondary,
+    .form-btn-tertiary,
+    .form-btn-line {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 14px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: background .15s, box-shadow .15s;
+      min-height: 28px;
+      white-space: nowrap
+    }
+
+    .form-btn {
+      box-shadow: 0 0 0 1px #D1D5DB inset;
+      background: #F9FAFB;
+      color: var(--text-primary)
+    }
+
+    .form-btn:hover,
+    .form-btn.hovered {
+      background: #F3F4F6
+    }
+
+    .form-btn:active,
+    .form-btn.active,
+    .form-btn.selected {
+      background: #E5E7EB
+    }
+
+    .form-btn-primary {
+      box-shadow: 0 0 0 1px var(--primary-500) inset;
+      color: white;
+      background: var(--primary-500)
+    }
+
+    .form-btn-primary:hover,
+    .form-btn-primary.hovered,
+    .form-btn-primary:active,
+    .form-btn-primary.active,
+    .form-btn-primary.selected {
+      background: var(--primary-600)
+    }
+
+    .form-btn-secondary {
+      box-shadow: 0 0 0 1px #D1D5DB inset;
+      color: var(--text-primary);
+      background: white
+    }
+
+    .form-btn-secondary:hover,
+    .form-btn-secondary.hovered {
+      box-shadow: 0 0 0 1px #60A5FA inset;
+      background: var(--primary-50)
+    }
+
+    .form-btn-secondary:active,
+    .form-btn-secondary.active,
+    .form-btn-secondary.selected {
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, .9) inset;
+      background: #EFF6FF;
+      color: #1D4ED8
+    }
+
+    .form-btn-tertiary {
+      background: white;
+      color: var(--text-primary)
+    }
+
+    .form-btn-tertiary:hover,
+    .form-btn-tertiary.hovered {
+      background: #F3F4F6
+    }
+
+    .form-btn-tertiary:active,
+    .form-btn-tertiary.active,
+    .form-btn-tertiary.selected {
+      box-shadow: 0 0 0 1px #9CA3AF inset;
+      background: #F9FAFB
+    }
+
+    .form-btn-line {
+      box-shadow: 0 0 0 1px #D1D5DB inset;
+      background: transparent;
+      color: var(--text-primary)
+    }
+
+    .form-btn-line:hover,
+    .form-btn-line.hovered {
+      background: var(--primary-50)
+    }
+
+    .form-btn-line:active,
+    .form-btn-line.active,
+    .form-btn-line.selected {
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, .9) inset;
+      background: #EFF6FF;
+      color: #1D4ED8
+    }
+
+    .form-btn.disabled,
+    .form-btn-primary.disabled,
+    .form-btn-secondary.disabled,
+    .form-btn-tertiary.disabled,
+    .form-btn-line.disabled,
+    .form-btn:disabled,
+    .form-btn-primary:disabled,
+    .form-btn-secondary:disabled,
+    .form-btn-tertiary:disabled,
+    .form-btn-line:disabled {
+      background: #E5E7EB !important;
+      color: #6B7280 !important;
+      box-shadow: 0 0 0 1px #E5E7EB inset !important;
+      cursor: not-allowed !important
+    }
+
+    .sg-size-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding-top: 10px
+    }
+
+    .sg-size-pair {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 10px;
+      color: #8290A1
+    }
+
+    .sg-size-pair .lg {
+      min-height: 40px;
+      padding: 9px 17px
+    }
+
+    .sg-size-pair .md {
+      min-height: 32px;
+      padding: 6px 14px
+    }
+
+    .sg-size-pair .sm {
+      min-height: 28px;
+      padding: 4px 9px
+    }
+
+    .sg-proposed {
+      font-size: 10px;
+      color: #B37426;
+      border: 1px solid #F5DBB7;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #FFF9ED
+    }
+
+    .sg-form-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px 12px
+    }
+
+    .sg-formcell {
+      min-width: 0
+    }
+
+    .sg-formcell label {
+      display: block;
+      font-size: 10px;
+      color: #6D7E94;
+      margin-bottom: 6px;
+      font-weight: 700
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      border: 0;
+      box-shadow: 0 0 0 1px #D1D5DB inset;
+      padding: 5px 8px;
+      border-radius: 4px;
+      background: #F9FAFB;
+      color: #253447;
+      font-size: 14px;
+      outline: none;
+      min-height: 28px
+    }
+
+    .form-select {
+      cursor: pointer
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 58px
+    }
+
+    .form-input:focus,
+    .form-input.focus,
+    .form-textarea:focus,
+    .form-textarea.focus,
+    .form-select:focus,
+    .form-select.focus {
+      box-shadow: 0 0 0 1px var(--primary-500) inset
+    }
+
+    .form-input:disabled,
+    .form-input.disabled,
+    .form-textarea:disabled,
+    .form-textarea.disabled,
+    .form-select:disabled,
+    .form-select.disabled {
+      background: #E5E7EB;
+      box-shadow: 0 0 0 1px #E5E7EB inset;
+      cursor: not-allowed
+    }
+
+    .sg-formcell .sg-error {
+      box-shadow: 0 0 0 1px #EF4444 inset
+    }
+
+    .sg-formcell .sg-success {
+      box-shadow: 0 0 0 1px #10B981 inset
+    }
+
+    .sg-formcell .sg-help {
+      font-size: 10px;
+      color: #97A3B2;
+      margin-top: 5px
+    }
+
+    .sg-formcell .sg-help.err {
+      color: #EF4444
+    }
+
+    .sg-formcell .sg-help.good {
+      color: #16A34A
+    }
+
+    .sg-component-notes {
+      display: flex;
+      justify-content: space-between;
+      gap: 9px;
+      margin-top: 14px;
+      border-top: 1px solid #EFF1F5;
+      padding-top: 12px;
+      font-size: 10px;
+      color: #8090A4
+    }
+
+    .sg-component-notes code {
+      font-family: ui-monospace, monospace;
+      color: var(--primary-500);
+      background: var(--primary-50);
+      padding: 2px 5px;
+      border-radius: 3px;
+      white-space: nowrap
+    }
+
+    .sg-extras {
+      grid-template-columns: repeat(3, minmax(0, 1fr))
+    }
+
+    .sg-extras .sg-card {
+      min-height: 166px
+    }
+
+    .sg-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 17px;
+      align-items: center
+    }
+
+    .sg-control-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      color: #4B5B71;
+      white-space: nowrap
+    }
+
+    .sg-control-label input[type=checkbox],
+    .sg-control-label input[type=radio] {
+      accent-color: var(--primary-500);
+      width: 15px;
+      height: 15px;
+      cursor: pointer
+    }
+
+    .sg-switch {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      color: #56657B;
+      cursor: pointer
+    }
+
+    .sg-switch input {
+      position: absolute;
+      opacity: 0;
+      width: 1px;
+      height: 1px
+    }
+
+    .sg-switch-track {
+      display: inline-block;
+      width: 33px;
+      height: 19px;
+      background: #CBD2DC;
+      border-radius: 99px;
+      transition: background .18s;
+      position: relative
+    }
+
+    .sg-switch-track::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      background: white;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      transition: transform .18s;
+      box-shadow: 0 1px 2px #0002
+    }
+
+    .sg-switch input:checked+.sg-switch-track {
+      background: var(--primary-500)
+    }
+
+    .sg-switch input:checked+.sg-switch-track::after {
+      transform: translateX(14px)
+    }
+
+    .sg-switch input:focus-visible+.sg-switch-track {
+      outline: 2px solid #6687C5;
+      outline-offset: 2px
+    }
+
+    .sg-switch:has(input:disabled) {
+      opacity: .45;
+      cursor: not-allowed
+    }
+
+    .sg-tab-demo {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      gap: 3px
+    }
+
+    .sg-tab-btn {
+      padding: 10px 12px;
+      border-bottom: 2px solid transparent;
+      background: white;
+      font-size: 12px;
+      color: #718096;
+      cursor: pointer
+    }
+
+    .sg-tab-btn.active {
+      color: var(--primary-500);
+      border-color: var(--primary-500);
+      font-weight: 750
+    }
+
+    .sg-tagrow {
+      display: flex;
+      gap: 7px;
+      margin-top: 20px;
+      flex-wrap: wrap
+    }
+
+    .sg-tag {
+      display: inline-flex;
+      padding: 3px 8px;
+      font-size: 10px;
+      border-radius: 4px;
+      color: #54647B;
+      background: #F1F4F8
+    }
+
+    .sg-tag.blue {
+      color: var(--primary-500);
+      background: var(--primary-50)
+    }
+
+    .sg-tag.success {
+      color: #0F8C6E;
+      background: #E8F8F1
+    }
+
+    .sg-tag.warn {
+      color: #B57919;
+      background: #FFF5E1
+    }
+
+    .sg-tag.error {
+      color: #C73D48;
+      background: #FEF0F1
+    }
+
+    .sg-feedback-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px
+    }
+
+    .sg-alert {
+      border-radius: 5px;
+      padding: 9px 11px;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #EFF5FF;
+      color: #2B5298
+    }
+
+    .sg-alert::before {
+      content: 'ⓘ';
+      font-weight: 800;
+      font-size: 14px
+    }
+
+    .sg-lower {
+      grid-template-columns: 1.28fr 1fr
+    }
+
+    .sg-data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 11px
+    }
+
+    .sg-data-table th {
+      padding: 10px 10px;
+      background: #F7F9FC;
+      color: #758398;
+      font-weight: 750
+    }
+
+    .sg-data-table td {
+      padding: 10px;
+      border-bottom: 1px solid #EFF1F4;
+      color: #44546D
+    }
+
+    .sg-data-table tbody tr:hover {
+      background: var(--primary-50)
+    }
+
+    .sg-pagination {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 14px
+    }
+
+    .sg-pagination button {
+      width: 26px;
+      height: 26px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 11px;
+      background: white;
+      border: 1px solid #E2E7EF;
+      color: #73849A
+    }
+
+    .sg-pagination button.active {
+      color: #fff;
+      background: var(--primary-500);
+      border-color: var(--primary-500)
+    }
+
+    .sg-pagination button:hover:not(.active) {
+      background: #F3F6FA
+    }
+
+    .sg-layout-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 5px;
+      max-width: 100%;
+      margin-top: 11px
+    }
+
+    .sg-layout-grid>span {
+      height: 36px;
+      border-radius: 4px;
+      background: #E3EAF7;
+      color: #6687C5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px
+    }
+
+    .sg-layout-grid>span:nth-child(even) {
+      background: #C5D2EC
+    }
+
+    .sg-instructions {
+      margin-top: 12px;
+      font-size: 11px;
+      color: #6D7E91;
+      line-height: 1.8
+    }
+
+    .sg-instructions code {
+      font-size: 11px;
+      color: var(--primary-600);
+      font-family: ui-monospace, monospace
+    }
+
+    .sg-toast {
+      position: fixed;
+      z-index: 120;
+      bottom: 24px;
+      right: 28px;
+      padding: 11px 16px;
+      border-radius: 8px;
+      background: #1F2937;
+      color: #fff;
+      font-size: 12px;
+      box-shadow: 0 8px 24px #0d1b3466;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity .2s, transform .2s
+    }
+
+    .sg-toast.show {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .sg-overlay {
+      position: fixed;
+      z-index: 100;
+      inset: 0;
+      background: rgba(15, 26, 45, .38);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px
+    }
+
+    .sg-overlay.open {
+      display: flex
+    }
+
+    .sg-modal {
+      width: min(520px, 100%);
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 20px 70px rgba(0, 0, 0, .2);
+      overflow: hidden
+    }
+
+    .sg-modal-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 22px;
+      border-bottom: 1px solid #EEF0F3
+    }
+
+    .sg-modal-heading h3 {
+      margin: 0;
+      font-size: 16px
+    }
+
+    .sg-icon-close {
+      font-size: 20px;
+      cursor: pointer;
+      color: #73849A;
+      background: transparent
+    }
+
+    .sg-modal-content {
+      padding: 22px;
+      font-size: 13px;
+      color: #526078
+    }
+
+    .sg-modal-content pre {
+      background: #F6F8FC;
+      border: 1px solid #E6EBF4;
+      border-radius: 8px;
+      padding: 14px;
+      overflow: auto;
+      font-size: 12px;
+      line-height: 1.75;
+      color: #29405D
+    }
+
+    .sg-modal-actions {
+      padding: 12px 22px 20px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px
+    }
+
+    .sg-hide {
+      display: none !important
+    }
+
+    .sg-is-highlighted {
+      outline: 2px solid var(--primary-400);
+      outline-offset: 2px
+    }
+
+    .sg-bottom-note {
+      margin-top: 20px;
+      padding: 12px 14px;
+      border-left: 3px solid var(--primary-300);
+      background: #EEF3FB;
+      font-size: 11px;
+      color: #607289;
+      border-radius: 0 5px 5px 0
+    }
+
+    @media(max-width:1400px) {
+      .sg-foundation {
+        grid-template-columns: minmax(360px, 1.15fr) minmax(310px, 1fr)
+      }
+
+      .sg-aside-stack {
+        grid-column: 1/-1;
+        flex-direction: row
+      }
+
+      .sg-aside-stack>.sg-card {
+        flex: 1
+      }
+
+      .sg-component-layout {
+        grid-template-columns: 1fr
+      }
+
+      .sg-main {
+        padding: 24px
+      }
+
+      .sg-appnav {
+        gap: 0
+      }
+    }
+
+    @media(max-width:1000px) {
+      .sg-layout {
+        grid-template-columns: 180px minmax(0, 1fr)
+      }
+
+      .sg-brand {
+        min-width: 155px
+      }
+
+      .sg-appnav a:not(.current) {
+        display: none
+      }
+
+      .sg-foundation {
+        grid-template-columns: 1fr
+      }
+
+      .sg-aside-stack {
+        flex-direction: row
+      }
+
+      .sg-extras,
+      .sg-lower {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .sg-extras .sg-card:last-child {
+        grid-column: 1/-1
+      }
+
+      .sg-app-meta .sg-app-version {
+        display: none
+      }
+    }
+
+    @media(max-width:700px) {
+      .sg-appbar {
+        padding: 0 15px;
+        gap: 10px;
+        height: 54px
+      }
+
+      .sg-brand {
+        min-width: 0
+      }
+
+      .sg-brand small {
+        display: none
+      }
+
+      .sg-appnav {
+        display: none
+      }
+
+      .sg-layout {
+        display: block
+      }
+
+      .sg-sidebar {
+        position: static;
+        height: auto;
+        display: flex;
+        overflow-x: auto;
+        padding: 8px 12px;
+        gap: 8px;
+        border-right: 0;
+        border-bottom: 1px solid var(--border)
+      }
+
+      .sg-navgroup {
+        display: contents
+      }
+
+      .sg-navgroup-title,
+      .sg-sidebar-foot {
+        display: none
+      }
+
+      .sg-navitem {
+        white-space: nowrap;
+        width: auto;
+        flex: none;
+        margin: 0;
+        padding: 8px 9px
+      }
+
+      .sg-navitem .sg-navcount {
+        display: none
+      }
+
+      .sg-main {
+        padding: 19px 14px
+      }
+
+      .sg-pageheading {
+        flex-direction: column;
+        align-items: stretch
+      }
+
+      .sg-tools {
+        justify-content: space-between
+      }
+
+      .sg-search-wrap {
+        min-width: 0;
+        flex: 1
+      }
+
+      .sg-intro {
+        padding: 15px
+      }
+
+      .sg-intro-side {
+        display: none
+      }
+
+      .sg-foundation,
+      .sg-extras,
+      .sg-lower {
+        grid-template-columns: 1fr
+      }
+
+      .sg-aside-stack {
+        flex-direction: column
+      }
+
+      .sg-form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+      }
+
+      .sg-extras .sg-card:last-child {
+        grid-column: auto
+      }
+
+      .sg-button-matrix {
+        display: block;
+        overflow-x: auto
+      }
+
+      .sg-button-matrix th,
+      .sg-button-matrix td {
+        min-width: 88px
+      }
+
+      .sg-component-notes {
+        flex-wrap: wrap
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sg-root" id="sg-root">
+    <header class="sg-appbar"><a class="sg-brand" href="#sg-root"><span class="sg-brand-logo">UI</span><span><strong>솔루션
+            디자인 시스템</strong><small>COMPONENT LIBRARY</small></span></a>
+      <nav class="sg-appnav" aria-label="서비스 메뉴"><a href="#sg-root">AI POP 만들기</a><a href="#sg-root">프라이스카드 만들기</a><a
+          href="#sg-root">AI 이미지 관리</a><a class="current" href="#sg-root">UI 뷰</a></nav>
+      <div class="sg-app-meta"><span class="sg-app-version">CSS STYLE GUIDE · v1.0</span><span
+          class="sg-avatar">DS</span></div>
+    </header>
+    <div class="sg-layout">
+      <aside class="sg-sidebar" aria-label="스타일 가이드 목차">
+        <div class="sg-navgroup">
+          <div class="sg-navgroup-title">01 · DESIGN TOKENS</div><a class="sg-navitem active" href="#sg-colors"><svg
+              viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4" y="4" width="16" height="16" rx="4" />
+              <path d="M4 13h16M13 4v16" />
+            </svg><span>컬러</span></a><a class="sg-navitem" href="#sg-typography"><svg viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path d="M5 19h14M8 15l4-11 4 11M9 12h6" />
+            </svg><span>타이포그래피</span></a><a class="sg-navitem" href="#sg-spacing"><svg viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path d="M5 6v12M19 6v12M8 12h8m-5-3-3 3 3 3m2-6 3 3-3 3" />
+            </svg><span>간격 (Spacing)</span></a><a class="sg-navitem" href="#sg-radius"><svg viewBox="0 0 24 24"
+              aria-hidden="true">
+              <rect x="4" y="4" width="16" height="16" rx="4" />
+              <path d="M7 7h4M7 10h4" />
+            </svg><span>테두리 / Radius</span></a><a class="sg-navitem" href="#sg-shadow"><svg viewBox="0 0 24 24"
+              aria-hidden="true">
+              <rect x="5" y="4" width="13" height="13" rx="3" />
+              <path d="M9 20h10a2 2 0 0 0 2-2V9" />
+            </svg><span>그림자 (Shadow)</span></a>
+        </div>
+        <div class="sg-navgroup">
+          <div class="sg-navgroup-title">02 · BASIC COMPONENTS</div><a class="sg-navitem" href="#sg-buttons"><svg
+              viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="6" width="18" height="12" rx="3" />
+              <path d="m10 10 4 2-4 2" />
+            </svg><span>버튼</span><span class="sg-navcount">05</span></a><a class="sg-navitem" href="#sg-inputs"><svg
+              viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="M7 10h10m-10 4h7" />
+            </svg><span>입력 폼</span><span class="sg-navcount">05</span></a><a class="sg-navitem" href="#sg-choice"><svg
+              viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="16" rx="2" />
+              <path d="m16 10-3 3-3-3" />
+            </svg><span>선택 컨트롤</span><span class="sg-navcount">03</span></a>
+        </div>
+        <div class="sg-navgroup">
+          <div class="sg-navgroup-title">03 · ADVANCED COMPONENTS</div><a class="sg-navitem" href="#sg-tabs"><svg
+              viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="7" width="18" height="13" rx="2" />
+              <path d="M7 4v3m5-3v3m5-3v3m-12 8h16" />
+            </svg><span>탭 / 배지</span></a><a class="sg-navitem" href="#sg-table"><svg viewBox="0 0 24 24"
+              aria-hidden="true">
+              <rect x="3" y="4" width="18" height="16" rx="2" />
+              <path d="M3 10h18M9 10v10M15 10v10" />
+            </svg><span>테이블 / 페이지네이션</span></a><a class="sg-navitem" href="#sg-modal-example"><svg viewBox="0 0 24 24"
+              aria-hidden="true">
+              <rect x="3" y="4" width="18" height="16" rx="3" />
+              <path d="M3 9h18m-14-2h.1m3 0h.1" />
+            </svg><span>레이어 팝업</span></a>
+        </div>
+        <div class="sg-navgroup">
+          <div class="sg-navgroup-title">04 · FEEDBACK & LAYOUT</div><a class="sg-navitem" href="#sg-feedback"><svg
+              viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m11 4-9 16h20L13 4a1 1 0 0 0-2 0Z" />
+              <path d="M12 9v5m0 3v.1" />
+            </svg><span>알림 / 토스트</span></a><a class="sg-navitem" href="#sg-layoutgrid"><svg viewBox="0 0 24 24"
+              aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M3 9h18M9 9v12" />
+            </svg><span>그리드 레이아웃</span></a>
+        </div>
+        <div class="sg-sidebar-foot"><strong>디자인 기준 안내</strong>첨부된 CSS의 실제 변수와 클래스를 사용했습니다.<br>추가 규격은 '제안'으로 구분합니다.
+        </div>
+      </aside>
+      <main class="sg-main">
+        <div class="sg-pageheading">
+          <div>
+            <div class="sg-breadcrumb">Design System &nbsp; / &nbsp; UI Style Guide</div>
+            <h1>UI 스타일 가이드</h1>
+            <p>공통 디자인 토큰과 UI 컴포넌트의 상태, 규격, CSS 클래스명을 한 화면에서 확인하세요.</p>
+          </div>
+          <div class="sg-tools"><label class="sg-search-wrap"><svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="10.7" cy="10.7" r="6.5" stroke-width="1.7" />
+                <path d="m16 16 5 5" stroke-width="1.7" stroke-linecap="round" />
+              </svg><input id="sg-search" type="search" placeholder="목차 검색..." aria-label="목차 검색"></label><button
+              class="sg-outlined-action" type="button" data-action="code" data-code="color" data-title="공통 변수 CSS">CSS
+              변수 보기 ↗</button></div>
+        </div>
+        <div class="sg-intro">
+          <div>
+            <h2>일관된 UI를 위한 공통 디자인 기준</h2>
+            <p>현재 프로젝트 CSS 기준 · 컬러, 버튼 및 입력폼은 제공된 코드와 동일한 이름을 사용합니다.</p>
+          </div>
+          <div class="sg-intro-side">
+            <div class="sg-intro-metric"><strong>10</strong><span>Primary 토큰</span></div>
+            <div class="sg-intro-metric"><strong>5</strong><span>버튼 유형</span></div>
+            <div class="sg-intro-metric"><strong>5</strong><span>버튼 상태</span></div>
+          </div>
+        </div>
+        <section class="sg-section" id="sg-foundation">
+          <div class="sg-sectionhead"><span class="sg-section-number">01.</span>
+            <h2>Design Tokens</h2>
+            <p>첨부 CSS의 기반 스타일</p><span class="sg-subhead-right">* 복사 가능한 컬러칩</span>
+          </div>
+          <div class="sg-grid sg-foundation">
+            <div class="sg-card" id="sg-colors">
+              <div class="sg-card-title">
+                <h3>컬러 (Color)</h3><button type="button" class="sg-smalllink" data-action="code"
+                  data-title="컬러 (Color) CSS" data-code="color">CSS 코드 보기 ↗</button>
+              </div>
+              <p class="sg-card-des">실제 :root 변수 기준 · 색상 클릭 시 HEX 복사</p>
+              <h4>Primary Palette · <code>--primary-50 ~ 900</code></h4>
+              <div class="sg-token-row"><button class="sg-color-token" type="button" data-action="copy"
+                  data-value="#F2F5FB" title="클릭하여 #F2F5FB 복사"><span class="sg-chip"
+                    style="background:#F2F5FB"></span><strong>50</strong><small>#F2F5FB</small></button><button
+                  class="sg-color-token" type="button" data-action="copy" data-value="#E3EAF7"
+                  title="클릭하여 #E3EAF7 복사"><span class="sg-chip"
+                    style="background:#E3EAF7"></span><strong>100</strong><small>#E3EAF7</small></button><button
+                  class="sg-color-token" type="button" data-action="copy" data-value="#C5D2EC"
+                  title="클릭하여 #C5D2EC 복사"><span class="sg-chip"
+                    style="background:#C5D2EC"></span><strong>200</strong><small>#C5D2EC</small></button><button
+                  class="sg-color-token" type="button" data-action="copy" data-value="#9DB2DD"
+                  title="클릭하여 #9DB2DD 복사"><span class="sg-chip"
+                    style="background:#9DB2DD"></span><strong>300</strong><small>#9DB2DD</small></button><button
+                  class="sg-color-token" type="button" data-action="copy" data-value="#6687C5"
+                  title="클릭하여 #6687C5 복사"><span class="sg-chip"
+                    style="background:#6687C5"></span><strong>400</strong><small>#6687C5</small></button><button
+                  class="sg-color-token" type="button" data-action="copy" data-value="#26499D"
+                  title="클릭하여 #26499D 복사"><span class="sg-chip"
+                    style="background:#26499D"></span><strong>500</strong><small>#26499D</small></button><button
+                  class="sg-color-token" type="button" data-action="copy" data-value="#203F89"
+                  title="클릭하여 #203F89 복사"><span class="sg-chip"
+                    style="background:#203F89"></span><strong>600</strong><small>#203F89</small></button><button
+                  class="sg-color-token" type="button" data-action="copy" data-value="#1B3574"
+                  title="클릭하여 #1B3574 복사"><span class="sg-chip"
+                    style="background:#1B3574"></span><strong>700</strong><small>#1B3574</small></button><button
+                  class="sg-color-token" type="button" data-action="copy" data-value="#172D60"
+                  title="클릭하여 #172D60 복사"><span class="sg-chip"
+                    style="background:#172D60"></span><strong>800</strong><small>#172D60</small></button><button
+                  class="sg-color-token" type="button" data-action="copy" data-value="#12234B"
+                  title="클릭하여 #12234B 복사"><span class="sg-chip"
+                    style="background:#12234B"></span><strong>900</strong><small>#12234B</small></button></div>
+              <hr class="sg-divider">
+              <h4>Common Tokens</h4>
+              <div class="sg-token-mini">
+                <div><span class="sg-dot" style="background:#E1E6EE;border:1px solid #E8EBF1"></span>Border #E1E6EE
+                </div>
+                <div><span class="sg-dot" style="background:#1F2937;border:1px solid #E8EBF1"></span>Text 01 #1F2937
+                </div>
+                <div><span class="sg-dot" style="background:#718096;border:1px solid #E8EBF1"></span>Text 02 #718096
+                </div>
+                <div><span class="sg-dot" style="background:#26499D;border:1px solid #E8EBF1"></span>Selected #26499D
+                </div>
+              </div>
+              <div class="sg-component-notes"><span>기준 컬러 <code>--primary-500</code></span><span>Hover
+                  <code>--primary-600</code></span></div>
+            </div>
+            <div class="sg-card" id="sg-typography">
+              <div class="sg-card-title">
+                <h3>타이포그래피 (Typography)</h3><button type="button" class="sg-smalllink" data-action="code"
+                  data-title="타이포그래피 (Typography) CSS" data-code="type">CSS 코드 보기 ↗</button>
+              </div>
+              <p class="sg-card-des">Pretendard · 기본 글자 굵기 500</p>
+              <div class="sg-font-hero">
+                <strong>Pretendard</strong><small>가나다라마바사<br>ABCDEFGHIJKLMN<br>0123456789</small></div>
+              <table class="sg-type-table">
+                <thead>
+                  <tr>
+                    <th>스타일</th>
+                    <th>크기</th>
+                    <th>굵기</th>
+                    <th>예시</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Heading 1</td>
+                    <td>24px</td>
+                    <td>700</td>
+                    <td class="sg-text-example" style="font-size:24px;font-weight:700">UI 스타일 가이드</td>
+                  </tr>
+                  <tr>
+                    <td>Heading 2</td>
+                    <td>20px</td>
+                    <td>700</td>
+                    <td class="sg-text-example" style="font-size:20px;font-weight:700">섹션 제목</td>
+                  </tr>
+                  <tr>
+                    <td>Heading 3</td>
+                    <td>18px</td>
+                    <td>700</td>
+                    <td class="sg-text-example" style="font-size:18px;font-weight:700">카드 제목</td>
+                  </tr>
+                  <tr>
+                    <td>Body</td>
+                    <td>14px</td>
+                    <td>500</td>
+                    <td class="sg-text-example" style="font-size:14px;font-weight:500">기본 본문 텍스트</td>
+                  </tr>
+                  <tr>
+                    <td>Caption</td>
+                    <td>12px</td>
+                    <td>400</td>
+                    <td class="sg-text-example" style="font-size:12px;font-weight:400">추가 안내 문구</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="sg-component-notes"><span>타이포 등급은 <b>권장 구성 예시</b></span><span class="sg-proposed">제안</span>
+              </div>
+            </div>
+            <div class="sg-aside-stack">
+              <div class="sg-card sg-mini-card" id="sg-spacing">
+                <div class="sg-card-title">
+                  <h3>간격 (Spacing)</h3>
+                </div>
+                <p class="sg-card-des">4px 단위 권장 예시</p>
+                <div class="sg-bars">
+                  <div class="sg-bar-item"><span style="height:4px"></span>4</div>
+                  <div class="sg-bar-item"><span style="height:10px"></span>8</div>
+                  <div class="sg-bar-item"><span style="height:16px"></span>12</div>
+                  <div class="sg-bar-item"><span style="height:22px"></span>16</div>
+                  <div class="sg-bar-item"><span style="height:28px"></span>24</div>
+                  <div class="sg-bar-item"><span style="height:34px"></span>32</div>
+                  <div class="sg-bar-item"><span style="height:40px"></span>40</div>
+                  <div class="sg-bar-item"><span style="height:46px"></span>48</div>
+                </div>
+              </div>
+              <div class="sg-card sg-mini-card" id="sg-radius">
+                <div class="sg-card-title">
+                  <h3>테두리 & 둥글기</h3>
+                </div>
+                <p class="sg-card-des">현재 CSS는 rounded, rounded-xl 등을 활용</p>
+                <div class="sg-radius-row">
+                  <div class="sg-radius"><span style="border-radius:2px"></span>2px</div>
+                  <div class="sg-radius"><span style="border-radius:4px"></span>4px</div>
+                  <div class="sg-radius"><span style="border-radius:8px"></span>8px</div>
+                  <div class="sg-radius"><span style="border-radius:12px"></span>12px</div>
+                  <div class="sg-radius"><span style="border-radius:16px"></span>16px</div>
+                </div>
+              </div>
+              <div class="sg-card sg-mini-card" id="sg-shadow">
+                <div class="sg-card-title">
+                  <h3>그림자 (Shadow)</h3>
+                </div>
+                <p class="sg-card-des">팝업, 카드 등 레이어에 사용</p>
+                <div class="sg-shadow-list">
+                  <div class="sg-shadow-item">
+                    <div class="sg-shadow-box" style="box-shadow:none"></div>None
+                  </div>
+                  <div class="sg-shadow-item">
+                    <div class="sg-shadow-box" style="box-shadow:0 1px 3px #00000012"></div>S
+                  </div>
+                  <div class="sg-shadow-item">
+                    <div class="sg-shadow-box" style="box-shadow:0 3px 9px #00000018"></div>M
+                  </div>
+                  <div class="sg-shadow-item">
+                    <div class="sg-shadow-box" style="box-shadow:0 7px 18px #0000001F"></div>L
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="sg-section" id="sg-basic">
+          <div class="sg-sectionhead"><span class="sg-section-number">02.</span>
+            <h2>Basic Components</h2>
+            <p>기존 클래스 그대로 상태별 비교</p>
+          </div>
+          <div class="sg-grid sg-component-layout">
+            <div class="sg-card" id="sg-buttons">
+              <div class="sg-card-title">
+                <h3>버튼 (Button)</h3><button type="button" class="sg-smalllink" data-action="code"
+                  data-title="버튼 (Button) CSS" data-code="button">CSS 코드 보기 ↗</button>
+              </div>
+              <p class="sg-card-des">기존 .form-btn* 계열 · Default, Hover, Active, Selected, Disabled</p>
+              <table class="sg-button-matrix">
+                <thead>
+                  <tr>
+                    <th style="text-align:left">유형</th>
+                    <th>Default</th>
+                    <th>Hover</th>
+                    <th>Active</th>
+                    <th>Selected</th>
+                    <th>Disabled</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>기본</td>
+                    <td><button type="button" class="form-btn " data-action="notify"
+                        data-message="기본 Default">기본</button></td>
+                    <td><button type="button" class="form-btn hovered" data-action="notify"
+                        data-message="기본 Hover">기본</button></td>
+                    <td><button type="button" class="form-btn active" data-action="notify"
+                        data-message="기본 Active">기본</button></td>
+                    <td><button type="button" class="form-btn selected" data-action="notify"
+                        data-message="기본 Selected">기본</button></td>
+                    <td><button type="button" class="form-btn disabled" disabled data-action="notify"
+                        data-message="기본 Disabled">기본</button></td>
+                  </tr>
+                  <tr>
+                    <td>Primary</td>
+                    <td><button type="button" class="form-btn-primary " data-action="notify"
+                        data-message="Primary Default">확인</button></td>
+                    <td><button type="button" class="form-btn-primary hovered" data-action="notify"
+                        data-message="Primary Hover">확인</button></td>
+                    <td><button type="button" class="form-btn-primary active" data-action="notify"
+                        data-message="Primary Active">확인</button></td>
+                    <td><button type="button" class="form-btn-primary selected" data-action="notify"
+                        data-message="Primary Selected">확인</button></td>
+                    <td><button type="button" class="form-btn-primary disabled" disabled data-action="notify"
+                        data-message="Primary Disabled">확인</button></td>
+                  </tr>
+                  <tr>
+                    <td>Secondary</td>
+                    <td><button type="button" class="form-btn-secondary " data-action="notify"
+                        data-message="Secondary Default">취소</button></td>
+                    <td><button type="button" class="form-btn-secondary hovered" data-action="notify"
+                        data-message="Secondary Hover">취소</button></td>
+                    <td><button type="button" class="form-btn-secondary active" data-action="notify"
+                        data-message="Secondary Active">취소</button></td>
+                    <td><button type="button" class="form-btn-secondary selected" data-action="notify"
+                        data-message="Secondary Selected">취소</button></td>
+                    <td><button type="button" class="form-btn-secondary disabled" disabled data-action="notify"
+                        data-message="Secondary Disabled">취소</button></td>
+                  </tr>
+                  <tr>
+                    <td>Tertiary</td>
+                    <td><button type="button" class="form-btn-tertiary " data-action="notify"
+                        data-message="Tertiary Default">더보기</button></td>
+                    <td><button type="button" class="form-btn-tertiary hovered" data-action="notify"
+                        data-message="Tertiary Hover">더보기</button></td>
+                    <td><button type="button" class="form-btn-tertiary active" data-action="notify"
+                        data-message="Tertiary Active">더보기</button></td>
+                    <td><button type="button" class="form-btn-tertiary selected" data-action="notify"
+                        data-message="Tertiary Selected">더보기</button></td>
+                    <td><button type="button" class="form-btn-tertiary disabled" disabled data-action="notify"
+                        data-message="Tertiary Disabled">더보기</button></td>
+                  </tr>
+                  <tr>
+                    <td>Line</td>
+                    <td><button type="button" class="form-btn-line " data-action="notify"
+                        data-message="Line Default">선택</button></td>
+                    <td><button type="button" class="form-btn-line hovered" data-action="notify"
+                        data-message="Line Hover">선택</button></td>
+                    <td><button type="button" class="form-btn-line active" data-action="notify"
+                        data-message="Line Active">선택</button></td>
+                    <td><button type="button" class="form-btn-line selected" data-action="notify"
+                        data-message="Line Selected">선택</button></td>
+                    <td><button type="button" class="form-btn-line disabled" disabled data-action="notify"
+                        data-message="Line Disabled">선택</button></td>
+                  </tr>
+                </tbody>
+              </table>
+              <hr class="sg-divider">
+              <h4>사이즈 비교 <span class="sg-proposed">권장 확장 규격</span></h4>
+              <div class="sg-size-row">
+                <div class="sg-size-pair"><button type="button" class="form-btn-primary lg">Large
+                    버튼</button><span>40px</span></div>
+                <div class="sg-size-pair"><button type="button" class="form-btn-primary md">Medium
+                    버튼</button><span>32px</span></div>
+                <div class="sg-size-pair"><button type="button" class="form-btn-primary sm">Small
+                    버튼</button><span>28px</span></div>
+              </div>
+              <div class="sg-component-notes"><span>실제 클래스 <code>.form-btn-primary</code></span><span>기존 버튼은
+                  <code>text-sm px-2 py-1</code></span></div>
+            </div>
+            <div class="sg-card" id="sg-inputs">
+              <div class="sg-card-title">
+                <h3>입력 폼 (Input)</h3><button type="button" class="sg-smalllink" data-action="code"
+                  data-title="입력 폼 (Input) CSS" data-code="input">CSS 코드 보기 ↗</button>
+              </div>
+              <p class="sg-card-des">기존 .form-input · .form-textarea · .form-select</p>
+              <div class="sg-form-grid">
+                <div class="sg-formcell"><label>Default</label><input class="form-input " aria-label="Default 입력"
+                    placeholder="텍스트 입력"></div>
+                <div class="sg-formcell"><label>Focus</label><input class="form-input focus" aria-label="Focus 입력"
+                    placeholder="텍스트 입력"></div>
+                <div class="sg-formcell"><label>Disabled</label><input class="form-input disabled"
+                    aria-label="Disabled 입력" placeholder="텍스트 입력" disabled></div>
+                <div class="sg-formcell"><label>Error · 제안</label><input class="form-input sg-error"
+                    aria-label="Error 입력" placeholder="텍스트 입력"></div>
+                <div class="sg-formcell"><label>Success · 제안</label><input class="form-input sg-success"
+                    aria-label="Success 입력" placeholder="텍스트 입력"></div>
+                <div class="sg-formcell"><label>Textarea</label><textarea class="form-textarea"
+                    placeholder="내용을 입력하세요"></textarea></div>
+                <div class="sg-formcell"><label>Textarea Focus</label><textarea class="form-textarea focus"
+                    placeholder="내용을 입력하세요"></textarea></div>
+                <div class="sg-formcell"><label>Select</label><select class="form-select">
+                    <option>선택하세요</option>
+                    <option>옵션 1</option>
+                    <option>옵션 2</option>
+                  </select></div>
+                <div class="sg-formcell"><label>Input Disabled</label><input class="form-input" placeholder="선택 불가"
+                    disabled></div>
+              </div>
+              <div class="sg-component-notes"><span><code>.form-input:focus</code> →
+                  <code>--primary-500</code></span><span>오류·성공 표시 <span class="sg-proposed">추가 제안</span></span></div>
+            </div>
+          </div>
+        </section>
+        <section class="sg-section" id="sg-controls">
+          <div class="sg-sectionhead"><span class="sg-section-number">03.</span>
+            <h2>Controls &amp; Navigation</h2>
+            <p>실제로 눌러볼 수 있는 UI 미리보기</p>
+          </div>
+          <div class="sg-grid sg-extras">
+            <div class="sg-card" id="sg-choice">
+              <div class="sg-card-title">
+                <h3>선택 컨트롤</h3>
+              </div>
+              <p class="sg-card-des">Checkbox · Radio · Switch (확장 예시)</p>
+              <h4>Checkbox / Radio</h4>
+              <div class="sg-controls"><label class="sg-control-label"><input type="checkbox" checked>선택됨</label><label
+                  class="sg-control-label"><input type="checkbox">기본</label><label class="sg-control-label"><input
+                    type="radio" name="sg-radio" checked>선택됨</label><label class="sg-control-label"><input type="radio"
+                    name="sg-radio">기본</label></div>
+              <hr class="sg-divider">
+              <h4>Switch</h4>
+              <div class="sg-controls"><label class="sg-switch"><input type="checkbox" checked><span
+                    class="sg-switch-track"></span>On</label><label class="sg-switch"><input type="checkbox"><span
+                    class="sg-switch-track"></span>Off</label><label class="sg-switch"><input type="checkbox"
+                    disabled><span class="sg-switch-track"></span>Disabled</label></div>
+            </div>
+            <div class="sg-card" id="sg-tabs">
+              <div class="sg-card-title">
+                <h3>탭 & 배지 (Tab / Badge)</h3><button type="button" class="sg-smalllink" data-action="code"
+                  data-title="탭 &amp; 배지 (Tab / Badge) CSS" data-code="tab">CSS 코드 보기 ↗</button>
+              </div>
+              <p class="sg-card-des">기존 .page-tabs 구조 및 새 공통 UI 예시</p>
+              <div class="sg-tab-demo" role="tablist"><button type="button" class="sg-tab-btn active" role="tab"
+                  aria-selected="true" data-action="tab">기본 정보</button><button type="button" class="sg-tab-btn"
+                  role="tab" aria-selected="false" data-action="tab">스타일 설정</button><button type="button"
+                  class="sg-tab-btn" role="tab" aria-selected="false" data-action="tab">미리보기</button></div>
+              <div class="sg-tagrow"><span class="sg-tag">기본</span><span class="sg-tag blue">Selected</span><span
+                  class="sg-tag success">Success</span><span class="sg-tag warn">Warning</span><span
+                  class="sg-tag error">Error</span></div>
+            </div>
+            <div class="sg-card" id="sg-feedback">
+              <div class="sg-card-title">
+                <h3>알림 & 피드백</h3>
+              </div>
+              <p class="sg-card-des">기존 팝업 / 로딩 계열을 활용하는 예시</p>
+              <div class="sg-feedback-row"><button type="button" class="form-btn-primary" data-action="notify"
+                  data-message="작업이 완료되었습니다.">토스트 보기</button><button type="button" class="form-btn-secondary"
+                  data-action="openModal">모달 열기</button></div>
+              <div class="sg-alert">버튼을 클릭하여 동작을 확인하세요.</div>
+              <div class="sg-component-notes"><span>레이어 <code>.popup-layer</code></span><span>로딩
+                  <code>.divLoading</code></span></div>
+            </div>
+          </div>
+        </section>
+        <section class="sg-section" id="sg-advanced">
+          <div class="sg-sectionhead"><span class="sg-section-number">04.</span>
+            <h2>Advanced Components &amp; Layout</h2>
+            <p>목록, 페이지 이동 및 레이아웃 규칙</p>
+          </div>
+          <div class="sg-grid sg-lower">
+            <div class="sg-card" id="sg-table">
+              <div class="sg-card-title">
+                <h3>테이블 (Table)</h3><button type="button" class="sg-smalllink" data-action="code"
+                  data-title="테이블 (Table) CSS" data-code="table">CSS 코드 보기 ↗</button>
+              </div>
+              <p class="sg-card-des">첨부 CSS의 .grid-table / .pagination 계열 기반</p>
+              <table class="sg-data-table">
+                <thead>
+                  <tr>
+                    <th>컴포넌트</th>
+                    <th>클래스명</th>
+                    <th>상태</th>
+                    <th>용도</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Primary Button</td>
+                    <td>.form-btn-primary</td>
+                    <td><span class="sg-tag success">사용 중</span></td>
+                    <td>주요 동작</td>
+                  </tr>
+                  <tr>
+                    <td>Text Input</td>
+                    <td>.form-input</td>
+                    <td><span class="sg-tag success">사용 중</span></td>
+                    <td>텍스트 입력</td>
+                  </tr>
+                  <tr>
+                    <td>Layer Popup</td>
+                    <td>.popup-layer</td>
+                    <td><span class="sg-tag success">사용 중</span></td>
+                    <td>팝업 레이어</td>
+                  </tr>
+                  <tr>
+                    <td>Checkbox</td>
+                    <td>.sg-control-label</td>
+                    <td><span class="sg-tag warn">추가 예시</span></td>
+                    <td>다중 선택</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="sg-pagination" aria-label="페이지 선택"><button data-action="page" type="button">‹</button><button
+                  class="active" data-action="page" type="button">1</button><button data-action="page"
+                  type="button">2</button><button data-action="page" type="button">3</button><button data-action="page"
+                  type="button">›</button></div>
+            </div>
+            <div class="sg-card" id="sg-layoutgrid">
+              <div class="sg-card-title">
+                <h3>레이아웃 (Grid)</h3>
+              </div>
+              <p class="sg-card-des">12열 데스크톱 그리드 · 반응형은 확장 제안</p>
+              <h4>12 Column Grid</h4>
+              <div class="sg-layout-grid">
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+              </div>
+              <div class="sg-instructions">• <code>.page-shell</code> · <code>.page-content</code> : 전체 페이지<br>•
+                <code>.wrap-layout</code> · <code>.main-contents-layout</code> : 콘텐츠 레이아웃<br>•
+                <code>.preview-card</code> : 미리보기 컨테이너<br>• 기존 <code>html min-w-470</code> 설정은 1880px 최소 너비에 영향</div>
+              <div class="sg-bottom-note" id="sg-modal-example">현재 CSS에서 정의된 규격과 새로 제안한 가이드 규격을 구분했습니다. 원본 CSS 파일은 변경하지
+                않았습니다.</div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="sg-toast" role="status" aria-live="polite"></div>
+    <div class="sg-overlay" aria-hidden="true" role="presentation">
+      <div class="sg-modal" role="dialog" aria-modal="true" aria-labelledby="sg-modal-title">
+        <div class="sg-modal-heading">
+          <h3 id="sg-modal-title">CSS 코드</h3><button class="sg-icon-close" type="button" aria-label="닫기"
+            data-action="closeModal">×</button>
+        </div>
+        <div class="sg-modal-content">
+          <div class="sg-modal-description"></div>
+          <pre></pre>
+        </div>
+        <div class="sg-modal-actions"><button class="form-btn-secondary" type="button"
+            data-action="closeModal">닫기</button><button class="form-btn-primary" type="button"
+            data-action="closeModal">확인</button></div>
+      </div>
+    </div>
+  </div>
+  <script>/* Dependency-free controls for the preview and Vue SFC.
+The Vue wrapper calls initStyleGuide(root) on mount. */
+    function initStyleGuide(root) {
+      if (!root) return () => { };
+      let toastTimer;
+      const $ = (s) => root.querySelector(s);
+      const $$ = (s) => Array.from(root.querySelectorAll(s));
+      const notify = (msg) => { const box = $('.sg-toast'); if (!box) return; box.textContent = msg; box.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => box.classList.remove('show'), 2200) };
+      const overlay = $('.sg-overlay');
+      let lastFocus = null;
+      const openModal = (title, body, code) => { lastFocus = document.activeElement; $('.sg-modal-heading h3').textContent = title; const text = $('.sg-modal-description'); text.textContent = body || ''; const pre = $('.sg-modal-content pre'); pre.textContent = code || ''; pre.hidden = !code; overlay.classList.add('open'); overlay.setAttribute('aria-hidden', 'false'); $('.sg-icon-close').focus(); };
+      const closeModal = () => { overlay.classList.remove('open'); overlay.setAttribute('aria-hidden', 'true'); if (lastFocus && lastFocus.focus) lastFocus.focus() };
+      const codes = {
+        color: ':root {\n  --primary-500: #26499D;\n  --primary-600: #203F89;\n  --primary-50: #F2F5FB;\n  --border: #E1E6EE;\n  --text-primary: #1F2937;\n  --text-secondary: #718096;\n}',
+        type: 'html, body {\n  font-family: "Pretendard", sans-serif;\n  font-weight: 500;\n}\n/* 원본 CSS: text-sm, text-lg, font-bold 등 사용 */',
+        button: '.form-btn-primary {\n  @apply flex items-center justify-center gap-1\n  px-2 py-1 ring-1 ring-(--primary-500)\n  rounded text-sm text-white bg-(--primary-500);\n}\n.form-btn-primary:hover {\n  @apply bg-(--primary-600);\n}',
+        input: '.form-input {\n  @apply inline-flex items-center justify-center\n  min-h-7 px-2 py-1 ring-1 ring-gray-300\n  rounded text-sm bg-gray-50;\n}\n.form-input:focus {\n  @apply ring-(--primary-500) outline-none;\n}',
+        table: '.grid-table {\n  @apply overflow-x-auto inline-grid w-full\n  mt-2 bg-gray-200 gap-px\n  border border-gray-300 text-sm;\n}',
+        modal: '.popup-layer { @apply fixed inset-0 z-15; }\n.popup-background { @apply absolute inset-0 bg-black/30; }\n.popup-warp { @apply absolute bg-white rounded-xl shadow-lg; }',
+        tab: '.page-tabs { @apply sticky top-0 bg-white border-b border-slate-200; }\n.page-tab-inner > ul > li > a.selected { @apply font-bold border-gray-800; }'
+      };
+      const handler = async (e) => {
+        const el = e.target.closest('[data-action]');
+        if (!el || !root.contains(el)) return;
+        const action = el.dataset.action;
+        if (action === 'copy') {
+          const content = el.dataset.value || '';
+          try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(content) } else { const temp = document.createElement('textarea'); temp.value = content; temp.style.position = 'fixed'; temp.style.opacity = '0'; document.body.append(temp); temp.select(); document.execCommand('copy'); temp.remove() } notify(`${content} 복사 완료`) } catch (err) { notify('복사할 값: ' + content) }
+        }
+        if (action === 'code') openModal(el.dataset.title || 'CSS 코드', '첨부된 CSS에서 가져온 기존 스타일입니다.', codes[el.dataset.code] || '');
+        if (action === 'openModal') openModal('레이어 팝업 (Modal)', '첨부 CSS의 .popup-layer, .popup-background, .popup-warp 계열을 기준으로 구성한 팝업 샘플입니다.', codes.modal);
+        if (action === 'closeModal') closeModal();
+        if (action === 'notify') notify(el.dataset.message || '정상적으로 처리되었습니다.');
+        if (action === 'tab') { const group = el.closest('.sg-tab-demo'); group.querySelectorAll('.sg-tab-btn').forEach(b => { b.classList.toggle('active', b === el); b.setAttribute('aria-selected', String(b === el)) }); notify(`${el.textContent.trim()} 탭 선택됨`) }
+        if (action === 'page') { const group = el.closest('.sg-pagination'); group.querySelectorAll('button').forEach(b => b.classList.toggle('active', b === el)); }
+      };
+      const overlayClick = (e) => { if (e.target === overlay) closeModal() };
+      const keydown = (e) => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal() };
+      const sidebarChange = (e) => { const link = e.target.closest('.sg-navitem'); if (!link) return; $$('.sg-navitem').forEach(x => x.classList.remove('active')); link.classList.add('active') };
+      const search = $('#sg-search');
+      const searchHandler = () => { const query = search.value.trim().toLowerCase(); $$('.sg-navitem').forEach(x => { x.classList.toggle('sg-hide', !!query && !x.textContent.toLowerCase().includes(query)) }); };
+      root.addEventListener('click', handler); root.addEventListener('click', sidebarChange); overlay.addEventListener('click', overlayClick); document.addEventListener('keydown', keydown); search.addEventListener('input', searchHandler);
+      return () => { clearTimeout(toastTimer); root.removeEventListener('click', handler); root.removeEventListener('click', sidebarChange); overlay.removeEventListener('click', overlayClick); document.removeEventListener('keydown', keydown); search.removeEventListener('input', searchHandler) };
+    }
+    if (typeof window !== 'undefined') window.initStyleGuide = initStyleGuide;
+
+    initStyleGuide(document.querySelector(".sg-root"));</script>
+</body>
+
+</html>

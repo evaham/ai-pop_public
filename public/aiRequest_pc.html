@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ko" class="h-full">
+
+<head>
+  <link rel="stylesheet" href="./new_ai_pop_common.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body class="w-full h-full antialiased">
+  <div hidden=""></div>
+  <div class="page-shell">
+    <div class="page-content">
+      <div class="page-tabs">
+        <div class="tabs page-tab-inner" id="menuTab">
+          <ul class="level1 static">
+            <li role="menuitem"><a class="level1 tab" href="./aiRequest_pop.html">AI POP 만들기</a></li>
+            <li role="menuitem"><a class="level1 tab selected" href="./aiRequest_pc.html">프라이스카드 만들기</a></li>
+            <li role="menuitem"><a class="level1 tab" href="./aiImage.html">AI이미지관리</a></li>
+            <li role="menuitem"><a class="level1 tab" href="./aiStatics.html">AI이용현황</a></li>
+            <li role="menuitem"><a class="level1 tab" href="./Layerpopup.html">팝업창화면</a></li>
+          </ul>
+          <div class="tsmoney-info"><button class="tsmoney-info-btn"><svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 4C14.7486 4 17.1749 5.38626 18.6156 7.5H16V9.5H22V3.5H20V5.99936C18.1762 3.57166 15.2724 2 12 2C6.47715 2 2 6.47715 2 12H4C4 7.58172 7.58172 4 12 4ZM20 12C20 16.4183 16.4183 20 12 20C9.25144 20 6.82508 18.6137 5.38443 16.5H8V14.5H2V20.5H4V18.0006C5.82381 20.4283 8.72764 22 12 22C17.5228 22 22 17.5228 22 12H20Z">
+                </path>
+              </svg></button>사용 가능TS<div class="tsmoney-info-amount"><span>235,300</span>.0</div>
+            <div class="tsmoney-info-detail hidden">
+              <div class="ts-wrap">
+                <div class="ts-sticky">
+                  <div class="ts-card">
+                    <div>
+                      <div>
+                        <div class="ts-title">투게더마트</div>
+
+                      </div>
+                      <div class="ts-info-box">
+                        <div class="ts-info-box-row">
+                          <div class="ts-info-box-left">TS머니</div>
+                          <div class="flex"><span id="remainMoney" class="text-red-600">682,480</span><span
+                              id="remainMoneyDecimal" class="ts_decimal_part text-gray-500">.5</span></div>
+                        </div>
+                        <div class="ts-info-box-row">
+                          <div class="ts-info-box-left">TS포인트</div>
+                          <div class="flex"><span id="remainPoint" class="text-blue-500">0</span><span
+                              id="remainPointDecimal" class="ts_decimal_part text-gray-500">.0</span></div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="ts-hr">
+                    <div class="ts-title">TS머니 전용계좌</div>
+                    <div id="tsBank" class="ts-bank">기업은행 431-192047-97-437</div>
+                    <div>예금주 : <span id="tsHolder" class="font-semibold text-gray-800">테스트그룹</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!--$--><!--/$-->
+      <div class="wrap-layout">
+        <div class="side-contents-layout">
+          <div class="flex-1 small-scroll">
+            <div id="popBox" class="panel-group">
+              <div class="panel-box collapsed">
+                <div class="panel-header">
+                  <div class="panel-icon-num">1</div>
+                  <div class="panel-header-content">
+                    <div class="panel-title">템플릿 디자인<span class="panel-optional blue">필수</span></div>
+                    <div class="panel-description">템플릿 선택 후 수정이 가능합니다.</div>
+                  </div>
+                  <div class="panel-toggle"><span><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#666">
+                        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"></path>
+                      </svg></span><span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                        width="24px" fill="#666">
+                        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"></path>
+                      </svg></span></div>
+                </div>
+                <div class="panel-body" style="max-height: 0px; opacity: 0;">
+                  <div class="panel-fieldset"><button type="button" class="panel-template-btn"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M4 5V19H20V7H11.5858L9.58579 5H4ZM12.4142 5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5ZM10 10.5C10 11.3284 9.32843 12 8.5 12C7.67157 12 7 11.3284 7 10.5C7 9.67157 7.67157 9 8.5 9C9.32843 9 10 9.67157 10 10.5ZM18 17L14 11L7 17H18Z">
+                        </path>
+                      </svg>템플릿 전체 보기</button>
+                    <div class="panel-label">비슷한 형태의 템플릿</div>
+                    <div id="selPricecardTemplate" class="flex flex-wrap gap-2"><button type="button"
+                        class="form-btn-secondary flex-col! selected" style="width: 112px;">
+                        <div class="pricecard-template-ellipsis">가격파괴</div>
+                        <div>(세로형,2×1)</div>
+                      </button><button type="button" class="form-btn-secondary flex-col!" style="width: 112px;">
+                        <div class="pricecard-template-ellipsis"><span>[센터]</span>샘플</div>
+                        <div>(세로형,2×1)</div>
+                      </button><button type="button" class="form-btn-secondary flex-col!" style="width: 112px;">
+                        <div class="pricecard-template-ellipsis"><span>[센터]</span>심플_노랑랑랑</div>
+                        <div>(세로형,2×1)</div>
+                      </button></div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-box collapsed">
+                <div class="panel-header">
+                  <div class="panel-icon-num">2</div>
+                  <div class="panel-header-content">
+                    <div class="panel-title">색상 테마</div>
+                    <div class="panel-description">템플릿의 색상 테마를 변경하세요</div>
+                  </div>
+                  <div class="panel-selected-group"><span class="panel-selected-item">미선택</span></div>
+                  <div class="panel-toggle"><span><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#666">
+                        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"></path>
+                      </svg></span><span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                        width="24px" fill="#666">
+                        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"></path>
+                      </svg></span></div>
+                </div>
+                <div class="panel-body" style="max-height: 0px; opacity: 0;">
+                  <div class="panel-fieldset">
+                    <div class="panel-label">색상 테마</div>
+                    <div class="panel-line-group"><button type="button"
+                        class="form-btn-secondary w-20 yellow selected">노랑</button><button type="button"
+                        class="form-btn-secondary w-20">빨강</button><button type="button"
+                        class="form-btn-secondary w-20">초록</button><button type="button"
+                        class="form-btn-secondary w-20">파랑</button><button type="button"
+                        class="form-btn-secondary w-20">흰색</button></div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-box collapsed">
+                <div class="panel-header">
+                  <div class="panel-icon-num">3</div>
+                  <div class="panel-header-content">
+                    <div class="panel-title">상품정보</div>
+                    <div class="panel-description">프라이스카드에 넣을 상품정보 입력하세요</div>
+                  </div>
+                  <div class="panel-toggle"><span><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#666">
+                        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"></path>
+                      </svg></span><span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                        width="24px" fill="#666">
+                        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"></path>
+                      </svg></span></div>
+                </div>
+                <div class="panel-body" style="max-height: 0px; opacity: 0;">
+                  <div class="panel-fieldset">
+                    <div class="panel-label">반복 디자인 설정<span>(최대 24개)</span></div>
+                    <div class="flex gap-2 items-center"><select id="selPricecardDirection" class="form-select"
+                        data-sharkid="__0">
+                        <option value="landscape">가로형</option>
+                        <option value="portrait">세로형</option>
+                      </select><input id="pricecardRowCount" data-row="3" class="form-input text-right w-10" type="text"
+                        data-sharkid="__1">행<input id="pricecardColCount" data-col="2"
+                        class="form-input text-right w-10" type="text" data-sharkid="__2">열</div>
+                    <div class="panel-label">상품 데이터 입력</div>
+                    <div class="flex gap-1">
+                      <div id="selPopColumn" class="panel-line-group"><button type="button"
+                          class="form-btn-secondary selected" data-column="name"><span
+                            class="text-red-500">*</span>상품명</button><button type="button"
+                          class="form-btn-secondary">규격</button><button type="button"
+                          class="form-btn-secondary">정상판매가</button><button type="button"
+                          class="form-btn-secondary selected" data-column="dcprice"><span
+                            class="text-red-500">*</span>할인판매가</button><button type="button"
+                          class="form-btn-secondary">할인율</button></div><button type="button" class="form-btn-secondary"
+                        style="margin-left: auto;">행 비우기</button>
+                    </div>
+                    <div id="pricecardExcel" data-count="4" class="grid-table"
+                      style="grid-template-rows: 24px repeat(5, 36px); grid-template-columns: 44px 210px 90px 90px 90px; place-items: center;">
+                      <div><input class="grid-check" id="pricecardAllRow" type="checkbox" data-sharkid="__3">No</div>
+                      <div class="grid-th">상품명</div>
+                      <div class="grid-th">규격</div>
+                      <div class="grid-th">정상판매가</div>
+                      <div class="grid-th">할인판매가</div>
+                      <div class="grid-td"><input class="grid-check" type="checkbox" data-sharkid="__4">1</div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__5"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__6"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__7"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__8"></div>
+                      <div class="grid-td"><input class="grid-check" type="checkbox" data-sharkid="__9">2</div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__10"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__11"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__12"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__13"></div>
+                      <div class="grid-td"><input class="grid-check" type="checkbox" data-sharkid="__14">3</div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__15"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__16"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__17"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__18"></div>
+                      <div class="grid-td"><input class="grid-check" type="checkbox" data-sharkid="__19">4</div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__20"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__21"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__22"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__23"></div>
+                    </div>
+                    <div class="panel-label">판매가 표시 단위</div>
+                    <div class="panel-line-group"><button type="button" class="form-btn-secondary selected"
+                        data-column="name">없음</button><button type="button" class="form-btn-secondary"
+                        data-column="name">원(뒤)</button><button type="button" class="form-btn-secondary"
+                        data-column="name">싯가</button></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main-contents-layout">
+          <div class="workspace-preview">
+            <div class="flex h-full">
+              <div style="width: 810px; height: 810px; overflow: auto; flex-shrink: 0;">
+                <div id="pricecardFrame" class="workspace-preview-frame">
+                  <div id="pricecardCanvas" class="workspace-preview-canvas"></div>
+                  <div id="pricecardEditor" class="workspace-preview-canvas-editor"
+                    style="width: 566px; height: 800px; transform-origin: left top;"></div>
+                </div>
+              </div>
+              <div class="workspace-editor" style="width: 450px; height: 810px;">
+                <div class="workspace-save-group"><button type="button" class="form-btn-primary">
+                    <div>이미지 생성하기</div>
+                  </button><button type="button" class="form-btn-secondary">
+                    <div>템플릿으로 저장</div>
+                  </button></div>
+                <div class="workspace-flex-row">
+                  <div class="workspace-title">화면 확대<div class="workspace-help tooltip1 ml-1" data-tooltip="· 왼쪽 편집창 영역을 클릭 후 아래의 키를 동시에 누르시면 배율을 더 세밀하게 조정하실 수 있습니다.
+
+									① Ctrl키와 +키 : 0.2씩 확대
+
+									② Ctrl키와 -키 : 0.2씩 축소"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11 15V17H13V15H11ZM13 13.3551C14.4457 12.9248 15.5 11.5855 15.5 10C15.5 8.067 13.933 6.5 12 6.5C10.302 6.5 8.88637 7.70919 8.56731 9.31346L10.5288 9.70577C10.6656 9.01823 11.2723 8.5 12 8.5C12.8284 8.5 13.5 9.17157 13.5 10C13.5 10.8284 12.8284 11.5 12 11.5C11.4477 11.5 11 11.9477 11 12.5V14H13V13.3551Z">
+                        </path>
+                      </svg></div>
+                  </div>
+                  <div id="selPricecardScale" class="workspace-zoom flex"><button type="button"
+                      class="form-btn-secondary selected" style="width: 80px;">
+                      <div class="" style="letter-spacing: 0px;">1×</div>
+                    </button><button type="button" class="form-btn-secondary" style="width: 80px;">
+                      <div class="" style="letter-spacing: 0px;">2×</div>
+                    </button><button type="button" class="form-btn-secondary" style="width: 80px;">
+                      <div class="" style="letter-spacing: 0px;">3×</div>
+                    </button></div>
+                </div>
+                <div class="workspace-tab" role="tablist" aria-label="작업 편집 탭"><button type="button" id="elementsTab"
+                    class="item selected" role="tab" aria-controls="elementsPanel" aria-selected="true">요소
+                    추가/삭제</button><button type="button" id="propertiesTab" class="item" role="tab"
+                    aria-controls="propertiesPanel" aria-selected="false">속성 편집</button></div>
+
+                <!-- 요소 추가 섹션 -->
+
+                <div id="elementsPanel" class="flex-1 small-scroll" role="tabpanel" aria-labelledby="elementsTab">
+                  <div class="workspace-flex-row">
+                    <div class="workspace-title">요소 추가 / 삭제<div class="workspace-help tooltip1 ml-1" data-tooltip="· 텍스트 레이어를 더블클릭하시면 내용을 편집할 수 있습니다.
+
+										· 편집창에서 레이어 선택 후 Ctrl키와 Delete키, 또는 Ctrl키와 ←키(Backspace)를 동시에 누르셔도 삭제됩니다."><svg
+                          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                          <path
+                            d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11 15V17H13V15H11ZM13 13.3551C14.4457 12.9248 15.5 11.5855 15.5 10C15.5 8.067 13.933 6.5 12 6.5C10.302 6.5 8.88637 7.70919 8.56731 9.31346L10.5288 9.70577C10.6656 9.01823 11.2723 8.5 12 8.5C12.8284 8.5 13.5 9.17157 13.5 10C13.5 10.8284 12.8284 11.5 12 11.5C11.4477 11.5 11 11.9477 11 12.5V14H13V13.3551Z">
+                          </path>
+                        </svg></div><button type="button" class="form-btn ml-auto font-normal">초기화</button></div>
+                  </div>
+                  <div class="workspace-element-group"><button type="button" class="form-btn-secondary"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18.3641 4.22168L19.7781 5.63589L5.50012 20L4.08594 18.5857L18.3641 4.22168Z"
+                          fill="black"></path>
+                      </svg><span>선</span></button><button type="button" class="form-btn-secondary"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M4 3H20C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM5 5V19H19V5H5Z">
+                        </path>
+                      </svg><span>사각형</span></button><button type="button" class="form-btn-secondary"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z">
+                        </path>
+                      </svg><span>타원형</span></button><button type="button" class="form-btn-secondary"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12.8659 3.00017L22.3922 19.5002C22.6684 19.9785 22.5045 20.5901 22.0262 20.8662C21.8742 20.954 21.7017 21.0002 21.5262 21.0002H2.47363C1.92135 21.0002 1.47363 20.5525 1.47363 20.0002C1.47363 19.8246 1.51984 19.6522 1.60761 19.5002L11.1339 3.00017C11.41 2.52187 12.0216 2.358 12.4999 2.63414C12.6519 2.72191 12.7782 2.84815 12.8659 3.00017ZM4.20568 19.0002H19.7941L11.9999 5.50017L4.20568 19.0002Z">
+                        </path>
+                      </svg><span>삼각형</span></button><button type="button" class="form-btn-secondary"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M2 4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4ZM4 5V19H20V5H4ZM7 8H17V11H15V10H13V14H14.5V16H9.5V14H11V10H9V11H7V8Z">
+                        </path>
+                      </svg><span>텍스트</span></button><button type="button" class="form-btn-secondary"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M2.9918 21C2.44405 21 2 20.5551 2 20.0066V3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918ZM20 15V5H4V19L14 9L20 15ZM20 17.8284L14 11.8284L6.82843 19H20V17.8284ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z">
+                        </path>
+                      </svg><span>이미지파일</span></button><input id="pricecardImageFile" accept="image/jpeg,image/png"
+                      type="file" style="display: none;"></div>
+                  <div class="workspace-element-group">
+                    <hr class="col-span-3 my-2 border-gray-200"><button type="button" class="form-btn-secondary"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z">
+                        </path>
+                      </svg><span>복사하기</span></button><button type="button" class="form-btn-secondary"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                        </path>
+                      </svg><span>삭제하기</span></button>
+                  </div>
+                </div>
+
+
+                <!-- 속성 편집 섹션 -->
+                <div id="propertiesPanel" class="flex-1 small-scroll hidden" role="tabpanel"
+                  aria-labelledby="propertiesTab" hidden>
+                  <div class="workspace-flex-row">
+                    <div class="workspace-title">속성 편집<div class="workspace-switch ml-auto">
+                        <div class="workspace-help tooltip2" data-tooltip="· 일괄모드
+
+                                      : 첫번째 상품 편집창만 활성화되고, 첫번째 상품의 스타일이 모든 상품에 적용됩니다.
+
+                                      · 개별모드 
+
+                                      : 특정 상품의 레이어를 첫번째 상품의 스타일과 다르게 편집할 수 있습니다. 작업 내용이 해당 상품에만 적용됩니다.
+
+                                      · 개별모드로 전환한 후 편집창에서 편집하고 싶은 상품 영역을 더블클릭하시면 해당 상품의 편집창이 활성화되어 레이어 편집이 가능해집니다.
+
+                                      · 개별모드에서는 레이아웃 변경, 템플릿 사용, 상품 데이터 컬럼 선택 등이 제한됩니다."><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11 15V17H13V15H11ZM13 13.3551C14.4457 12.9248 15.5 11.5855 15.5 10C15.5 8.067 13.933 6.5 12 6.5C10.302 6.5 8.88637 7.70919 8.56731 9.31346L10.5288 9.70577C10.6656 9.01823 11.2723 8.5 12 8.5C12.8284 8.5 13.5 9.17157 13.5 10C13.5 10.8284 12.8284 11.5 12 11.5C11.4477 11.5 11 11.9477 11 12.5V14H13V13.3551Z">
+                            </path>
+                          </svg></div>일괄편집<label class="workspace-switch-check"><input id="pricecardAllMode"
+                            type="checkbox" data-sharkid="__24"><span
+                            class="workspace-switch-slider"></span></label>개별편집
+                      </div>
+                    </div>
+                  </div>
+                  <div class="workspace-box">
+                    <div class="workspace-box-title">크기 및 위치</div>
+                    <div id="pricecardEditShape" class="workspace-grid-tbl">
+                      <div class="workspace-grid-th">크기</div>
+                      <div class="workspace-grid-td">가로<input id="pricecardWidth" class="form-input w-14 text-right"
+                          step="5" min="0" type="number" value="0" data-sharkid="__25"><span>px</span>세로<input
+                          id="pricecardHeight" class="form-input w-14 text-right" step="5" min="0" type="number"
+                          value="0" data-sharkid="__26"><span>px</span></div>
+                      <div class="workspace-grid-th">위치</div>
+                      <div class="workspace-grid-td"><button type="button" id="pricecardUp"
+                          class="form-btn-secondary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                              d="M13.0001 7.82843V20H11.0001V7.82843L5.63614 13.1924L4.22192 11.7782L12.0001 4L19.7783 11.7782L18.3641 13.1924L13.0001 7.82843Z">
+                            </path>
+                          </svg></button><button type="button" id="pricecardDown" class="form-btn-secondary"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M13.0001 16.1716L18.3641 10.8076L19.7783 12.2218L12.0001 20L4.22192 12.2218L5.63614 10.8076L11.0001 16.1716V4H13.0001V16.1716Z">
+                            </path>
+                          </svg></button><button type="button" id="pricecardLeft" class="form-btn-secondary"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z">
+                            </path>
+                          </svg></button><button type="button" id="pricecardRight" class="form-btn-secondary"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                            </path>
+                          </svg></button></div>
+                      <div class="workspace-grid-th">회전</div>
+                      <div class="workspace-grid-td">
+                        <div class="flex items-center gap-2"><button type="button" class="form-btn-secondary selected">
+                            <div> 1˚</div>
+                          </button><button type="button" class="form-btn-secondary">
+                            <div>15˚</div>
+                          </button></div><button type="button" id="pricecardTurnLeft" class="form-btn-secondary"
+                          data-angleunit="1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                              d="M11 9H21C21.5522 9 22 9.44772 22 10V20C22 20.5523 21.5522 21 21 21H11C10.4477 21 9.99996 20.5523 9.99996 20V10C9.99996 9.44772 10.4477 9 11 9ZM12 11V19H20V11H12ZM5.99996 10.5858L7.82839 8.75736L9.24261 10.1716L4.99996 14.4142L0.757324 10.1716L2.17154 8.75736L3.99996 10.5858V8C3.99996 5.23858 6.23854 3 8.99996 3H13V5H8.99996C7.34311 5 5.99996 6.34315 5.99996 8V10.5858Z">
+                            </path>
+                          </svg></button><input id="pricecardAngle" class="form-input w-14 text-right" step="5"
+                          autocomplete="off" type="number" value="360" data-sharkid="__27"><span
+                          class="w-1">˚</span><button type="button" id="pricecardTurnRight" class="form-btn-secondary"
+                          data-angleunit="1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                              d="M20 10.5858L21.8284 8.75736L23.2426 10.1716L19 14.4142L14.7574 10.1716L16.1716 8.75736L18 10.5858V8C18 6.34315 16.6569 5 15 5H11V3H15C17.7614 3 20 5.23858 20 8V10.5858ZM13 9C13.5523 9 14 9.44772 14 10V20C14 20.5523 13.5523 21 13 21H3C2.44772 21 2 20.5523 2 20V10C2 9.44772 2.44772 9 3 9H13ZM12 11H4V19H12V11Z">
+                            </path>
+                          </svg></button>
+                      </div>
+                      <div data-edit="fill" class="workspace-grid-th">채우기 색상</div>
+                      <div data-edit="fill" class="workspace-grid-td"><input id="pricecardColorSelector"
+                          class="workspace-color-box" type="color" data-sharkid="__28">
+                        <div id="pricecardColor" class="mr-2">#000000</div>
+                      </div>
+                      <div data-edit="line" class="workspace-grid-th hidden">선 굵기</div>
+                      <div data-edit="line" class="workspace-grid-td hidden"><input id="pricecardLineWidth"
+                          class="form-input" type="text" value="0">
+                        <div class="" style="display: inline-block;">px</div>
+                      </div>
+                      <div data-edit="line" class="workspace-grid-th">선 끝모양</div>
+                      <div class="workspace-grid-td"><select id="pricecardLineCap" data-edit="line" class="form-select"
+                          data-sharkid="__29">
+                          <option>사각 모양</option>
+                          <option>둥근 모양</option>
+                          <option>화살표</option>
+                        </select></div>
+                      <div data-edit="border" class="workspace-grid-th">테두리 색상</div>
+                      <div data-edit="border" class="workspace-grid-td"><input id="pricecardBorderColorSelector"
+                          class="workspace-color-box" type="color" data-sharkid="__30">
+                        <div id="pricecardBorderColor" class="mr-2">#000000</div><input id="pricecardBorderWidth"
+                          class="form-input w-14 text-right" step="5" type="number" value="1"
+                          data-sharkid="__31"><span>px</span><label class="workspace-switch-check"><input
+                            id="pricecardBorder" type="checkbox" data-sharkid="__32"><span
+                            class="workspace-switch-slider"></span></label>
+                        <div id="pricecardBorderColorless"
+                          style="width: 23px; height: 22px; border: 1px solid rgb(119, 119, 119); margin-left: 3px; display: inline-block; background: linear-gradient(to left top, transparent 46%, red 49%, transparent 52%) white;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="pricecardEditFont" class="workspace-box">
+                    <div class="workspace-box-title">텍스트</div>
+                    <div class="workspace-grid-tbl">
+                      <div class="workspace-grid-th">내용</div>
+                      <div class="workspace-grid-td"><input class="form-input w-full" type="text" data-sharkid="__33">
+                      </div>
+                      <div class="workspace-grid-th">글꼴 </div>
+                      <div class="workspace-grid-td"><select id="pricecardFont" class="form-select" data-sharkid="__34">
+                          <option>프리텐다드(기본)</option>
+                          <option>G마켓산스</option>
+                          <option>페이퍼로지</option>
+                          <option>학교안심둥근미소</option>
+                          <option>경기천년제목체</option>
+                          <option>가나초콜릿체</option>
+                          <option>세방고딕</option>
+                          <option>푸라닭젠틀고딕</option>
+                          <option>넥센타이어</option>
+                          <option>KBIZ한마음명조체</option>
+                          <option>김포평화바탕</option>
+                        </select><button type="button" class="form-btn-secondary">
+                          <div class="">보기</div>
+                        </button></div>
+                      <div class="workspace-grid-th">크기/서식</div>
+                      <div class="workspace-grid-td"><input id="pricecardFontSize" class="form-input w-14 text-right"
+                          step="5" min="5" type="number" value="0" data-sharkid="__35"><span>px</span><button
+                          type="button" class="form-btn-secondary" id="pricecardFontWeight"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M8 11H12.5C13.8807 11 15 9.88071 15 8.5C15 7.11929 13.8807 6 12.5 6H8V11ZM18 15.5C18 17.9853 15.9853 20 13.5 20H6V4H12.5C14.9853 4 17 6.01472 17 8.5C17 9.70431 16.5269 10.7981 15.7564 11.6058C17.0979 12.3847 18 13.837 18 15.5ZM8 13V18H13.5C14.8807 18 16 16.8807 16 15.5C16 14.1193 14.8807 13 13.5 13H8Z">
+                            </path>
+                          </svg></button><button type="button" class="form-btn-secondary italic"
+                          id="pricecardFontStyle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path d="M15 20H7V18H9.92661L12.0425 6H9V4H17V6H14.0734L11.9575 18H15V20Z"></path>
+                          </svg></button>
+                        <div id="pricecardFontAlign" class="flex gap-2"><button type="button"
+                            id="pricecardFontAlignLeft" class="form-btn-secondary" data-align="left"><svg
+                              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M3 4H21V6H3V4ZM3 19H17V21H3V19ZM3 14H21V16H3V14ZM3 9H17V11H3V9Z"></path>
+                            </svg></button><button type="button" id="pricecardFontAlignCenter"
+                            class="form-btn-secondary" data-align="center"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M3 4H21V6H3V4ZM3 19H21V21H3V19ZM3 14H21V16H3V14ZM3 9H21V11H3V9Z"></path>
+                            </svg></button><button type="button" id="pricecardFontAlignRight" class="form-btn-secondary"
+                            data-align="right"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                              fill="currentColor">
+                              <path d="M3 4H21V6H3V4ZM7 19H21V21H7V19ZM3 14H21V16H3V14ZM7 9H21V11H7V9Z"></path>
+                            </svg></button></div>
+                      </div>
+                      <div class="workspace-grid-th">줄바꿈 허용</div>
+                      <div class="workspace-grid-td" style="height: 28px;"><label class="workspace-switch-check"><input
+                            id="pricecardWrap" type="checkbox" data-sharkid="__36"><span
+                            class="workspace-switch-slider"></span></label>
+                        <div class="workspace-help tooltip3" data-tooltip="· 줄바꿈 허용 상태 : 글자가 변형되지 않고 레이어의 가로 길이에 맞춰 줄바꿈됩니다.
+
+                                        · 줄바꿈하고 싶은 위치에서 Shift키와 Enter키를 동시에 누르시면 입력란에는 {줄바꿈}으로 표시되고 편집창에는 줄바꿈 되어 나타납니다. 
+
+                                          ① 상품 데이터 레이어 : 데이터 입력란에서 Shift키와 Enter키를 동시에 누르십시오.
+
+                                          ② 사용자 생성 텍스트 레이어 : 레이어를 더블클릭하여 수정모드에서 Shift키와 Enter키를 동시에 누르십시오."><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11 15V17H13V15H11ZM13 13.3551C14.4457 12.9248 15.5 11.5855 15.5 10C15.5 8.067 13.933 6.5 12 6.5C10.302 6.5 8.88637 7.70919 8.56731 9.31346L10.5288 9.70577C10.6656 9.01823 11.2723 8.5 12 8.5C12.8284 8.5 13.5 9.17157 13.5 10C13.5 10.8284 12.8284 11.5 12 11.5C11.4477 11.5 11 11.9477 11 12.5V14H13V13.3551Z">
+                            </path>
+                          </svg></div>
+                      </div>
+                      <div data-edit="unit" class="workspace-grid-th">원표기 크기</div>
+                      <div data-edit="unit" class="workspace-grid-td"><input id="pricecardUnitSize"
+                          class="form-input w-14 text-right" step="5" min="5" type="number" value="0"
+                          data-sharkid="__37"><span>px</span></div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+                <div class="workspace-layer-group">
+                  <div class="workspace-title">레이어 순서<span class="workspace-sub-text">(위에 있는 요소가 앞에 표시됩니다.)</span></div>
+                  <div class="workspace-grid-tbl my-1!">
+                    <div class="workspace-grid-th flex-col gap-2"><button type="button"
+                        class="form-btn-secondary w-full">맨위로</button><button type="button"
+                        class="form-btn-secondary w-full">위로</button><button type="button"
+                        class="form-btn-secondary w-full">밑으로</button><button type="button"
+                        class="form-btn-secondary w-full">맨밑으로</button></div>
+                    <div class="workspace-grid-td">
+                      <div id="pricecardLayerOrder" class="workspace-layer-list small-scroll"><button type="button"
+                          class="workspace-layer-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                              d="M2 4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4ZM4 5V19H20V5H4ZM7 8H17V11H15V10H13V14H14.5V16H9.5V14H11V10H9V11H7V8Z">
+                            </path>
+                          </svg>텍스트<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                              width="24px" fill="currentColor">
+                              <path
+                                d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z">
+                              </path>
+                            </svg></span></button><button type="button" class="workspace-layer-btn"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M18.3641 4.22168L19.7781 5.63589L5.50012 20L4.08594 18.5857L18.3641 4.22168Z"
+                              fill="black"></path>
+                          </svg>선<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                              width="24px" fill="currentColor">
+                              <path
+                                d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z">
+                              </path>
+                            </svg></span></button><button type="button" class="workspace-layer-btn"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M2 4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4ZM4 5V19H20V5H4ZM7 8H17V11H15V10H13V14H14.5V16H9.5V14H11V10H9V11H7V8Z">
+                            </path>
+                          </svg>텍스트<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                              width="24px" fill="currentColor">
+                              <path
+                                d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z">
+                              </path>
+                            </svg></span></button><button type="button" class="workspace-layer-btn"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M4 3H20C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM5 5V19H19V5H5Z">
+                            </path>
+                          </svg>사각형<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                              width="24px" fill="currentColor">
+                              <path
+                                d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z">
+                              </path>
+                            </svg></span></button><button type="button" class="workspace-layer-btn selected"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M3 3C2.44772 3 2 3.44772 2 4V20C2 20.5523 2.44772 21 3 21H21C21.5523 21 22 20.5523 22 20V4C22 3.44772 21.5523 3 21 3H3ZM8 5V8H4V5H8ZM4 14V10H8V14H4ZM4 16H8V19H4V16ZM10 16H20V19H10V16ZM20 14H10V10H20V14ZM20 5V8H10V5H20Z">
+                            </path>
+                          </svg>할인판매가<span><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                              viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                              <path
+                                d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z">
+                              </path>
+                            </svg></span></button><button type="button" class="workspace-layer-btn"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M4 3H20C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM5 5V19H19V5H5Z">
+                            </path>
+                          </svg>상품명<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                              width="24px" fill="currentColor">
+                              <path
+                                d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z">
+                              </path>
+                            </svg></span></button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="absolute top-0 left-0 flex w-[810px] z-2 p-1 text-sm border-b border-gray-200 bg-white">
+            <div class="workspace-flex-row mx-auto w-90!">
+              <div class="workspace-title">화면 확대<div class="workspace-help tooltip1 ml-1" data-tooltip="· 왼쪽 편집창 영역을 클릭 후 아래의 키를 동시에 누르시면 배율을 더 세밀하게 조정하실 수 있습니다.
+
+							① Ctrl키와 +키 : 0.2씩 확대
+
+							② Ctrl키와 -키 : 0.2씩 축소"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11 15V17H13V15H11ZM13 13.3551C14.4457 12.9248 15.5 11.5855 15.5 10C15.5 8.067 13.933 6.5 12 6.5C10.302 6.5 8.88637 7.70919 8.56731 9.31346L10.5288 9.70577C10.6656 9.01823 11.2723 8.5 12 8.5C12.8284 8.5 13.5 9.17157 13.5 10C13.5 10.8284 12.8284 11.5 12 11.5C11.4477 11.5 11 11.9477 11 12.5V14H13V13.3551Z">
+                    </path>
+                  </svg></div>
+              </div>
+              <div id="selPricecardScale" class="workspace-zoom flex"><button type="button"
+                  class="form-btn-secondary selected" style="width: 80px;">
+                  <div class="" style="letter-spacing: 0px;">1×</div>
+                </button><button type="button" class="form-btn-secondary" style="width: 80px;">
+                  <div class="" style="letter-spacing: 0px;">2×</div>
+                </button><button type="button" class="form-btn-secondary" style="width: 80px;">
+                  <div class="" style="letter-spacing: 0px;">3×</div>
+                </button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tsMoneyAmount = document.querySelector(".tsmoney-info-amount");
+    const tsMoneyDetail = document.querySelector(".tsmoney-info-detail");
+
+    if (tsMoneyAmount && tsMoneyDetail) {
+      const toggleTsMoneyDetail = () => {
+        const isExpanded = tsMoneyAmount.getAttribute("aria-expanded") === "true";
+        tsMoneyDetail.classList.toggle("hidden", isExpanded);
+        tsMoneyAmount.setAttribute("aria-expanded", String(!isExpanded));
+      };
+
+      tsMoneyAmount.setAttribute("role", "button");
+      tsMoneyAmount.setAttribute("tabindex", "0");
+      tsMoneyAmount.setAttribute("aria-expanded", "false");
+      tsMoneyAmount.addEventListener("click", toggleTsMoneyDetail);
+      tsMoneyAmount.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          toggleTsMoneyDetail();
+        }
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!tsMoneyDetail.contains(event.target) && !tsMoneyAmount.contains(event.target)) {
+          tsMoneyDetail.classList.add("hidden");
+          tsMoneyAmount.setAttribute("aria-expanded", "false");
+        }
+      });
+    }
+
+    const panels = document.querySelectorAll(".panel-box");
+
+    function setPanelExpanded(panel, expanded) {
+      const body = panel.querySelector(".panel-body");
+      const header = panel.querySelector(".panel-header");
+
+      if (!body || !header) return;
+
+      if (expanded) {
+        panels.forEach((otherPanel) => {
+          if (otherPanel !== panel) {
+            setPanelExpanded(otherPanel, false);
+          }
+        });
+      }
+
+      panel.classList.toggle("collapsed", !expanded);
+      body.style.maxHeight = expanded ? `${body.scrollHeight}px` : "0px";
+      body.style.opacity = expanded ? "1" : "0";
+      header.setAttribute("aria-expanded", String(expanded));
+    }
+
+    panels.forEach((panel) => {
+      const header = panel.querySelector(".panel-header");
+      if (!header) return;
+
+      header.setAttribute("role", "button");
+      header.setAttribute("tabindex", "0");
+      setPanelExpanded(panel, !panel.classList.contains("collapsed"));
+
+      header.addEventListener("click", () => {
+        setPanelExpanded(panel, panel.classList.contains("collapsed"));
+      });
+
+      header.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          setPanelExpanded(panel, panel.classList.contains("collapsed"));
+        }
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      panels.forEach((panel) => {
+        if (!panel.classList.contains("collapsed")) {
+          setPanelExpanded(panel, true);
+        }
+      });
+    });
+
+    const workspaceTabs = document.querySelectorAll(".workspace-tab [role='tab']");
+    const workspacePanels = [
+      document.getElementById("elementsPanel"),
+      document.getElementById("propertiesPanel"),
+    ];
+
+    workspaceTabs.forEach((tab, activeIndex) => {
+      tab.addEventListener("click", () => {
+        workspaceTabs.forEach((workspaceTab, index) => {
+          const isActive = index === activeIndex;
+          workspaceTab.classList.toggle("selected", isActive);
+          workspaceTab.setAttribute("aria-selected", String(isActive));
+          workspacePanels[index].hidden = !isActive;
+          workspacePanels[index].classList.toggle("hidden", !isActive);
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

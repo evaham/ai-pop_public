@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko" class="h-full">
+
+<head>
+  <link rel="stylesheet" href="./new_ai_pop_common.css">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body class="w-full h-full antialiased">
+  <div hidden=""></div>
+  <div class="page-shell">
+    <div class="page-content">
+      <div class="page-tabs">
+        <div class="tabs page-tab-inner" id="menuTab">
+          <ul class="level1 static">
+            <li role="menuitem"><a class="level1 tab" href="./aiRequest_pop.html">AI POP 만들기</a></li>
+            <li role="menuitem"><a class="level1 tab" href="./aiRequest_pc.html">프라이스카드 만들기</a></li>
+            <li role="menuitem"><a class="level1 tab" href="./aiImage.html">AI이미지관리</a></li>
+            <li role="menuitem"><a class="level1 tab selected" href="./aiStatics.html">AI이용현황</a></li>
+            <li role="menuitem"><a class="level1 tab" href="./Layerpopup.html">팝업창화면</a></li>
+          </ul>
+          <div class="tsmoney-info"><button class="tsmoney-info-btn"><svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 4C14.7486 4 17.1749 5.38626 18.6156 7.5H16V9.5H22V3.5H20V5.99936C18.1762 3.57166 15.2724 2 12 2C6.47715 2 2 6.47715 2 12H4C4 7.58172 7.58172 4 12 4ZM20 12C20 16.4183 16.4183 20 12 20C9.25144 20 6.82508 18.6137 5.38443 16.5H8V14.5H2V20.5H4V18.0006C5.82381 20.4283 8.72764 22 12 22C17.5228 22 22 17.5228 22 12H20Z">
+                </path>
+              </svg></button>사용 가능TS<div class="tsmoney-info-amount"><span>235,300</span>.0</div>
+            <div class="tsmoney-info-detail hidden">
+              <div class="ts-wrap">
+                <div class="ts-sticky">
+                  <div class="ts-card">
+                    <div>
+                      <div>
+                        <div class="ts-title">투게더마트</div>
+                      </div>
+                      <div class="ts-info-box">
+                        <div class="ts-info-box-row">
+                          <div class="ts-info-box-left">TS머니</div>
+                          <div class="flex"><span id="remainMoney" class="text-red-600">682,480</span><span
+                              id="remainMoneyDecimal" class="ts_decimal_part text-gray-500">.5</span></div>
+                        </div>
+                        <div class="ts-info-box-row">
+                          <div class="ts-info-box-left">TS포인트</div>
+                          <div class="flex"><span id="remainPoint" class="text-blue-500">0</span><span
+                              id="remainPointDecimal" class="ts_decimal_part text-gray-500">.0</span></div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="ts-hr">
+                    <div class="ts-title">TS머니 전용계좌</div>
+                    <div id="tsBank" class="ts-bank">기업은행 431-192047-97-437</div>
+                    <div>예금주 : <span id="tsHolder" class="font-semibold text-gray-800">테스트그룹</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!--$--><!--/$-->
+      <div class="wrap-layout">
+        <div class="full-contents-layout">
+          <div>
+            <div>
+              <form name="frmSearch" method="get" action="">
+                <div class="search-content">
+                  <div class="search-opt"><span class="search__text text-sm text-gray-700">생성일</span><input
+                      id="startDate" class="datepicker form-input hasDatepicker" readonly="" value="2026-09-12"
+                      name="startDate" data-sharkid="__0" style="width: 100px;"><span
+                      class="text-sm text-gray-600">~</span><input id="endDate"
+                      class="datepicker form-input hasDatepicker" readonly="" value="2026-10-12" name="endDate"
+                      data-sharkid="__1" style="width: 100px;"><button type="button"
+                      class="form-btn">1개월</button><button type="button" class="form-btn">3개월</button><button
+                      type="button" class="form-btn">6개월</button><select class="form-select" name="searchType"
+                      id="searchType" data-sharkid="__2">
+                      <option value="A">-생성결과-</option>
+                      <option value="S">생성완료</option>
+                      <option value="F">생성실패</option>
+                    </select>
+                    <div class="flex gap-2 ml-10"><button type="button" class="form-btn-primary">검색</button></div>
+                  </div>
+                  <div class="search-result"><span class="search-text">누적 생성건수 : </span><span
+                      class="search-text font-bold">12건</span><span class="text-xs text-gray-300 mx-2">|</span><span
+                      class="search-text">총 결제TS머니 : </span><span class="search-text font-bold">4,500.0</span><span
+                      class="text-xs text-gray-300 mx-2">|</span><span class="search-text">총 결제TS포인트 : </span><span
+                      class="search-text font-bold">0.0</span>
+                    <div class="ml-auto flex items-center gap-2"><select class="form-select" name="orderBy"
+                        data-sharkid="__3">
+                        <option value="rgstASC">이미지생성일↑</option>
+                        <option value="rgstDESC">이미지생성일↓</option>
+                      </select><button type="button" class="form-btn-primary">엑셀다운로드</button></div>
+                  </div>
+                </div>
+              </form>
+              <div class="scrollwrap">
+                <div class="statics-itemlist maxviewsize">
+                  <div class="statics-tbl-wrap">
+                    <table class="statics-tbl hover">
+                      <colgroup>
+                        <col style="width: 30px;">
+                        <col style="width: 120px;">
+                        <col style="width: 120px;">
+                        <col style="width: 80px;">
+                        <col style="width: auto;">
+                        <col style="width: 80px;">
+                        <col style="width: 80px;">
+                      </colgroup>
+                      <thead>
+                        <tr>
+                          <th>No.</th>
+                          <th>이미지생성일</th>
+                          <th>이미지 유형</th>
+                          <th>생성결과</th>
+                          <th>실패사유</th>
+                          <th>결제TS머니</th>
+                          <th>결제TS포인트</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="default">
+                          <th>1</th>
+                          <td><span class="text-gray-600">2026-09-28 10:52</span></td>
+                          <td>POP이미지</td>
+                          <td class="text-center"><span>생성완료</span></td>
+                          <td class="text-center"><span class="text-gray-400">-</span></td>
+                          <td class="text-right"><span>500.0</span></td>
+                          <td class="text-right"><span class="text-gray-400">0.0</span></td>
+                        </tr>
+                        <tr class="default">
+                          <th>2</th>
+                          <td><span class="text-gray-600">2026-09-28 10:52</span></td>
+                          <td>POP이미지</td>
+                          <td class="text-center"><span>생성완료</span></td>
+                          <td class="text-center"><span class="text-gray-400">-</span></td>
+                          <td class="text-right"><span>500.0</span></td>
+                          <td class="text-right"><span class="text-gray-400">0.0</span></td>
+                        </tr>
+                        <tr class="default">
+                          <th>3</th>
+                          <td><span class="text-gray-600">2026-09-28 10:51</span></td>
+                          <td>POP이미지</td>
+                          <td class="text-center"><span>생성완료</span></td>
+                          <td class="text-center"><span class="text-gray-400">-</span></td>
+                          <td class="text-right"><span>500.0</span></td>
+                          <td class="text-right"><span class="text-gray-400">0.0</span></td>
+                        </tr>
+                        <tr class="default">
+                          <th>4</th>
+                          <td><span class="text-gray-600">2026-09-22 09:51</span></td>
+                          <td>POP이미지</td>
+                          <td class="text-center"><span>생성완료</span></td>
+                          <td class="text-center"><span class="text-gray-400">-</span></td>
+                          <td class="text-right"><span>500.0</span></td>
+                          <td class="text-right"><span class="text-gray-400">0.0</span></td>
+                        </tr>
+                        <tr class="default">
+                          <th>5</th>
+                          <td><span class="text-gray-600">2026-09-22 09:50</span></td>
+                          <td>POP이미지</td>
+                          <td class="text-center"><span>생성완료</span></td>
+                          <td class="text-center"><span class="text-gray-400">-</span></td>
+                          <td class="text-right"><span>500.0</span></td>
+                          <td class="text-right"><span class="text-gray-400">0.0</span></td>
+                        </tr>
+                        <tr class="default">
+                          <th>6</th>
+                          <td><span class="text-gray-600">2026-09-22 09:49</span></td>
+                          <td>POP이미지</td>
+                          <td class="text-center"><span>생성완료</span></td>
+                          <td class="text-center"><span class="text-gray-400">-</span></td>
+                          <td class="text-right"><span>500.0</span></td>
+                          <td class="text-right"><span class="text-gray-400">0.0</span></td>
+                        </tr>
+                        <tr class="default">
+                          <th>7</th>
+                          <td><span class="text-gray-600">2026-09-22 09:48</span></td>
+                          <td>POP이미지</td>
+                          <td class="text-center"><span>생성완료</span></td>
+                          <td class="text-center"><span class="text-gray-400">-</span></td>
+                          <td class="text-right"><span>500.0</span></td>
+                          <td class="text-right"><span class="text-gray-400">0.0</span></td>
+                        </tr>
+                        <tr class="default">
+                          <th>8</th>
+                          <td><span class="text-gray-600">2026-09-22 09:47</span></td>
+                          <td>POP이미지</td>
+                          <td class="text-center"><span>생성완료</span></td>
+                          <td class="text-center"><span class="text-gray-400">-</span></td>
+                          <td class="text-right"><span>500.0</span></td>
+                          <td class="text-right"><span class="text-gray-400">0.0</span></td>
+                        </tr>
+                        <tr class="default">
+                          <th>9</th>
+                          <td><span class="text-gray-600">2026-09-22 09:44</span></td>
+                          <td>POP이미지</td>
+                          <td class="text-center"><span>생성완료</span></td>
+                          <td class="text-center"><span class="text-gray-400">-</span></td>
+                          <td class="text-right"><span>500.0</span></td>
+                          <td class="text-right"><span class="text-gray-400">0.0</span></td>
+                        </tr>
+                        <tr class="default">
+                          <th>10</th>
+                          <td><span class="text-gray-600">2026-09-18 11:19</span></td>
+                          <td>프라이스카드</td>
+                          <td class="text-center"><span>생성완료</span></td>
+                          <td class="text-center"><span class="text-gray-400">-</span></td>
+                          <td class="text-right"><span class="text-gray-400">0.0</span></td>
+                          <td class="text-right"><span class="text-gray-400">0.0</span></td>
+                        </tr>
+                        <tr class="default">
+                          <th>11</th>
+                          <td><span class="text-gray-600">2026-09-18 10:52</span></td>
+                          <td>프라이스카드</td>
+                          <td class="text-center"><span>생성완료</span></td>
+                          <td class="text-center"><span class="text-gray-400">-</span></td>
+                          <td class="text-right"><span class="text-gray-400">0.0</span></td>
+                          <td class="text-right"><span class="text-gray-400">0.0</span></td>
+                        </tr>
+                        <tr class="default">
+                          <th>12</th>
+                          <td><span class="text-gray-600">2026-09-18 10:49</span></td>
+                          <td>프라이스카드</td>
+                          <td class="text-center"><span>생성완료</span></td>
+                          <td class="text-center"><span class="text-gray-400">-</span></td>
+                          <td class="text-right"><span class="text-gray-400">0.0</span></td>
+                          <td class="text-right"><span class="text-gray-400">0.0</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pagination">
+              <div class="pagination__list maxviewsize"><button class="pagination__btn  disabled" data-dt-idx="1"><svg
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M4.83582 12L11.0429 18.2071L12.4571 16.7929L7.66424 12L12.4571 7.20712L11.0429 5.79291L4.83582 12ZM10.4857 12L16.6928 18.2071L18.107 16.7929L13.3141 12L18.107 7.20712L16.6928 5.79291L10.4857 12Z">
+                    </path>
+                  </svg></button><button class="pagination__btn  disabled" data-dt-idx="0"><svg
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z">
+                    </path>
+                  </svg></button><button class="pagination__btn  active" data-dt-idx="1">1</button><button
+                  class="pagination__btn  disabled" data-dt-idx="2"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z">
+                    </path>
+                  </svg></button><button class="pagination__btn  disabled" data-dt-idx="1"><svg
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M19.1642 12L12.9571 5.79291L11.5429 7.20712L16.3358 12L11.5429 16.7929L12.9571 18.2071L19.1642 12ZM13.5143 12L7.30722 5.79291L5.89301 7.20712L10.6859 12L5.89301 16.7929L7.30722 18.2071L13.5143 12Z">
+                    </path>
+                  </svg></button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tsMoneyAmount = document.querySelector(".tsmoney-info-amount");
+    const tsMoneyDetail = document.querySelector(".tsmoney-info-detail");
+
+    if (tsMoneyAmount && tsMoneyDetail) {
+      const toggleTsMoneyDetail = () => {
+        const isExpanded = tsMoneyAmount.getAttribute("aria-expanded") === "true";
+        tsMoneyDetail.classList.toggle("hidden", isExpanded);
+        tsMoneyAmount.setAttribute("aria-expanded", String(!isExpanded));
+      };
+
+      tsMoneyAmount.setAttribute("role", "button");
+      tsMoneyAmount.setAttribute("tabindex", "0");
+      tsMoneyAmount.setAttribute("aria-expanded", "false");
+      tsMoneyAmount.addEventListener("click", toggleTsMoneyDetail);
+      tsMoneyAmount.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          toggleTsMoneyDetail();
+        }
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!tsMoneyDetail.contains(event.target) && !tsMoneyAmount.contains(event.target)) {
+          tsMoneyDetail.classList.add("hidden");
+          tsMoneyAmount.setAttribute("aria-expanded", "false");
+        }
+      });
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,2344 @@
+<!DOCTYPE html>
+<html lang="ko" class="h-full">
+
+<head>
+  <link rel="stylesheet" href="./new_ai_pop_common.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body class="w-full h-full antialiased">
+  <div hidden=""></div>
+  <div class="page-shell">
+    <div class="page-content">
+      <div class="page-tabs">
+        <div class="tabs page-tab-inner" id="menuTab">
+          <ul class="level1 static">
+            <li role="menuitem"><a class="level1 tab" href="/aiRequest_pop">AI POP 만들기</a></li>
+            <li role="menuitem"><a class="level1 tab" href="/aiRequest_pc">프라이스카드 만들기</a></li>
+            <li role="menuitem"><a class="level1 tab" href="/aiImage">AI이미지관리</a></li>
+            <li role="menuitem"><a class="level1 tab" href="/aiStatics">AI이용현황</a></li>
+            <li role="menuitem"><a class="level1 tab selected" href="./Layerpopup.html">팝업창화면</a></li>
+          </ul>
+          <div class="tsmoney-info"><button class="tsmoney-info-btn"><svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 4C14.7486 4 17.1749 5.38626 18.6156 7.5H16V9.5H22V3.5H20V5.99936C18.1762 3.57166 15.2724 2 12 2C6.47715 2 2 6.47715 2 12H4C4 7.58172 7.58172 4 12 4ZM20 12C20 16.4183 16.4183 20 12 20C9.25144 20 6.82508 18.6137 5.38443 16.5H8V14.5H2V20.5H4V18.0006C5.82381 20.4283 8.72764 22 12 22C17.5228 22 22 17.5228 22 12H20Z">
+                </path>
+              </svg></button>사용 가능TS<div class="tsmoney-info-amount"><span>235,300</span>.0</div>
+            <div class="tsmoney-info-detail hidden">
+              <div class="ts-wrap">
+                <div class="ts-sticky">
+                  <div class="ts-card">
+                    <div>
+                      <div>
+                        <div class="ts-title">투게더마트</div>
+                      </div>
+                      <div class="ts-info-box">
+                        <div class="ts-info-box-row">
+                          <div class="ts-info-box-left">TS머니</div>
+                          <div class="flex"><span id="remainMoney" class="text-red-600">682,480</span><span
+                              id="remainMoneyDecimal" class="ts_decimal_part text-gray-500">.5</span></div>
+                        </div>
+                        <div class="ts-info-box-row">
+                          <div class="ts-info-box-left">TS포인트</div>
+                          <div class="flex"><span id="remainPoint" class="text-blue-500">0</span><span
+                              id="remainPointDecimal" class="ts_decimal_part text-gray-500">.0</span></div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="ts-hr">
+                    <div class="ts-title">TS머니 전용계좌</div>
+                    <div id="tsBank" class="ts-bank">기업은행 431-192047-97-437</div>
+                    <div>예금주 : <span id="tsHolder" class="font-semibold text-gray-800">테스트그룹</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!--$--><!--/$-->
+      <div class="wrap-layout">
+        <div class="side-contents-layout">
+          <div class="flex-1 small-scroll">
+            <div id="popBox" class="panel-group">
+              <div class="panel-box">
+                <div class="panel-header">
+                  <div class="panel-icon-num">1</div>
+                  <div class="panel-header-content">
+                    <div class="panel-title">템플릿 디자인<span class="panel-optional blue">필수</span></div>
+                    <div class="panel-description">템플릿 선택 후 수정이 가능합니다.</div>
+                  </div>
+                  <div class="panel-toggle"><span><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#666">
+                        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"></path>
+                      </svg></span><span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                        width="24px" fill="#666">
+                        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"></path>
+                      </svg></span></div>
+                </div>
+                <div class="panel-body" style="opacity: 1;">
+                  <div class="panel-fieldset"><button type="button" class="panel-template-btn"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M4 5V19H20V7H11.5858L9.58579 5H4ZM12.4142 5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5ZM10 10.5C10 11.3284 9.32843 12 8.5 12C7.67157 12 7 11.3284 7 10.5C7 9.67157 7.67157 9 8.5 9C9.32843 9 10 9.67157 10 10.5ZM18 17L14 11L7 17H18Z">
+                        </path>
+                      </svg>템플릿 전체 보기</button>
+                    <div class="panel-label">비슷한 형태의 템플릿</div>
+                    <div id="selPricecardTemplate" class="flex flex-wrap gap-2"><button type="button"
+                        class="form-btn-secondary flex-col! selected" style="width: 112px;">
+                        <div class="pricecard-template-ellipsis">가격파괴</div>
+                        <div>(세로형,2×1)</div>
+                      </button><button type="button" class="form-btn-secondary flex-col!" style="width: 112px;">
+                        <div class="pricecard-template-ellipsis"><span>[센터]</span>샘플</div>
+                        <div>(세로형,2×1)</div>
+                      </button><button type="button" class="form-btn-secondary flex-col!" style="width: 112px;">
+                        <div class="pricecard-template-ellipsis"><span>[센터]</span>심플_노랑랑랑</div>
+                        <div>(세로형,2×1)</div>
+                      </button></div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-box collapsed">
+                <div class="panel-header">
+                  <div class="panel-icon-num">2</div>
+                  <div class="panel-header-content">
+                    <div class="panel-title">색상 테마</div>
+                    <div class="panel-description">템플릿의 색상 테마를 변경하세요</div>
+                  </div>
+                  <div class="panel-selected-group"><span class="panel-selected-item">미선택</span></div>
+                  <div class="panel-toggle"><span><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#666">
+                        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"></path>
+                      </svg></span><span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                        width="24px" fill="#666">
+                        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"></path>
+                      </svg></span></div>
+                </div>
+                <div class="panel-body" style="max-height: 0px; opacity: 0;">
+                  <div class="panel-fieldset">
+                    <div class="panel-label">색상 테마</div>
+                    <div class="panel-line-group"><button type="button"
+                        class="form-btn-secondary w-20 yellow selected">노랑</button><button type="button"
+                        class="form-btn-secondary w-20">빨강</button><button type="button"
+                        class="form-btn-secondary w-20">초록</button><button type="button"
+                        class="form-btn-secondary w-20">파랑</button><button type="button"
+                        class="form-btn-secondary w-20">흰색</button></div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-box collapsed">
+                <div class="panel-header">
+                  <div class="panel-icon-num">3</div>
+                  <div class="panel-header-content">
+                    <div class="panel-title">상품정보</div>
+                    <div class="panel-description">프라이스카드에 넣을 상품정보 입력하세요</div>
+                  </div>
+                  <div class="panel-toggle"><span><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#666">
+                        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"></path>
+                      </svg></span><span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                        width="24px" fill="#666">
+                        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"></path>
+                      </svg></span></div>
+                </div>
+                <div class="panel-body" style="max-height: 0px; opacity: 0;">
+                  <div class="panel-fieldset">
+                    <div class="panel-label">반복 디자인 설정<span>(최대 24개)</span></div>
+                    <div class="flex gap-2 items-center"><select id="selPricecardDirection" class="form-select"
+                        data-sharkid="__0">
+                        <option value="landscape">가로형</option>
+                        <option value="portrait">세로형</option>
+                      </select><input id="pricecardRowCount" data-row="3" class="form-input text-right w-10" type="text"
+                        data-sharkid="__1">행<input id="pricecardColCount" data-col="2"
+                        class="form-input text-right w-10" type="text" data-sharkid="__2">열</div>
+                    <div class="panel-label">상품 데이터 입력</div>
+                    <div class="flex gap-1">
+                      <div id="selPopColumn" class="panel-line-group"><button type="button"
+                          class="form-btn-secondary selected" data-column="name"><span
+                            class="text-red-500">*</span>상품명</button><button type="button"
+                          class="form-btn-secondary">규격</button><button type="button"
+                          class="form-btn-secondary">정상판매가</button><button type="button"
+                          class="form-btn-secondary selected" data-column="dcprice"><span
+                            class="text-red-500">*</span>할인판매가</button><button type="button"
+                          class="form-btn-secondary">할인율</button></div><button type="button" class="form-btn-secondary"
+                        style="margin-left: auto;">행 비우기</button>
+                    </div>
+                    <div id="pricecardExcel" data-count="4" class="grid-table"
+                      style="grid-template-rows: 24px repeat(5, 36px); grid-template-columns: 44px 210px 90px 90px 90px; place-items: center;">
+                      <div><input class="grid-check" id="pricecardAllRow" type="checkbox" data-sharkid="__3">No</div>
+                      <div class="grid-th">상품명</div>
+                      <div class="grid-th">규격</div>
+                      <div class="grid-th">정상판매가</div>
+                      <div class="grid-th">할인판매가</div>
+                      <div class="grid-td"><input class="grid-check" type="checkbox" data-sharkid="__4">1</div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__5"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__6"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__7"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__8"></div>
+                      <div class="grid-td"><input class="grid-check" type="checkbox" data-sharkid="__9">2</div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__10"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__11"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__12"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__13"></div>
+                      <div class="grid-td"><input class="grid-check" type="checkbox" data-sharkid="__14">3</div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__15"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__16"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__17"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__18"></div>
+                      <div class="grid-td"><input class="grid-check" type="checkbox" data-sharkid="__19">4</div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__20"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__21"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__22"></div>
+                      <div class="grid-td"><input class="workspace-excel" type="text" data-sharkid="__23"></div>
+                    </div>
+                    <div class="panel-label">판매가 표시 단위</div>
+                    <div class="panel-line-group"><button type="button" class="form-btn-secondary selected"
+                        data-column="name">없음</button><button type="button" class="form-btn-secondary"
+                        data-column="name">원(뒤)</button><button type="button" class="form-btn-secondary"
+                        data-column="name">싯가</button></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main-contents-layout">
+          <div class="workspace-preview">
+            <div class="flex h-full">
+              <div style="width: 810px; height: 810px; overflow: auto; flex-shrink: 0;">
+                <div id="pricecardFrame" class="workspace-preview-frame">
+                  <div id="pricecardCanvas" class="workspace-preview-canvas"></div>
+                  <div id="pricecardEditor" class="workspace-preview-canvas-editor"
+                    style="width: 566px; height: 800px; transform-origin: left top;"></div>
+                </div>
+              </div>
+              <div class="workspace-editor" style="width: 450px; height: 810px;">
+                <div class="workspace-save-group"><button type="button" class="form-btn-primary">
+                    <div>이미지 생성하기</div>
+                  </button><button type="button" class="form-btn-secondary">
+                    <div>템플릿으로 저장</div>
+                  </button></div>
+                <div class="workspace-flex-row">
+                  <div class="workspace-title">화면 확대<div class="workspace-help tooltip1 ml-1" data-tooltip="· 왼쪽 편집창 영역을 클릭 후 아래의 키를 동시에 누르시면 배율을 더 세밀하게 조정하실 수 있습니다.
+
+									① Ctrl키와 +키 : 0.2씩 확대
+
+									② Ctrl키와 -키 : 0.2씩 축소"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11 15V17H13V15H11ZM13 13.3551C14.4457 12.9248 15.5 11.5855 15.5 10C15.5 8.067 13.933 6.5 12 6.5C10.302 6.5 8.88637 7.70919 8.56731 9.31346L10.5288 9.70577C10.6656 9.01823 11.2723 8.5 12 8.5C12.8284 8.5 13.5 9.17157 13.5 10C13.5 10.8284 12.8284 11.5 12 11.5C11.4477 11.5 11 11.9477 11 12.5V14H13V13.3551Z">
+                        </path>
+                      </svg></div>
+                  </div>
+                  <div id="selPricecardScale" class="workspace-zoom flex"><button type="button"
+                      class="form-btn-secondary selected" style="width: 80px;">
+                      <div class="" style="letter-spacing: 0px;">1×</div>
+                    </button><button type="button" class="form-btn-secondary" style="width: 80px;">
+                      <div class="" style="letter-spacing: 0px;">2×</div>
+                    </button><button type="button" class="form-btn-secondary" style="width: 80px;">
+                      <div class="" style="letter-spacing: 0px;">3×</div>
+                    </button></div>
+                </div>
+                <div class="workspace-tab"><button type="button" class="item selected">요소 추가/삭제</button><button
+                    type="button" class="item ">속성 편집</button></div>
+                <div class="flex-1 small-scroll">
+                  <div class="workspace-flex-row">
+                    <div class="workspace-title">요소 추가 / 삭제<div class="workspace-help tooltip1 ml-1" data-tooltip="· 텍스트 레이어를 더블클릭하시면 내용을 편집할 수 있습니다.
+
+										· 편집창에서 레이어 선택 후 Ctrl키와 Delete키, 또는 Ctrl키와 ←키(Backspace)를 동시에 누르셔도 삭제됩니다."><svg
+                          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                          <path
+                            d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11 15V17H13V15H11ZM13 13.3551C14.4457 12.9248 15.5 11.5855 15.5 10C15.5 8.067 13.933 6.5 12 6.5C10.302 6.5 8.88637 7.70919 8.56731 9.31346L10.5288 9.70577C10.6656 9.01823 11.2723 8.5 12 8.5C12.8284 8.5 13.5 9.17157 13.5 10C13.5 10.8284 12.8284 11.5 12 11.5C11.4477 11.5 11 11.9477 11 12.5V14H13V13.3551Z">
+                          </path>
+                        </svg></div><button type="button" class="form-btn ml-auto font-normal">초기화</button></div>
+                  </div>
+                  <div class="workspace-element-group"><button type="button" class="form-btn-secondary"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18.3641 4.22168L19.7781 5.63589L5.50012 20L4.08594 18.5857L18.3641 4.22168Z"
+                          fill="black"></path>
+                      </svg><span>선</span></button><button type="button" class="form-btn-secondary"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M4 3H20C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM5 5V19H19V5H5Z">
+                        </path>
+                      </svg><span>사각형</span></button><button type="button" class="form-btn-secondary"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z">
+                        </path>
+                      </svg><span>타원형</span></button><button type="button" class="form-btn-secondary"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12.8659 3.00017L22.3922 19.5002C22.6684 19.9785 22.5045 20.5901 22.0262 20.8662C21.8742 20.954 21.7017 21.0002 21.5262 21.0002H2.47363C1.92135 21.0002 1.47363 20.5525 1.47363 20.0002C1.47363 19.8246 1.51984 19.6522 1.60761 19.5002L11.1339 3.00017C11.41 2.52187 12.0216 2.358 12.4999 2.63414C12.6519 2.72191 12.7782 2.84815 12.8659 3.00017ZM4.20568 19.0002H19.7941L11.9999 5.50017L4.20568 19.0002Z">
+                        </path>
+                      </svg><span>삼각형</span></button><button type="button" class="form-btn-secondary"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M2 4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4ZM4 5V19H20V5H4ZM7 8H17V11H15V10H13V14H14.5V16H9.5V14H11V10H9V11H7V8Z">
+                        </path>
+                      </svg><span>텍스트</span></button><button type="button" class="form-btn-secondary"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M2.9918 21C2.44405 21 2 20.5551 2 20.0066V3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918ZM20 15V5H4V19L14 9L20 15ZM20 17.8284L14 11.8284L6.82843 19H20V17.8284ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z">
+                        </path>
+                      </svg><span>이미지파일</span></button><input id="pricecardImageFile" accept="image/jpeg,image/png"
+                      type="file" style="display: none;"></div>
+                  <div class="workspace-element-group">
+                    <hr class="col-span-3 my-2 border-gray-200"><button type="button" class="form-btn-secondary"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z">
+                        </path>
+                      </svg><span>복사하기</span></button><button type="button" class="form-btn-secondary"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                        </path>
+                      </svg><span>삭제하기</span></button>
+                  </div>
+                </div>
+                <div class="workspace-layer-group">
+                  <div class="workspace-title">레이어 순서<span class="workspace-sub-text">(위에 있는 요소가 앞에 표시됩니다.)</span></div>
+                  <div class="workspace-grid-tbl my-1!">
+                    <div class="workspace-grid-th flex-col gap-2"><button type="button"
+                        class="form-btn-secondary w-full">맨위로</button><button type="button"
+                        class="form-btn-secondary w-full">위로</button><button type="button"
+                        class="form-btn-secondary w-full">밑으로</button><button type="button"
+                        class="form-btn-secondary w-full">맨밑으로</button></div>
+                    <div class="workspace-grid-td">
+                      <div id="pricecardLayerOrder" class="workspace-layer-list small-scroll"><button type="button"
+                          class="workspace-layer-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                              d="M2 4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4ZM4 5V19H20V5H4ZM7 8H17V11H15V10H13V14H14.5V16H9.5V14H11V10H9V11H7V8Z">
+                            </path>
+                          </svg>텍스트<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                              width="24px" fill="currentColor">
+                              <path
+                                d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z">
+                              </path>
+                            </svg></span></button><button type="button" class="workspace-layer-btn"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M18.3641 4.22168L19.7781 5.63589L5.50012 20L4.08594 18.5857L18.3641 4.22168Z"
+                              fill="black"></path>
+                          </svg>선<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                              width="24px" fill="currentColor">
+                              <path
+                                d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z">
+                              </path>
+                            </svg></span></button><button type="button" class="workspace-layer-btn"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M2 4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4ZM4 5V19H20V5H4ZM7 8H17V11H15V10H13V14H14.5V16H9.5V14H11V10H9V11H7V8Z">
+                            </path>
+                          </svg>텍스트<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                              width="24px" fill="currentColor">
+                              <path
+                                d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z">
+                              </path>
+                            </svg></span></button><button type="button" class="workspace-layer-btn"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M4 3H20C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM5 5V19H19V5H5Z">
+                            </path>
+                          </svg>사각형<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                              width="24px" fill="currentColor">
+                              <path
+                                d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z">
+                              </path>
+                            </svg></span></button><button type="button" class="workspace-layer-btn selected"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M3 3C2.44772 3 2 3.44772 2 4V20C2 20.5523 2.44772 21 3 21H21C21.5523 21 22 20.5523 22 20V4C22 3.44772 21.5523 3 21 3H3ZM8 5V8H4V5H8ZM4 14V10H8V14H4ZM4 16H8V19H4V16ZM10 16H20V19H10V16ZM20 14H10V10H20V14ZM20 5V8H10V5H20Z">
+                            </path>
+                          </svg>할인판매가<span><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                              viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                              <path
+                                d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z">
+                              </path>
+                            </svg></span></button><button type="button" class="workspace-layer-btn"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M4 3H20C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM5 5V19H19V5H5Z">
+                            </path>
+                          </svg>상품명<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                              width="24px" fill="currentColor">
+                              <path
+                                d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z">
+                              </path>
+                            </svg></span></button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="absolute top-0 left-0 flex w-[810px] z-2 p-1 text-sm border-b border-gray-200 bg-white">
+            <div class="workspace-flex-row mx-auto w-90!">
+              <div class="workspace-title">화면 확대<div class="workspace-help tooltip1 ml-1" data-tooltip="· 왼쪽 편집창 영역을 클릭 후 아래의 키를 동시에 누르시면 배율을 더 세밀하게 조정하실 수 있습니다.
+
+							① Ctrl키와 +키 : 0.2씩 확대
+
+							② Ctrl키와 -키 : 0.2씩 축소"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11 15V17H13V15H11ZM13 13.3551C14.4457 12.9248 15.5 11.5855 15.5 10C15.5 8.067 13.933 6.5 12 6.5C10.302 6.5 8.88637 7.70919 8.56731 9.31346L10.5288 9.70577C10.6656 9.01823 11.2723 8.5 12 8.5C12.8284 8.5 13.5 9.17157 13.5 10C13.5 10.8284 12.8284 11.5 12 11.5C11.4477 11.5 11 11.9477 11 12.5V14H13V13.3551Z">
+                    </path>
+                  </svg></div>
+              </div>
+              <div id="selPricecardScale" class="workspace-zoom flex"><button type="button"
+                  class="form-btn-secondary selected" style="width: 80px;">
+                  <div class="" style="letter-spacing: 0px;">1×</div>
+                </button><button type="button" class="form-btn-secondary" style="width: 80px;">
+                  <div class="" style="letter-spacing: 0px;">2×</div>
+                </button><button type="button" class="form-btn-secondary" style="width: 80px;">
+                  <div class="" style="letter-spacing: 0px;">3×</div>
+                </button></div>
+            </div>
+          </div>
+        </div>
+        <div id="popupLayer" class="popup-layer">
+          <div class="popup-background"></div><button type="button" id="popupScreenSwitcher"
+            class="absolute top-3 left-1/2 -mx-16 p-1 border bg-white">레이어팝업화면 (1)</button>
+          <div class="popup-warp">
+            <div id="pricecardTemplate" class="popup-section " style="width: 334px;"><button type="button"
+                class="popup-close-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z">
+                  </path>
+                </svg></button>
+              <div class="popup-body">
+                <div class="">
+                  <div class="popup-body-title">템플릿명을 입력해 주십시오.</div>
+                  <div class="popup-body-text">편집창의 활성화 된 레이어들을 템플릿으로 저장합니다.<br>템플릿명에 작은따옴표는 사용할 수 없습니다.</div><input
+                    class="form-input" id="pricecardTemplateTitle" type="text" data-sharkid="__24"
+                    style="margin-top: 8px; width: 100%;">
+                  <div class="form-byte"><span id="pricecardTemplateTitleByte">0</span> / 50 byte</div>
+                  <div class="popup-btn-group mx-auto"><button type="button" id="btnTemplateUpdate"
+                      class="form-btn-primary">
+                      <div>현재 템플릿 수정하기</div>
+                    </button><button type="button" id="btnTemplateInsert" class="form-btn-primary">
+                      <div>새 템플릿으로 저장하기</div>
+                    </button></div>
+                </div>
+              </div>
+            </div>
+            <div id="pricecardImageBox" class="popup-section hidden"><button type="button" class="popup-close-btn"><svg
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z">
+                  </path>
+                </svg></button>
+              <div class="popup-header">
+                <div class="popup-header-title">이미지 생성 완료</div>
+              </div>
+              <hr class="popup-divider">
+              <div class="popup-body">
+                <div class="popup-preview"><img id="pricecardImage" class="max-w-full max-h-full border"
+                    src="./img/안내공지_컬러임팩트.png"></div>
+                <div id="pricecardImageInfo" class="popup-infobox">
+                  <div class="popup-infobox-group"><button type="button" class="form-btn">
+                      <div>인쇄하기</div>
+                    </button><button type="button" class="form-btn">
+                      <div>다운로드</div>
+                    </button></div>
+                  <div>
+                    <div class="popup-infobox-title">생성일</div>
+                    <div id="pricecardImageRgstDate" class="popup-infobox-text">2026-10-13 14:01</div>
+                  </div>
+                  <div>
+                    <div class="popup-infobox-title">선택유형</div>
+                    <div class="popup-infobox-dl">
+                      <div class="popup-infobox-dt">이미지유형</div>
+                      <div>프라이스카드</div>
+                    </div>
+                    <div class="popup-infobox-dl">
+                      <div class="popup-infobox-dt">레이아웃</div>
+                      <div id="pricecardImageLayout">세로형,3x2</div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="popup-infobox-title">이미지정보</div>
+                    <div class="popup-infobox-dl">
+                      <div class="popup-infobox-dt">사이즈</div>
+                      <div id="pricecardImageSize" class="popup-infobox-dd">1132 x 1600 px</div>
+                    </div>
+                    <div class="popup-infobox-dl">
+                      <div class="popup-infobox-dt">용량</div>
+                      <div id="pricecardImageByte" class="popup-infobox-dd">2.3 MB</div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="popup-infobox-title">보관기간</div>
+                    <div id="pricecardImageExprDate" class="popup-infobox-text">2026-12-31 24:00까지</div>
+                  </div>
+                </div>
+                <div id="pricecardImageError" class="popup-infobox hidden">
+                  <div class="popup-infobox-group"><button type="button" class="form-btn">
+                      <div>인쇄하기</div>
+                    </button><button type="button" class="form-btn">
+                      <div>다운로드</div>
+                    </button></div>
+                  <div>
+                    <div class="popup-infobox-text">이미지는 생성되었으나 <span id="pricecardImageErrorMsg"
+                        class="text-red-500"></span><br>해당 이미지는 센터에 저장되지 않았으니<br><span class="text-red-500">꼭 다운로드 받으시기
+                        바랍니다.</span><br>템플릿으로 저장하시면 다시 만드실 수 있습니다.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="pricecardTemplateBox" class="popup-section hidden" style="height: 800px;"><button type="button"
+                class="popup-close-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z">
+                  </path>
+                </svg></button>
+              <div class="popup-templatebox-tab">
+                <div class="item selected" data-show="mart" data-hidden="center">매장템플릿</div>
+                <div class="item" data-show="center" data-hidden="mart">센터템플릿</div>
+              </div>
+              <div id="martTemplateBox" class="popup-templatebox small-scroll">
+                <div data-template="0" style="position: relative;">
+                  <div class="popup-templatebox-frame">
+                    <div>
+                      <div class="popup-templatebox-canvas" style="width: 566px; height: 400px; zoom: 0.53;">
+                        <div class="workspace-preview-layer" data-shape="rectangle"
+                          style="width: 568px; height: 100px; top: 0px; left: 0px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <rect width="100" height="100" fill="#ff0000" stroke="transparent" stroke-width="0">
+                              </rect>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="image"
+                          style="width: 228.207px; height: 284.945px; top: 47px; left: 4px; transform-origin: center center; transform: rotate(0deg);">
+                          <div class="workspace-preview-layer-content"><img src="/1001_20260901_164235135.png"></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="name" data-wrap="nowrap"
+                          style="width: 505px; height: 83px; top: 131px; left: 41px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="name" data-size="30" class="workspace-webfont-6"
+                              style="color: rgb(0, 0, 0); font-weight: bold; font-size: 60px; line-height: 65px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 501px; min-height: max-content; transform: scaleX(1);">
+                              상품명</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="dcprice" data-wrap="nowrap"
+                          style="">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="dcprice" data-size="30" class="workspace-webfont-1"
+                              style="color: rgb(255, 0, 0); font-weight: bold; font-size: 70px; line-height: 80px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 371px; min-height: max-content; transform: scaleX(0.75);">
+                              할인판매가<span style="display: inline-block; font-size: 30px;">원</span></div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="spec" data-wrap="nowrap"
+                          style="width: 115px; height: 43px; top: 208px; left: 424px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="spec" data-size="15" class="workspace-webfont-6"
+                              style="color: rgb(51, 51, 51); font-weight: bold; font-size: 30px; line-height: 35px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 111px; min-height: max-content; transform: scaleX(1);">
+                              규격</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="" data-wrap="nowrap"
+                          style="min-height: max-content; width: 474px; height: 77px; top: 15px; left: 30px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="etc" data-size="30" class="workspace-webfont-1"
+                              style="color: rgb(240, 0, 0); font-weight: bold; font-size: 65px; line-height: 65px; font-style: italic; text-align: center; paint-order: stroke; padding: 5px 10px; min-height: max-content; -webkit-text-stroke: 10px rgb(255, 255, 255); white-space: nowrap; transform-origin: left top; width: 470px; transform: scaleX(1);">
+                              가 격 파 괴</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="position: absolute; top: 3px; left: 3px; font-size: 12px;">0.53×</div>
+                  </div>
+                  <div class="popup-templatebox-group" style="margin-top: 3px; height: 26px;"><button type="button"
+                      class="form-btn-tertiary" data-template="21">가격파괴 (세로형,2×1)</button><button type="button"
+                      class="form-btn" data-template="21" data-title="가격파괴 (세로형,2×1)"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                        </path>
+                      </svg></button></div>
+                </div>
+                <div data-template="1" style="position: relative;">
+                  <div class="popup-templatebox-frame">
+                    <div>
+                      <div class="popup-templatebox-canvas" style="width: 400px; height: 141.5px; zoom: 0.75;">
+                        <div class="workspace-preview-layer" data-shape="text" data-column="name" data-wrap="nowrap"
+                          style="width: 390px; height: 43px; top: 44px; left: 11px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="name" data-size="30"
+                              style="color: rgb(51, 51, 51); font-weight: bold; font-size: 30px; line-height: 35px; font-style: normal; text-align: left; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 387px; min-height: max-content; transform: scaleX(1);">
+                              상품명</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="dcprice" data-wrap="nowrap"
+                          style="width: 200px; height: 53px; top: 92px; left: 198px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="dcprice" data-size="30"
+                              style="color: rgb(255, 0, 0); font-weight: bold; font-size: 40px; line-height: 45px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 197px; min-height: max-content; transform: scaleX(1);">
+                              할인판매가</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="rectangle"
+                          style="width: 432px; height: 52px; top: -3px; left: -5px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <rect width="100" height="100" fill="#ff0000" stroke="transparent" stroke-width="0">
+                              </rect>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="" data-wrap="nowrap"
+                          style="width: 247px; height: 43px; top: 3px; left: 83px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="etc" data-size="20" class="workspace-webfont-7"
+                              style="color: rgb(252, 252, 252); font-weight: normal; font-size: 30px; line-height: 35px; font-style: normal; text-align: center; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 259px; min-height: max-content; transform: scaleX(0.94);">
+                              / 행 / 사 / 상 / 품 /</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="position: absolute; top: 3px; left: 3px; font-size: 12px;">0.53×</div>
+                  </div>
+                  <div class="popup-templatebox-group" style="margin-top: 3px; height: 26px;"><button type="button"
+                      class="form-btn-tertiary" data-template="21">가격파괴 (세로형,2×1)</button><button type="button"
+                      class="form-btn" data-template="21" data-title="가격파괴 (세로형,2×1)"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                        </path>
+                      </svg></button></div>
+                </div>
+                <div data-template="2" style="position: relative;">
+                  <div class="popup-templatebox-frame">
+                    <div>
+                      <div class="popup-templatebox-canvas" style="width: 400px; height: 141.5px; zoom: 0.75;">
+                        <div class="workspace-preview-layer" data-shape="text" data-column="name" data-wrap="nowrap"
+                          style="width: 390px; height: 43px; top: 44px; left: 11px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="name" data-size="30"
+                              style="color: rgb(51, 51, 51); font-weight: bold; font-size: 30px; line-height: 35px; font-style: normal; text-align: left; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 387px; min-height: max-content; transform: scaleX(1);">
+                              상품명</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="dcprice" data-wrap="nowrap"
+                          style="width: 200px; height: 53px; top: 92px; left: 198px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="dcprice" data-size="30"
+                              style="color: rgb(255, 0, 0); font-weight: bold; font-size: 40px; line-height: 45px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 197px; min-height: max-content; transform: scaleX(1);">
+                              할인판매가</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="rectangle"
+                          style="width: 432px; height: 52px; top: -3px; left: -5px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <rect width="100" height="100" fill="#ff0000" stroke="transparent" stroke-width="0">
+                              </rect>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="" data-wrap="nowrap"
+                          style="width: 247px; height: 43px; top: 3px; left: 83px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="etc" data-size="20" class="workspace-webfont-7"
+                              style="color: rgb(252, 252, 252); font-weight: normal; font-size: 30px; line-height: 35px; font-style: normal; text-align: center; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 259px; min-height: max-content; transform: scaleX(0.94);">
+                              / 행 / 사 / 상 / 품 /</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="position: absolute; top: 3px; left: 3px; font-size: 12px;">0.53×</div>
+                  </div>
+                  <div class="popup-templatebox-group" style="margin-top: 3px; height: 26px;"><button type="button"
+                      class="form-btn-tertiary" data-template="21">가격파괴 (세로형,2×1)</button><button type="button"
+                      class="form-btn" data-template="21" data-title="가격파괴 (세로형,2×1)"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                        </path>
+                      </svg></button></div>
+                </div>
+                <div data-template="3" style="position: relative;">
+                  <div class="popup-templatebox-frame">
+                    <div>
+                      <div class="popup-templatebox-canvas" style="width: 400px; height: 141.5px; zoom: 0.75;">
+                        <div class="workspace-preview-layer" data-shape="text" data-column="name" data-wrap="nowrap"
+                          style="width: 390px; height: 43px; top: 44px; left: 11px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="name" data-size="30"
+                              style="color: rgb(51, 51, 51); font-weight: bold; font-size: 30px; line-height: 35px; font-style: normal; text-align: left; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 387px; min-height: max-content; transform: scaleX(1);">
+                              상품명</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="dcprice" data-wrap="nowrap"
+                          style="width: 200px; height: 53px; top: 92px; left: 198px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="dcprice" data-size="30"
+                              style="color: rgb(255, 0, 0); font-weight: bold; font-size: 40px; line-height: 45px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 197px; min-height: max-content; transform: scaleX(1);">
+                              할인판매가</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="rectangle"
+                          style="width: 432px; height: 52px; top: -3px; left: -5px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <rect width="100" height="100" fill="#ff0000" stroke="transparent" stroke-width="0">
+                              </rect>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="" data-wrap="nowrap"
+                          style="width: 247px; height: 43px; top: 3px; left: 83px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="etc" data-size="20" class="workspace-webfont-7"
+                              style="color: rgb(252, 252, 252); font-weight: normal; font-size: 30px; line-height: 35px; font-style: normal; text-align: center; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 259px; min-height: max-content; transform: scaleX(0.94);">
+                              / 행 / 사 / 상 / 품 /</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="position: absolute; top: 3px; left: 3px; font-size: 12px;">0.53×</div>
+                  </div>
+                  <div class="popup-templatebox-group" style="margin-top: 3px; height: 26px;"><button type="button"
+                      class="form-btn-tertiary" data-template="21">가격파괴 (세로형,2×1)</button><button type="button"
+                      class="form-btn" data-template="21" data-title="가격파괴 (세로형,2×1)"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                        </path>
+                      </svg></button></div>
+                </div>
+                <div data-template="4" style="position: relative;">
+                  <div class="popup-templatebox-frame">
+                    <div>
+                      <div class="popup-templatebox-canvas" style="width: 283px; height: 266.667px; zoom: 1;">
+                        <div class="workspace-preview-layer" data-shape="line"
+                          style="width: 199px; top: 217px; left: 71px; height: 48px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 199 48" preserveAspectRatio="none">
+                              <defs>
+                                <marker id="arrow_0__0__0" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="3"
+                                  markerHeight="3" orient="auto-start-reverse">
+                                  <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"></path>
+                                </marker>
+                              </defs>
+                              <line x1="15" y1="24" x2="184" y2="24" stroke="#ffff00" data-marker="0__0__0"
+                                stroke-width="30" stroke-linecap="square"></line>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="ellipse"
+                          style="width: 342px; height: 119px; top: -32px; left: -31px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <ellipse cx="50" cy="50" rx="50" ry="50" fill="#ffff00" stroke="transparent"
+                                stroke-width="0"></ellipse>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="dcprice" data-wrap="nowrap"
+                          style="width: 196px; height: 69px; top: 196px; left: 73px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="dcprice" data-size="30" class="workspace-webfont-2"
+                              style="color: rgb(225, 33, 20); font-weight: bold; font-size: 50px; line-height: 55px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 261px; -webkit-text-stroke: 0px rgb(255, 255, 255); min-height: max-content; transform: scaleX(0.74);">
+                              <span style="display: inline-block; font-size: 35px;">￦</span>할인판매가
+                            </div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="name" data-wrap="nowrap"
+                          style="width: 378px; height: auto; top: 20px; left: -49px; min-height: max-content;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="name" data-size="30" class="workspace-webfont-6"
+                              style="color: rgb(8, 8, 8); font-weight: bold; font-size: 40px; line-height: 55px; font-style: normal; text-align: center; paint-order: stroke; padding: 3px; white-space: nowrap; -webkit-text-stroke: 0px rgb(8, 8, 8); min-height: max-content; transform-origin: left top; width: 376px; transform: scaleX(1);">
+                              상품명</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="spec" data-wrap="nowrap"
+                          style="width: 68px; height: 38px; top: 80px; left: 318px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="spec" data-size="15" class="workspace-webfont-6"
+                              style="color: rgb(51, 51, 51); font-weight: bold; font-size: 22px; line-height: 27px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 66px; min-height: max-content; transform: scaleX(1);">
+                              규격</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="sprice" data-wrap="nowrap"
+                          style="width: 100px; height: 33px; top: 156px; left: 8px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="sprice" data-size="20" class="workspace-webfont-2"
+                              style="color: rgb(143, 143, 143); font-weight: bold; font-size: 20px; line-height: 25px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; text-decoration: line-through rgb(143, 143, 143); white-space: nowrap; transform-origin: left top; width: 114px; min-height: max-content; transform: scaleX(0.86);">
+                              <span style="display: inline-block; font-size: 20px;">￦</span>정상판매가
+                            </div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="line"
+                          style="width: 116px; top: 159px; left: 10px; height: 30px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 116 30" preserveAspectRatio="none">
+                              <defs>
+                                <marker id="arrow_1" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="3"
+                                  markerHeight="3" orient="auto-start-reverse">
+                                  <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"></path>
+                                </marker>
+                              </defs>
+                              <line x1="0" y1="15" x2="113" y2="15" stroke="#080808" data-marker="1" stroke-width="3"
+                                marker-end="url(#arrow_1)"></line>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="position: absolute; top: 3px; left: 3px; font-size: 12px;">0.53×</div>
+                  </div>
+                  <div class="popup-templatebox-group" style="margin-top: 3px; height: 26px;"><button type="button"
+                      class="form-btn-tertiary" data-template="21">가격파괴 (세로형,2×1)</button><button type="button"
+                      class="form-btn" data-template="21" data-title="가격파괴 (세로형,2×1)"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                        </path>
+                      </svg></button></div>
+                </div>
+                <div data-template="5" style="position: relative;">
+                  <div class="popup-templatebox-frame">
+                    <div>
+                      <div class="popup-templatebox-canvas" style="width: 283px; height: 200px; zoom: 1;">
+                        <div class="workspace-preview-layer" data-shape="text" data-column="name" data-wrap="nowrap"
+                          style="width: 273px; height: 47px; top: 47px; left: 5px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="name" data-size="30" class="workspace-webfont-10"
+                              style="color: rgb(110, 246, 73); font-weight: bold; font-size: 30px; line-height: 35px; font-style: normal; text-align: center; paint-order: stroke; padding: 5px 10px; white-space: nowrap; transform-origin: left top; width: 271px; min-height: max-content; -webkit-text-stroke: 5px rgb(51, 51, 51); transform: scaleX(1);">
+                              상품명</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="dcprice" data-wrap="nowrap"
+                          style="width: 229px; height: 89px; top: 126px; left: 27px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="dcprice" data-size="30" class="workspace-webfont-8"
+                              style="color: rgb(0, 97, 0); font-weight: bold; font-size: 60px; line-height: 65px; font-style: italic; text-align: right; paint-order: stroke; padding: 3px 9px 3px 6px; white-space: nowrap; transform-origin: left top; width: 336px; min-height: max-content; -webkit-text-stroke: 6px rgb(168, 255, 223); transform: scaleX(0.68);">
+                              할인판매가<span style="display: inline-block; font-size: 25px;">원</span></div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="rectangle"
+                          style="width: 285px; height: 45px; top: 0px; left: 0px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <rect width="100" height="100" fill="#125200" stroke="transparent" stroke-width="0">
+                              </rect>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="" data-wrap="wrap"
+                          style="max-width: 275px; min-height: max-content; width: 275px; height: auto; top: 8px; left: 6px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="etc" data-size="30" class="workspace-webfont-4"
+                              style="color: rgb(255, 255, 255); font-weight: normal; font-size: 20px; line-height: 25px; font-style: normal; text-align: center; paint-order: stroke; padding: 3px; min-height: max-content;">
+                              🍏산지직송 싱싱한 야채·청과🥦</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="line"
+                          style="width: 260px; top: 74px; left: 10px; height: 42px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 260 42" preserveAspectRatio="none">
+                              <defs>
+                                <marker id="arrow_0" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="3"
+                                  markerHeight="3" orient="auto-start-reverse">
+                                  <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"></path>
+                                </marker>
+                              </defs>
+                              <line x1="1" y1="21" x2="259" y2="21" stroke="#00ff00" data-marker="0" stroke-width="2"
+                                stroke-linecap="square"></line>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="position: absolute; top: 3px; left: 3px; font-size: 12px;">0.53×</div>
+                  </div>
+                  <div class="popup-templatebox-group" style="margin-top: 3px; height: 26px;"><button type="button"
+                      class="form-btn-tertiary" data-template="21">가격파괴 (세로형,2×1)</button><button type="button"
+                      class="form-btn" data-template="21" data-title="가격파괴 (세로형,2×1)"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                        </path>
+                      </svg></button></div>
+                </div>
+                <div data-template="6" style="position: relative;">
+                  <div class="popup-templatebox-frame">
+                    <div>
+                      <div class="popup-templatebox-canvas" style="width: 400px; height: 283px; zoom: 0.75;">
+                        <div class="workspace-preview-layer" data-shape="ellipse"
+                          style="width: 44px; height: 43px; top: 206px; left: 13px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <ellipse cx="50" cy="50" rx="50" ry="50" fill="#ebf6ff" stroke="transparent"
+                                stroke-width="0"></ellipse>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="rectangle"
+                          style="width: 328px; height: 100px; top: -49px; left: -7px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <rect width="100" height="100" fill="#2c74e8" stroke="transparent" stroke-width="0">
+                              </rect>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="ellipse"
+                          style="width: 296px; height: 140px; top: 11px; left: -60px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 296 140" preserveAspectRatio="none">
+                              <ellipse cx="148" cy="70" rx="145.5" ry="67.5" fill="#ffffff" stroke="transparent"
+                                stroke-width="0"></ellipse>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="ellipse"
+                          style="width: 121px; height: 119px; top: 25px; left: 5px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <ellipse cx="50" cy="50" rx="50" ry="50" fill="#c9d9f8" stroke="transparent"
+                                stroke-width="0"></ellipse>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="ellipse"
+                          style="width: 296px; height: 140px; top: -44px; left: 202px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 296 140" preserveAspectRatio="none">
+                              <ellipse cx="148" cy="70" rx="145.5" ry="67.5" fill="#2c74e8" stroke="transparent"
+                                stroke-width="0"></ellipse>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="" data-wrap="wrap"
+                          style="max-width: 100%; min-height: max-content; width: max-content; height: auto; top: 13px; left: 231px; transform-origin: center center; transform: rotate(0deg);">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="etc" data-size="30" class="workspace-webfont-5"
+                              style="color: rgb(255, 255, 255); font-weight: bold; font-size: 30px; line-height: 35px; font-style: italic; text-align: left; paint-order: stroke; padding: 3px 10px 3px 3px; min-height: max-content;">
+                              한정수량!</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="image"
+                          style="width: 167px; height: 73px; top: 134px; left: 31px;">
+                          <div class="workspace-preview-layer-content"><img draggable="false"
+                              src="http://tdc-api-dev-3.togethers.kr:2004/ImagePriceCard/1001/1001_20260902_154600338.png"
+                              style="width: 100%; height: 100%; object-fit: contain;"></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="spec" data-wrap="nowrap"
+                          style="width: 242px; height: 41px; top: 163px; left: 31px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="spec" data-size="15"
+                              style="color: rgb(51, 51, 51); font-weight: bold; font-size: 20px; line-height: 33px; font-style: normal; text-align: left; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 239px; min-height: max-content; transform: scaleX(1);">
+                              규격</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="sprice" data-wrap="nowrap"
+                          style="width: 100px; height: 47px; top: 166px; left: 283px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="sprice" data-size="20" class="workspace-webfont-2"
+                              style="color: rgb(51, 51, 51); font-weight: bold; font-size: 30px; line-height: 35px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; text-decoration: line-through rgb(51, 51, 51); white-space: nowrap; transform-origin: left top; width: 156px; min-height: max-content; transform: scaleX(0.62);">
+                              정상판매가<span style="display: inline-block; font-size: 20px;">원</span></div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="name" data-wrap="nowrap"
+                          style="width: 369px; height: 86px; top: 47px; left: 5px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="name" data-size="30" class="workspace-webfont-3"
+                              style="color: rgb(255, 255, 255); font-weight: bold; font-size: 65px; line-height: 70px; font-style: normal; text-align: left; paint-order: stroke; padding: 8px 15px; white-space: nowrap; transform-origin: left top; width: 366px; -webkit-text-stroke: 15px rgb(6, 71, 172); min-height: max-content; transform: scaleX(1);">
+                              상품명</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="dcprice" data-wrap="nowrap"
+                          style="width: 300px; height: 81px; top: 198px; left: 92px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="dcprice" data-size="30" class="workspace-webfont-1"
+                              style="color: rgb(176, 7, 7); font-weight: bold; font-size: 65px; line-height: 70px; font-style: italic; text-align: right; paint-order: stroke; padding: 3px 10px 3px 3px; white-space: nowrap; transform-origin: left top; width: 374px; -webkit-text-stroke: 0px rgb(255, 255, 255); min-height: max-content; transform: scaleX(0.79);">
+                              할인판매가<span style="display: inline-block; font-size: 50px;">원</span></div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="position: absolute; top: 3px; left: 3px; font-size: 12px;">0.53×</div>
+                  </div>
+                  <div class="popup-templatebox-group" style="margin-top: 3px; height: 26px;"><button type="button"
+                      class="form-btn-tertiary" data-template="21">가격파괴 (세로형,2×1)</button><button type="button"
+                      class="form-btn" data-template="21" data-title="가격파괴 (세로형,2×1)"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                        </path>
+                      </svg></button></div>
+                </div>
+              </div>
+              <div id="centerTemplateBox" class="popup-templatebox small-scroll hidden">
+                <div data-template="0" style="position: relative;">
+                  <div class="popup-templatebox-frame">
+                    <div>
+                      <div class="popup-templatebox-canvas" style="width: 566px; height: 400px; zoom: 0.53;">
+                        <div class="workspace-preview-layer" data-shape="rectangle"
+                          style="width: 568px; height: 100px; top: 0px; left: 0px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <rect width="100" height="100" fill="#ff0000" stroke="transparent" stroke-width="0">
+                              </rect>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="image"
+                          style="width: 228.207px; height: 284.945px; top: 47px; left: 4px; transform-origin: center center; transform: rotate(0deg);">
+                          <div class="workspace-preview-layer-content"><img src="/1001_20260901_164235135.png"></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="name" data-wrap="nowrap"
+                          style="width: 505px; height: 83px; top: 131px; left: 41px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="name" data-size="30" class="workspace-webfont-6"
+                              style="color: rgb(0, 0, 0); font-weight: bold; font-size: 60px; line-height: 65px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 501px; min-height: max-content; transform: scaleX(1);">
+                              상품명</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="dcprice" data-wrap="nowrap"
+                          style="">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="dcprice" data-size="30" class="workspace-webfont-1"
+                              style="color: rgb(255, 0, 0); font-weight: bold; font-size: 70px; line-height: 80px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 371px; min-height: max-content; transform: scaleX(0.75);">
+                              할인판매가<span style="display: inline-block; font-size: 30px;">원</span></div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="spec" data-wrap="nowrap"
+                          style="width: 115px; height: 43px; top: 208px; left: 424px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="spec" data-size="15" class="workspace-webfont-6"
+                              style="color: rgb(51, 51, 51); font-weight: bold; font-size: 30px; line-height: 35px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 111px; min-height: max-content; transform: scaleX(1);">
+                              규격</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="" data-wrap="nowrap"
+                          style="min-height: max-content; width: 474px; height: 77px; top: 15px; left: 30px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="etc" data-size="30" class="workspace-webfont-1"
+                              style="color: rgb(240, 0, 0); font-weight: bold; font-size: 65px; line-height: 65px; font-style: italic; text-align: center; paint-order: stroke; padding: 5px 10px; min-height: max-content; -webkit-text-stroke: 10px rgb(255, 255, 255); white-space: nowrap; transform-origin: left top; width: 470px; transform: scaleX(1);">
+                              가 격 파 괴</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="position: absolute; top: 3px; left: 3px; font-size: 12px;">0.53×</div>
+                  </div>
+                  <div class="popup-templatebox-group" style="margin-top: 3px; height: 26px;"><button type="button"
+                      class="form-btn-tertiary" data-template="21">가격파괴 (세로형,2×1)</button><button type="button"
+                      class="form-btn" data-template="21" data-title="가격파괴 (세로형,2×1)"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                        </path>
+                      </svg></button></div>
+                </div>
+                <div data-template="1" style="position: relative;">
+                  <div class="popup-templatebox-frame">
+                    <div>
+                      <div class="popup-templatebox-canvas" style="width: 400px; height: 141.5px; zoom: 0.75;">
+                        <div class="workspace-preview-layer" data-shape="text" data-column="name" data-wrap="nowrap"
+                          style="width: 390px; height: 43px; top: 44px; left: 11px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="name" data-size="30"
+                              style="color: rgb(51, 51, 51); font-weight: bold; font-size: 30px; line-height: 35px; font-style: normal; text-align: left; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 387px; min-height: max-content; transform: scaleX(1);">
+                              상품명</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="dcprice" data-wrap="nowrap"
+                          style="width: 200px; height: 53px; top: 92px; left: 198px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="dcprice" data-size="30"
+                              style="color: rgb(255, 0, 0); font-weight: bold; font-size: 40px; line-height: 45px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 197px; min-height: max-content; transform: scaleX(1);">
+                              할인판매가</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="rectangle"
+                          style="width: 432px; height: 52px; top: -3px; left: -5px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <rect width="100" height="100" fill="#ff0000" stroke="transparent" stroke-width="0">
+                              </rect>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="" data-wrap="nowrap"
+                          style="width: 247px; height: 43px; top: 3px; left: 83px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="etc" data-size="20" class="workspace-webfont-7"
+                              style="color: rgb(252, 252, 252); font-weight: normal; font-size: 30px; line-height: 35px; font-style: normal; text-align: center; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 259px; min-height: max-content; transform: scaleX(0.94);">
+                              / 행 / 사 / 상 / 품 /</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="position: absolute; top: 3px; left: 3px; font-size: 12px;">0.53×</div>
+                  </div>
+                  <div class="popup-templatebox-group" style="margin-top: 3px; height: 26px;"><button type="button"
+                      class="form-btn-tertiary" data-template="21">가격파괴 (세로형,2×1)</button><button type="button"
+                      class="form-btn" data-template="21" data-title="가격파괴 (세로형,2×1)"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                        </path>
+                      </svg></button></div>
+                </div>
+                <div data-template="2" style="position: relative;">
+                  <div class="popup-templatebox-frame">
+                    <div>
+                      <div class="popup-templatebox-canvas" style="width: 400px; height: 141.5px; zoom: 0.75;">
+                        <div class="workspace-preview-layer" data-shape="text" data-column="name" data-wrap="nowrap"
+                          style="width: 390px; height: 43px; top: 44px; left: 11px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="name" data-size="30"
+                              style="color: rgb(51, 51, 51); font-weight: bold; font-size: 30px; line-height: 35px; font-style: normal; text-align: left; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 387px; min-height: max-content; transform: scaleX(1);">
+                              상품명</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="dcprice" data-wrap="nowrap"
+                          style="width: 200px; height: 53px; top: 92px; left: 198px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="dcprice" data-size="30"
+                              style="color: rgb(255, 0, 0); font-weight: bold; font-size: 40px; line-height: 45px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 197px; min-height: max-content; transform: scaleX(1);">
+                              할인판매가</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="rectangle"
+                          style="width: 432px; height: 52px; top: -3px; left: -5px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <rect width="100" height="100" fill="#ff0000" stroke="transparent" stroke-width="0">
+                              </rect>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="" data-wrap="nowrap"
+                          style="width: 247px; height: 43px; top: 3px; left: 83px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="etc" data-size="20" class="workspace-webfont-7"
+                              style="color: rgb(252, 252, 252); font-weight: normal; font-size: 30px; line-height: 35px; font-style: normal; text-align: center; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 259px; min-height: max-content; transform: scaleX(0.94);">
+                              / 행 / 사 / 상 / 품 /</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="position: absolute; top: 3px; left: 3px; font-size: 12px;">0.53×</div>
+                  </div>
+                  <div class="popup-templatebox-group" style="margin-top: 3px; height: 26px;"><button type="button"
+                      class="form-btn-tertiary" data-template="21">가격파괴 (세로형,2×1)</button><button type="button"
+                      class="form-btn" data-template="21" data-title="가격파괴 (세로형,2×1)"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                        </path>
+                      </svg></button></div>
+                </div>
+                <div data-template="3" style="position: relative;">
+                  <div class="popup-templatebox-frame">
+                    <div>
+                      <div class="popup-templatebox-canvas" style="width: 400px; height: 141.5px; zoom: 0.75;">
+                        <div class="workspace-preview-layer" data-shape="text" data-column="name" data-wrap="nowrap"
+                          style="width: 390px; height: 43px; top: 44px; left: 11px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="name" data-size="30"
+                              style="color: rgb(51, 51, 51); font-weight: bold; font-size: 30px; line-height: 35px; font-style: normal; text-align: left; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 387px; min-height: max-content; transform: scaleX(1);">
+                              상품명</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="dcprice" data-wrap="nowrap"
+                          style="width: 200px; height: 53px; top: 92px; left: 198px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="dcprice" data-size="30"
+                              style="color: rgb(255, 0, 0); font-weight: bold; font-size: 40px; line-height: 45px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 197px; min-height: max-content; transform: scaleX(1);">
+                              할인판매가</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="rectangle"
+                          style="width: 432px; height: 52px; top: -3px; left: -5px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <rect width="100" height="100" fill="#ff0000" stroke="transparent" stroke-width="0">
+                              </rect>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="" data-wrap="nowrap"
+                          style="width: 247px; height: 43px; top: 3px; left: 83px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="etc" data-size="20" class="workspace-webfont-7"
+                              style="color: rgb(252, 252, 252); font-weight: normal; font-size: 30px; line-height: 35px; font-style: normal; text-align: center; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 259px; min-height: max-content; transform: scaleX(0.94);">
+                              / 행 / 사 / 상 / 품 /</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="position: absolute; top: 3px; left: 3px; font-size: 12px;">0.53×</div>
+                  </div>
+                  <div class="popup-templatebox-group" style="margin-top: 3px; height: 26px;"><button type="button"
+                      class="form-btn-tertiary" data-template="21">가격파괴 (세로형,2×1)</button><button type="button"
+                      class="form-btn" data-template="21" data-title="가격파괴 (세로형,2×1)"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                        </path>
+                      </svg></button></div>
+                </div>
+                <div data-template="4" style="position: relative;">
+                  <div class="popup-templatebox-frame">
+                    <div>
+                      <div class="popup-templatebox-canvas" style="width: 283px; height: 266.667px; zoom: 1;">
+                        <div class="workspace-preview-layer" data-shape="line"
+                          style="width: 199px; top: 217px; left: 71px; height: 48px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 199 48" preserveAspectRatio="none">
+                              <defs>
+                                <marker id="arrow_0__0__0" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="3"
+                                  markerHeight="3" orient="auto-start-reverse">
+                                  <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"></path>
+                                </marker>
+                              </defs>
+                              <line x1="15" y1="24" x2="184" y2="24" stroke="#ffff00" data-marker="0__0__0"
+                                stroke-width="30" stroke-linecap="square"></line>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="ellipse"
+                          style="width: 342px; height: 119px; top: -32px; left: -31px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <ellipse cx="50" cy="50" rx="50" ry="50" fill="#ffff00" stroke="transparent"
+                                stroke-width="0"></ellipse>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="dcprice" data-wrap="nowrap"
+                          style="width: 196px; height: 69px; top: 196px; left: 73px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="dcprice" data-size="30" class="workspace-webfont-2"
+                              style="color: rgb(225, 33, 20); font-weight: bold; font-size: 50px; line-height: 55px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 261px; -webkit-text-stroke: 0px rgb(255, 255, 255); min-height: max-content; transform: scaleX(0.74);">
+                              <span style="display: inline-block; font-size: 35px;">￦</span>할인판매가
+                            </div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="name" data-wrap="nowrap"
+                          style="width: 378px; height: auto; top: 20px; left: -49px; min-height: max-content;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="name" data-size="30" class="workspace-webfont-6"
+                              style="color: rgb(8, 8, 8); font-weight: bold; font-size: 40px; line-height: 55px; font-style: normal; text-align: center; paint-order: stroke; padding: 3px; white-space: nowrap; -webkit-text-stroke: 0px rgb(8, 8, 8); min-height: max-content; transform-origin: left top; width: 376px; transform: scaleX(1);">
+                              상품명</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="spec" data-wrap="nowrap"
+                          style="width: 68px; height: 38px; top: 80px; left: 318px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="spec" data-size="15" class="workspace-webfont-6"
+                              style="color: rgb(51, 51, 51); font-weight: bold; font-size: 22px; line-height: 27px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 66px; min-height: max-content; transform: scaleX(1);">
+                              규격</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="sprice" data-wrap="nowrap"
+                          style="width: 100px; height: 33px; top: 156px; left: 8px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="sprice" data-size="20" class="workspace-webfont-2"
+                              style="color: rgb(143, 143, 143); font-weight: bold; font-size: 20px; line-height: 25px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; text-decoration: line-through rgb(143, 143, 143); white-space: nowrap; transform-origin: left top; width: 114px; min-height: max-content; transform: scaleX(0.86);">
+                              <span style="display: inline-block; font-size: 20px;">￦</span>정상판매가
+                            </div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="line"
+                          style="width: 116px; top: 159px; left: 10px; height: 30px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 116 30" preserveAspectRatio="none">
+                              <defs>
+                                <marker id="arrow_1" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="3"
+                                  markerHeight="3" orient="auto-start-reverse">
+                                  <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"></path>
+                                </marker>
+                              </defs>
+                              <line x1="0" y1="15" x2="113" y2="15" stroke="#080808" data-marker="1" stroke-width="3"
+                                marker-end="url(#arrow_1)"></line>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="position: absolute; top: 3px; left: 3px; font-size: 12px;">0.53×</div>
+                  </div>
+                  <div class="popup-templatebox-group" style="margin-top: 3px; height: 26px;"><button type="button"
+                      class="form-btn-tertiary" data-template="21">가격파괴 (세로형,2×1)</button><button type="button"
+                      class="form-btn" data-template="21" data-title="가격파괴 (세로형,2×1)"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                        </path>
+                      </svg></button></div>
+                </div>
+                <div data-template="5" style="position: relative;">
+                  <div class="popup-templatebox-frame">
+                    <div>
+                      <div class="popup-templatebox-canvas" style="width: 283px; height: 200px; zoom: 1;">
+                        <div class="workspace-preview-layer" data-shape="text" data-column="name" data-wrap="nowrap"
+                          style="width: 273px; height: 47px; top: 47px; left: 5px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="name" data-size="30" class="workspace-webfont-10"
+                              style="color: rgb(110, 246, 73); font-weight: bold; font-size: 30px; line-height: 35px; font-style: normal; text-align: center; paint-order: stroke; padding: 5px 10px; white-space: nowrap; transform-origin: left top; width: 271px; min-height: max-content; -webkit-text-stroke: 5px rgb(51, 51, 51); transform: scaleX(1);">
+                              상품명</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="dcprice" data-wrap="nowrap"
+                          style="width: 229px; height: 89px; top: 126px; left: 27px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="dcprice" data-size="30" class="workspace-webfont-8"
+                              style="color: rgb(0, 97, 0); font-weight: bold; font-size: 60px; line-height: 65px; font-style: italic; text-align: right; paint-order: stroke; padding: 3px 9px 3px 6px; white-space: nowrap; transform-origin: left top; width: 336px; min-height: max-content; -webkit-text-stroke: 6px rgb(168, 255, 223); transform: scaleX(0.68);">
+                              할인판매가<span style="display: inline-block; font-size: 25px;">원</span></div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="rectangle"
+                          style="width: 285px; height: 45px; top: 0px; left: 0px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <rect width="100" height="100" fill="#125200" stroke="transparent" stroke-width="0">
+                              </rect>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="" data-wrap="wrap"
+                          style="max-width: 275px; min-height: max-content; width: 275px; height: auto; top: 8px; left: 6px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="etc" data-size="30" class="workspace-webfont-4"
+                              style="color: rgb(255, 255, 255); font-weight: normal; font-size: 20px; line-height: 25px; font-style: normal; text-align: center; paint-order: stroke; padding: 3px; min-height: max-content;">
+                              🍏산지직송 싱싱한 야채·청과🥦</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="line"
+                          style="width: 260px; top: 74px; left: 10px; height: 42px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 260 42" preserveAspectRatio="none">
+                              <defs>
+                                <marker id="arrow_0" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="3"
+                                  markerHeight="3" orient="auto-start-reverse">
+                                  <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"></path>
+                                </marker>
+                              </defs>
+                              <line x1="1" y1="21" x2="259" y2="21" stroke="#00ff00" data-marker="0" stroke-width="2"
+                                stroke-linecap="square"></line>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="position: absolute; top: 3px; left: 3px; font-size: 12px;">0.53×</div>
+                  </div>
+                  <div class="popup-templatebox-group" style="margin-top: 3px; height: 26px;"><button type="button"
+                      class="form-btn-tertiary" data-template="21">가격파괴 (세로형,2×1)</button><button type="button"
+                      class="form-btn" data-template="21" data-title="가격파괴 (세로형,2×1)"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                        </path>
+                      </svg></button></div>
+                </div>
+                <div data-template="6" style="position: relative;">
+                  <div class="popup-templatebox-frame">
+                    <div>
+                      <div class="popup-templatebox-canvas" style="width: 400px; height: 283px; zoom: 0.75;">
+                        <div class="workspace-preview-layer" data-shape="ellipse"
+                          style="width: 44px; height: 43px; top: 206px; left: 13px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <ellipse cx="50" cy="50" rx="50" ry="50" fill="#ebf6ff" stroke="transparent"
+                                stroke-width="0"></ellipse>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="rectangle"
+                          style="width: 328px; height: 100px; top: -49px; left: -7px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <rect width="100" height="100" fill="#2c74e8" stroke="transparent" stroke-width="0">
+                              </rect>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="ellipse"
+                          style="width: 296px; height: 140px; top: 11px; left: -60px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 296 140" preserveAspectRatio="none">
+                              <ellipse cx="148" cy="70" rx="145.5" ry="67.5" fill="#ffffff" stroke="transparent"
+                                stroke-width="0"></ellipse>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="ellipse"
+                          style="width: 121px; height: 119px; top: 25px; left: 5px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <ellipse cx="50" cy="50" rx="50" ry="50" fill="#c9d9f8" stroke="transparent"
+                                stroke-width="0"></ellipse>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="ellipse"
+                          style="width: 296px; height: 140px; top: -44px; left: 202px;">
+                          <div class="workspace-preview-layer-content"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 296 140" preserveAspectRatio="none">
+                              <ellipse cx="148" cy="70" rx="145.5" ry="67.5" fill="#2c74e8" stroke="transparent"
+                                stroke-width="0"></ellipse>
+                            </svg></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="" data-wrap="wrap"
+                          style="max-width: 100%; min-height: max-content; width: max-content; height: auto; top: 13px; left: 231px; transform-origin: center center; transform: rotate(0deg);">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="etc" data-size="30" class="workspace-webfont-5"
+                              style="color: rgb(255, 255, 255); font-weight: bold; font-size: 30px; line-height: 35px; font-style: italic; text-align: left; paint-order: stroke; padding: 3px 10px 3px 3px; min-height: max-content;">
+                              한정수량!</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="image"
+                          style="width: 167px; height: 73px; top: 134px; left: 31px;">
+                          <div class="workspace-preview-layer-content"><img draggable="false"
+                              src="http://tdc-api-dev-3.togethers.kr:2004/ImagePriceCard/1001/1001_20260902_154600338.png"
+                              style="width: 100%; height: 100%; object-fit: contain;"></div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="spec" data-wrap="nowrap"
+                          style="width: 242px; height: 41px; top: 163px; left: 31px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="spec" data-size="15"
+                              style="color: rgb(51, 51, 51); font-weight: bold; font-size: 20px; line-height: 33px; font-style: normal; text-align: left; paint-order: stroke; padding: 3px; white-space: nowrap; transform-origin: left top; width: 239px; min-height: max-content; transform: scaleX(1);">
+                              규격</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="sprice" data-wrap="nowrap"
+                          style="width: 100px; height: 47px; top: 166px; left: 283px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="sprice" data-size="20" class="workspace-webfont-2"
+                              style="color: rgb(51, 51, 51); font-weight: bold; font-size: 30px; line-height: 35px; font-style: normal; text-align: right; paint-order: stroke; padding: 3px; text-decoration: line-through rgb(51, 51, 51); white-space: nowrap; transform-origin: left top; width: 156px; min-height: max-content; transform: scaleX(0.62);">
+                              정상판매가<span style="display: inline-block; font-size: 20px;">원</span></div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw"></div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw"></div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne"></div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se"></div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="name" data-wrap="nowrap"
+                          style="width: 369px; height: 86px; top: 47px; left: 5px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="name" data-size="30" class="workspace-webfont-3"
+                              style="color: rgb(255, 255, 255); font-weight: bold; font-size: 65px; line-height: 70px; font-style: normal; text-align: left; paint-order: stroke; padding: 8px 15px; white-space: nowrap; transform-origin: left top; width: 366px; -webkit-text-stroke: 15px rgb(6, 71, 172); min-height: max-content; transform: scaleX(1);">
+                              상품명</div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                        <div class="workspace-preview-layer" data-shape="text" data-column="dcprice" data-wrap="nowrap"
+                          style="width: 300px; height: 81px; top: 198px; left: 92px;">
+                          <div class="workspace-preview-layer-content">
+                            <div data-goods="dcprice" data-size="30" class="workspace-webfont-1"
+                              style="color: rgb(176, 7, 7); font-weight: bold; font-size: 65px; line-height: 70px; font-style: italic; text-align: right; paint-order: stroke; padding: 3px 10px 3px 3px; white-space: nowrap; transform-origin: left top; width: 374px; -webkit-text-stroke: 0px rgb(255, 255, 255); min-height: max-content; transform: scaleX(0.79);">
+                              할인판매가<span style="display: inline-block; font-size: 50px;">원</span></div>
+                          </div>
+                          <div class="workspace-preview-layer-handle h-w" data-dir="w" style="cursor: w-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-s" data-dir="s" style="cursor: s-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-e" data-dir="e" style="cursor: e-resize;"></div>
+                          <div class="workspace-preview-layer-handle h-nw" data-dir="nw" style="cursor: nw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-sw" data-dir="sw" style="cursor: sw-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-ne" data-dir="ne" style="cursor: ne-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-handle h-se" data-dir="se" style="cursor: se-resize;">
+                          </div>
+                          <div class="workspace-preview-layer-rotate" data-dir="rotate" data-angle="0"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="position: absolute; top: 3px; left: 3px; font-size: 12px;">0.53×</div>
+                  </div>
+                  <div class="popup-templatebox-group" style="margin-top: 3px; height: 26px;"><button type="button"
+                      class="form-btn-tertiary" data-template="21">가격파괴 (세로형,2×1)</button><button type="button"
+                      class="form-btn" data-template="21" data-title="가격파괴 (세로형,2×1)"><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                        </path>
+                      </svg></button></div>
+                </div>
+              </div>
+            </div>
+            <div id="pricecardFontBox" class="popup-section hidden"><button type="button" class="popup-close-btn"><svg
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z">
+                  </path>
+                </svg></button>
+              <div class="popup-header">
+                <div class="popup-header-title">글꼴 미리보기</div>
+                <div class="popup-header-text">원하신 글꼴을 선택하면 바로 적용됩니다.</div>
+              </div>
+              <div class="popup-body mt-1!">
+                <div class="popup-fontlist small-scroll">
+                  <div class="item ">
+                    <div class="popup-fontname">프리텐다드</div>
+                    <div class="popup-fonttext font-bold">이번 주 특가 할인</div>
+                    <div class="popup-fonttext line-through">지난주 특가 할인</div>
+                    <div class="popup-fonttext">1,234,567,890</div>
+                    <div class="popup-fonttext">BIG SALE! big sale!</div>
+                  </div>
+                  <div class="item workspace-webfont-1">
+                    <div class="popup-fontname">G마켓산스</div>
+                    <div class="popup-fonttext font-bold">이번 주 특가 할인</div>
+                    <div class="popup-fonttext line-through">지난주 특가 할인</div>
+                    <div class="popup-fonttext">1,234,567,890</div>
+                    <div class="popup-fonttext">BIG SALE! big sale!</div>
+                  </div>
+                  <div class="item workspace-webfont-2">
+                    <div class="popup-fontname">페이퍼로지</div>
+                    <div class="popup-fonttext font-bold">이번 주 특가 할인</div>
+                    <div class="popup-fonttext line-through">지난주 특가 할인</div>
+                    <div class="popup-fonttext">1,234,567,890</div>
+                    <div class="popup-fonttext">BIG SALE! big sale!</div>
+                  </div>
+                  <div class="item workspace-webfont-3">
+                    <div class="popup-fontname">학교안심둥근미소</div>
+                    <div class="popup-fonttext font-bold">이번 주 특가 할인</div>
+                    <div class="popup-fonttext line-through">지난주 특가 할인</div>
+                    <div class="popup-fonttext">1,234,567,890</div>
+                    <div class="popup-fonttext">BIG SALE! big sale!</div>
+                  </div>
+                  <div class="item workspace-webfont-4">
+                    <div class="popup-fontname">경기천년제목체</div>
+                    <div class="popup-fonttext font-bold">이번 주 특가 할인</div>
+                    <div class="popup-fonttext line-through">지난주 특가 할인</div>
+                    <div class="popup-fonttext">1,234,567,890</div>
+                    <div class="popup-fonttext">BIG SALE! big sale!</div>
+                  </div>
+                  <div class="item workspace-webfont-5">
+                    <div class="popup-fontname">가나초콜릿체</div>
+                    <div class="popup-fonttext font-bold">이번 주 특가 할인</div>
+                    <div class="popup-fonttext line-through">지난주 특가 할인</div>
+                    <div class="popup-fonttext">1,234,567,890</div>
+                    <div class="popup-fonttext">BIG SALE! big sale!</div>
+                  </div>
+                  <div class="item workspace-webfont-6">
+                    <div class="popup-fontname">세방고딕</div>
+                    <div class="popup-fonttext font-bold">이번 주 특가 할인</div>
+                    <div class="popup-fonttext line-through">지난주 특가 할인</div>
+                    <div class="popup-fonttext">1,234,567,890</div>
+                    <div class="popup-fonttext">BIG SALE! big sale!</div>
+                  </div>
+                  <div class="item workspace-webfont-7">
+                    <div class="popup-fontname">푸라닭젠틀고딕</div>
+                    <div class="popup-fonttext font-bold">이번 주 특가 할인</div>
+                    <div class="popup-fonttext line-through">지난주 특가 할인</div>
+                    <div class="popup-fonttext">1,234,567,890</div>
+                    <div class="popup-fonttext">BIG SALE! big sale!</div>
+                  </div>
+                  <div class="item workspace-webfont-8">
+                    <div class="popup-fontname">넥센타이어</div>
+                    <div class="popup-fonttext font-bold">이번 주 특가 할인</div>
+                    <div class="popup-fonttext line-through">지난주 특가 할인</div>
+                    <div class="popup-fonttext">1,234,567,890</div>
+                    <div class="popup-fonttext">BIG SALE! big sale!</div>
+                  </div>
+                  <div class="item workspace-webfont-9">
+                    <div class="popup-fontname">KBIZ한마음명조체</div>
+                    <div class="popup-fonttext font-bold">이번 주 특가 할인</div>
+                    <div class="popup-fonttext line-through">지난주 특가 할인</div>
+                    <div class="popup-fonttext">1,234,567,890</div>
+                    <div class="popup-fonttext">BIG SALE! big sale!</div>
+                  </div>
+                  <div class="item workspace-webfont-10">
+                    <div class="popup-fontname">김포평화바탕</div>
+                    <div class="popup-fonttext font-bold">이번 주 특가 할인</div>
+                    <div class="popup-fonttext line-through">지난주 특가 할인</div>
+                    <div class="popup-fonttext">1,234,567,890</div>
+                    <div class="popup-fonttext">BIG SALE! big sale!</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const popupScreenSwitcher = document.getElementById("popupScreenSwitcher");
+    const popupSections = Array.from(document.querySelectorAll("#popupLayer .popup-warp > .popup-section"));
+    const fontPreviewIndex = popupSections.findIndex((section) => section.id === "pricecardFontBox");
+
+    if (fontPreviewIndex >= 0) {
+      const [fontPreviewSection] = popupSections.splice(fontPreviewIndex, 1);
+      popupSections.splice(2, 0, fontPreviewSection);
+    }
+
+    let activePopupSection = popupSections.findIndex((section) => !section.classList.contains("hidden"));
+
+    if (popupScreenSwitcher && popupSections.length > 0) {
+      if (activePopupSection < 0) activePopupSection = 0;
+
+      popupScreenSwitcher.addEventListener("click", () => {
+        activePopupSection = (activePopupSection + 1) % popupSections.length;
+
+        popupSections.forEach((section, index) => {
+          section.classList.toggle("hidden", index !== activePopupSection);
+        });
+
+        popupScreenSwitcher.textContent = `레이어팝업화면 (${activePopupSection + 1})`;
+      });
+    }
+  </script>
+
+</body>
+
+</html>
