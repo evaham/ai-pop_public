@@ -491,14 +491,14 @@ export default function PopSideContentsLayout({ children }) {
               <div className="panel-fieldset">
                 {/* <!-- 모바일 --> */}
                 <div role="radiogroup" className="panel-radio-wrapper">
-                  <label className="panel-radio-group" htmlFor="imageResolutionLow">
+                  {/* <label className="panel-radio-group" htmlFor="imageResolutionLow">
                     <input id="imageResolutionLow" type="radio" name="imageResolution" defaultValue="low" />
                     <div className="panel-radio-content">
                       <div className="panel-radio-title">모바일용 <span className="panel-radio-sub">(0.5K)</span></div>
                       <div className="panel-radio-description">448 * 592 px / 빠른 생성 및 모바일 · 웹 게시용</div>
                     </div>
                     <div className="panel-radio-price"><span>300</span> TS</div>
-                  </label>
+                  </label> */}
                   {/* <!-- 일반용 --> */}
                   <label className="panel-radio-group" htmlFor="imageResolutionHigh">
                     <input id="imageResolutionHigh" type="radio" name="imageResolution" defaultValue="medium" />
