@@ -1190,8 +1190,8 @@
     .panel-btn:active, .panel-btn.selected { @apply ring-1 ring-blue-500 bg-blue-50 text-blue-700; }
 
     /* 이미지 버튼 */
-    .panel-style-group { @apply grid grid-cols-2 gap-2; }
-    .panel-style-item { @apply relative overflow-hidden flex flex-col w-full h-48 ring-1 ring-gray-200 rounded bg-gray-50 cursor-pointer; }
+    .panel-style-group { @apply grid grid-cols-4 gap-2; }
+    .panel-style-item { @apply relative overflow-hidden flex flex-col w-full h-34 ring-1 ring-gray-200 rounded bg-gray-50 cursor-pointer; }
     .panel-style-item .text-group { @apply relative flex flex-col mt-auto p-0.5 py-1 bg-white z-10; }
     .panel-style-item .text-group p { @apply mt-auto text-sm font-bold; }
     .panel-style-item .text-group span { @apply text-xs text-(--text-secondary) leading-tight tracking-tight; }
