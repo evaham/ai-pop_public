@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const repoName = "ai-pop";
+const repoName = "ai-pop_public";
 const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig = {
