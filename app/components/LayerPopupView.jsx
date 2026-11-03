@@ -51,10 +51,10 @@ export default function LayerPopupView ({ isOpen = true, onClose }) {
 	return (
 	<div id="popupLayer" className="popup-layer">
 		<div className="popup-background"></div>
-		<button type="button" className="absolute top-3 left-1/2 -mx-16 p-1 border bg-white" onClick={cycleLayer}>레이어팝업화면 ({activeLayer})</button>
-		<div className="popup-warp">
+		{/* <button type="button" className="absolute top-3 left-1/2 -mx-16 p-1 border bg-white" onClick={cycleLayer}>레이어팝업화면 ({activeLayer})</button> */}
+		<div className="popup-wrap">
 			{/* <!-- 레이어1 --> */}
-			<div id="pricecardTemplate" className={`popup-section ${activeLayer === 1 ? '' : 'hidden'}`} style={{width:"334px"}}>
+			{/* <div id="pricecardTemplate" className={`popup-section ${activeLayer === 1 ? '' : 'hidden'}`} style={{width:"334px"}}>
 				<button type="button" className="popup-close-btn" onClick={handleClose}>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z"></path></svg>
 				</button>
@@ -79,9 +79,9 @@ export default function LayerPopupView ({ isOpen = true, onClose }) {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> */}
 			{/* <!-- 레이어2 --> */}
-			<div id="pricecardImageBox" className={`popup-section ${activeLayer === 2 ? '' : 'hidden'}`}>
+			{/* <div id="pricecardImageBox" className={`popup-section ${activeLayer === 2 ? '' : 'hidden'}`}>
 				<button type="button" className="popup-close-btn" onClick={handleClose}>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z"></path></svg>
 				</button>
@@ -152,9 +152,9 @@ export default function LayerPopupView ({ isOpen = true, onClose }) {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> */}
 			{/* <!-- 레이어3 --> */}
-			<div id="pricecardTemplateBox" className={`popup-section ${activeLayer === 3 ? '' : 'hidden'}`} style={{height:"800px"}}>
+			<div id="pricecardTemplateBox" className={`popup-section ${activeLayer === 1 ? '' : 'hidden'}`} style={{height:"800px"}}>
 				<button type="button" className="popup-close-btn" onClick={handleClose}>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z"></path></svg>
 				</button>

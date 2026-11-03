@@ -156,91 +156,10 @@ export default function PcSideContentsLayout({ onOpenPopup }) {
         {/* <!-- POP지형 설정 --> */}
         <div id="popBox" className="panel-group">
           {/* <!-- POP 레이아웃 --> */}
-
-          {/* <!-- 1.템플릿 디자인 --> */}
+          {/* <!-- 1.상품홍보형-상품정보 --> */}
           <div className="panel-box collapsed">
             <div className="panel-header">
               <div className="panel-icon-num">1</div>
-              <div className="panel-header-content">
-                <div className="panel-title">템플릿 디자인<span className="panel-optional blue">필수</span></div>
-                <div className="panel-description">템플릿 선택 후 수정이 가능합니다.</div>
-              </div>
-              <div className="panel-toggle">
-                <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></span>
-                <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666"><path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/></svg></span>
-              </div>
-            </div>
-            <div className="panel-body" style={{maxHeight: '0px', opacity: 0}}>
-              <div className="panel-fieldset">
-                {/* <div className="panel-label">템플릿 선택</div> */}
-                <button type="button" className="panel-template-btn" onClick={onOpenPopup}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M4 5V19H20V7H11.5858L9.58579 5H4ZM12.4142 5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5ZM10 10.5C10 11.3284 9.32843 12 8.5 12C7.67157 12 7 11.3284 7 10.5C7 9.67157 7.67157 9 8.5 9C9.32843 9 10 9.67157 10 10.5ZM18 17L14 11L7 17H18Z"></path></svg>
-                  템플릿 전체 보기
-                </button>
-
-                <div className="panel-label">비슷한 형태의 템플릿</div>
-                <div id="selPricecardTemplate" className="flex flex-wrap gap-2">
-                  <button type="button" className="form-btn-secondary flex-col! selected" style={{width: '112px'}}>
-                    <div className="pricecard-template-ellipsis">가격파괴</div>
-                    <div>(세로형,2×1)</div>
-                  </button>
-                  <button type="button" className="form-btn-secondary flex-col!" style={{width: '112px'}}>
-                    <div className="pricecard-template-ellipsis"><span>[센터]</span>샘플</div>
-                    <div>(세로형,2×1)</div>
-                  </button>
-                  <button type="button" className="form-btn-secondary flex-col!" style={{width: '112px'}}>
-                    <div className="pricecard-template-ellipsis"><span>[센터]</span>심플_노랑랑랑</div>
-                    <div>(세로형,2×1)</div>
-                  </button>
-								</div>
-              </div>
-             
-            </div>
-          </div>
-          {/* <!-- 2.색상테마 --> */}
-          <div className="panel-box collapsed">
-            <div className="panel-header">
-              <div className="panel-icon-num">2</div>
-              <div className="panel-header-content">
-                <div className="panel-title">색상 테마</div>
-                <div className="panel-description">템플릿의 색상 테마를 변경하세요</div>
-              </div>
-              <div className="panel-selected-group">
-                <span className="panel-selected-item">미선택</span>
-              </div>
-              <div className="panel-toggle">
-                <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></span>
-                <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666"><path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/></svg></span>
-              </div>
-            </div>
-            <div className="panel-body" style={{maxHeight: '0px', opacity: 0}}>
-              {/* <!-- 디자인 스타일 --> */}
-              <div className="panel-fieldset">
-                <div className="panel-label">색상 테마</div>
-                <div className="panel-line-group">
-                  <button type="button" className="form-btn-secondary w-20 yellow selected">
-                    노랑
-                  </button>
-                  <button type="button" className="form-btn-secondary w-20">
-                    빨강
-                  </button>
-                  <button type="button" className="form-btn-secondary w-20">
-                    초록
-                  </button>
-                  <button type="button" className="form-btn-secondary w-20">
-                    파랑
-                  </button>
-                  <button type="button" className="form-btn-secondary w-20">
-                    흰색
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* <!-- 3.상품홍보형-상품정보 --> */}
-          <div className="panel-box collapsed">
-            <div className="panel-header">
-              <div className="panel-icon-num">3</div>
               <div className="panel-header-content">
                 <div className="panel-title">상품정보</div>
                 <div className="panel-description">프라이스카드에 넣을 상품정보 입력하세요</div>
@@ -263,7 +182,6 @@ export default function PcSideContentsLayout({ onOpenPopup }) {
 									<input type="text" id="pricecardColCount" data-col="2" className="form-input text-right w-10" />
 									열
 								</div>
-
                 <div className="panel-label">상품 데이터 입력</div>
                 <div className="flex gap-1">
                   <div id="selPopColumn" className="panel-line-group">
@@ -342,6 +260,87 @@ export default function PcSideContentsLayout({ onOpenPopup }) {
               </div>
             </div>
           </div>
+          {/* <!-- 2.템플릿 디자인 --> */}
+          <div className="panel-box collapsed">
+            <div className="panel-header">
+              <div className="panel-icon-num">2</div>
+              <div className="panel-header-content">
+                <div className="panel-title">템플릿 디자인<span className="panel-optional blue">필수</span></div>
+                <div className="panel-description">템플릿 선택 후 수정이 가능합니다.</div>
+              </div>
+              <div className="panel-toggle">
+                <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></span>
+                <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666"><path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/></svg></span>
+              </div>
+            </div>
+            <div className="panel-body" style={{maxHeight: '0px', opacity: 0}}>
+              <div className="panel-fieldset">
+                {/* <div className="panel-label">템플릿 선택</div> */}
+                <button type="button" className="panel-template-btn" onClick={onOpenPopup}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M4 5V19H20V7H11.5858L9.58579 5H4ZM12.4142 5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5ZM10 10.5C10 11.3284 9.32843 12 8.5 12C7.67157 12 7 11.3284 7 10.5C7 9.67157 7.67157 9 8.5 9C9.32843 9 10 9.67157 10 10.5ZM18 17L14 11L7 17H18Z"></path></svg>
+                  템플릿 전체 보기
+                </button>
+
+                <div className="panel-label">비슷한 형태의 템플릿</div>
+                <div id="selPricecardTemplate" className="flex flex-wrap gap-2">
+                  <button type="button" className="form-btn-secondary flex-col! selected" style={{width: '112px'}}>
+                    <div className="pricecard-template-ellipsis">가격파괴</div>
+                    <div>(세로형,2×1)</div>
+                  </button>
+                  <button type="button" className="form-btn-secondary flex-col!" style={{width: '112px'}}>
+                    <div className="pricecard-template-ellipsis"><span>[센터]</span>샘플</div>
+                    <div>(세로형,2×1)</div>
+                  </button>
+                  <button type="button" className="form-btn-secondary flex-col!" style={{width: '112px'}}>
+                    <div className="pricecard-template-ellipsis"><span>[센터]</span>심플_노랑랑랑</div>
+                    <div>(세로형,2×1)</div>
+                  </button>
+								</div>
+              </div>
+             
+            </div>
+          </div>
+          {/* <!-- 3.색상테마 --> */}
+          <div className="panel-box collapsed">
+            <div className="panel-header">
+              <div className="panel-icon-num">3</div>
+              <div className="panel-header-content">
+                <div className="panel-title">색상 테마</div>
+                <div className="panel-description">템플릿의 색상 테마를 변경하세요</div>
+              </div>
+              <div className="panel-selected-group">
+                <span className="panel-selected-item">미선택</span>
+              </div>
+              <div className="panel-toggle">
+                <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></span>
+                <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666"><path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/></svg></span>
+              </div>
+            </div>
+            <div className="panel-body" style={{maxHeight: '0px', opacity: 0}}>
+              {/* <!-- 디자인 스타일 --> */}
+              <div className="panel-fieldset">
+                <div className="panel-label">색상 테마</div>
+                <div className="panel-line-group">
+                  <button type="button" className="form-btn-secondary w-20 yellow selected">
+                    노랑
+                  </button>
+                  <button type="button" className="form-btn-secondary w-20">
+                    빨강
+                  </button>
+                  <button type="button" className="form-btn-secondary w-20">
+                    초록
+                  </button>
+                  <button type="button" className="form-btn-secondary w-20">
+                    파랑
+                  </button>
+                  <button type="button" className="form-btn-secondary w-20">
+                    흰색
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
         
       </div>

@@ -48,6 +48,26 @@ export default function AiRequestPc() {
 										<div className="" style={{letterSpacing: "0"}}>3×</div>
 									</button>
 								</div>
+								
+							</div>
+							<div className="workspace-flex-row">
+								{/* <!-- 편집모드 --> */}
+								<div className="workspace-switch ml-auto">
+									<div className="workspace-help tooltip2" data-tooltip="· 일괄모드
+								: 첫번째 상품 편집창만 활성화되고, 첫번째 상품의 스타일이 모든 상품에 적용됩니다.
+								· 개별모드 
+								: 특정 상품의 레이어를 첫번째 상품의 스타일과 다르게 편집할 수 있습니다. 작업 내용이 해당 상품에만 적용됩니다.
+								· 개별모드로 전환한 후 편집창에서 편집하고 싶은 상품 영역을 더블클릭하시면 해당 상품의 편집창이 활성화되어 레이어 편집이 가능해집니다.
+								· 개별모드에서는 레이아웃 변경, 템플릿 사용, 상품 데이터 컬럼 선택 등이 제한됩니다.">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11 15V17H13V15H11ZM13 13.3551C14.4457 12.9248 15.5 11.5855 15.5 10C15.5 8.067 13.933 6.5 12 6.5C10.302 6.5 8.88637 7.70919 8.56731 9.31346L10.5288 9.70577C10.6656 9.01823 11.2723 8.5 12 8.5C12.8284 8.5 13.5 9.17157 13.5 10C13.5 10.8284 12.8284 11.5 12 11.5C11.4477 11.5 11 11.9477 11 12.5V14H13V13.3551Z"></path></svg>
+									</div>
+									일괄편집
+									<label className="workspace-switch-check">
+										<input type="checkbox" id="pricecardAllMode"  />
+										<span className="workspace-switch-slider"></span>
+									</label>
+									개별편집
+								</div>
 							</div>
 
 							<div className="workspace-tab">
@@ -123,23 +143,7 @@ export default function AiRequestPc() {
 									{/* <!-- 속성 편집 --> */}
 									<div className="workspace-flex-row">
 										<div className="workspace-title">속성 편집
-											{/* <!-- 편집모드 --> */}
-											<div className="workspace-switch ml-auto">
-												<div className="workspace-help tooltip2" data-tooltip="· 일괄모드
-											: 첫번째 상품 편집창만 활성화되고, 첫번째 상품의 스타일이 모든 상품에 적용됩니다.
-											· 개별모드 
-											: 특정 상품의 레이어를 첫번째 상품의 스타일과 다르게 편집할 수 있습니다. 작업 내용이 해당 상품에만 적용됩니다.
-											· 개별모드로 전환한 후 편집창에서 편집하고 싶은 상품 영역을 더블클릭하시면 해당 상품의 편집창이 활성화되어 레이어 편집이 가능해집니다.
-											· 개별모드에서는 레이아웃 변경, 템플릿 사용, 상품 데이터 컬럼 선택 등이 제한됩니다.">
-													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11 15V17H13V15H11ZM13 13.3551C14.4457 12.9248 15.5 11.5855 15.5 10C15.5 8.067 13.933 6.5 12 6.5C10.302 6.5 8.88637 7.70919 8.56731 9.31346L10.5288 9.70577C10.6656 9.01823 11.2723 8.5 12 8.5C12.8284 8.5 13.5 9.17157 13.5 10C13.5 10.8284 12.8284 11.5 12 11.5C11.4477 11.5 11 11.9477 11 12.5V14H13V13.3551Z"></path></svg>
-												</div>
-												일괄편집
-												<label className="workspace-switch-check">
-													<input type="checkbox" id="pricecardAllMode"  />
-													<span className="workspace-switch-slider"></span>
-												</label>
-												개별편집
-											</div>
+
 										</div>
 									</div>
 									<div className="workspace-box">
