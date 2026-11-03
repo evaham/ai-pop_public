@@ -229,7 +229,7 @@ export default function PopSideContentsLayout({ children }) {
                     <div className="icon-check">
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z"></path></svg>
                     </div>
-                    <img src={resolveImageSrc('./img/ai추천.png')} alt="AI추천" loading="lazy"/>
+                    <img src={resolveImageSrc('./img/다채로운-상품-스타일-선택-UI_10.png')} alt="AI추천" loading="lazy"/>
                     <div className="text-group">
                       <p>AI 추천</p>
                       <span>AI 추천으로 자동 생성</span>
@@ -239,7 +239,7 @@ export default function PopSideContentsLayout({ children }) {
                     <div className="icon-check">
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z"></path></svg>
                     </div>
-                    <img src={resolveImageSrc('./img/신선마켓.png')} alt="신선 마켓" loading="lazy"/>
+                    <img src={resolveImageSrc('./img/다채로운-상품-스타일-선택-UI_03.png')} alt="신선 마켓" loading="lazy"/>
                     <div className="text-group">
                       <p>신선 마켓</p>
                       <span>산지직송 신선식품 느낌</span>
@@ -249,7 +249,7 @@ export default function PopSideContentsLayout({ children }) {
                     <div className="icon-check">
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z"></path></svg>
                     </div>
-                    <img src={resolveImageSrc('./img/컬러임펙트.png')} alt="컬러 임펙트 스타일" loading="lazy"/>
+                    <img src={resolveImageSrc('./img/다채로운-상품-스타일-선택-UI_05.png')} alt="컬러 임펙트 스타일" loading="lazy"/>
                     <div className="text-group">
                       <p>컬러 임펙트</p>
                       <span>색상 대비로 시선 집중</span>
@@ -259,7 +259,7 @@ export default function PopSideContentsLayout({ children }) {
                     <div className="icon-check">
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z"></path></svg>
                     </div>
-                    <img src={resolveImageSrc('./img/네추럴심플.png')} alt="네추럴 심플 스타일" loading="lazy"/>
+                    <img src={resolveImageSrc('./img/다채로운-상품-스타일-선택-UI_07.png')} alt="네추럴 심플 스타일" loading="lazy"/>
                     <div className="text-group">
                       <p>네추럴 심플</p>
                       <span>밝은 배경 &amp; 심플한 느낌</span>
@@ -269,7 +269,7 @@ export default function PopSideContentsLayout({ children }) {
                     <div className="icon-check">
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z"></path></svg>
                     </div>
-                    <img src={resolveImageSrc('./img/고급마켓.png')} alt="고급 마켓 스타일" loading="lazy"/>
+                    <img src={resolveImageSrc('./img/다채로운-상품-스타일-선택-UI_17.png')} alt="고급 마켓 스타일" loading="lazy"/>
                     <div className="text-group">
                       <p>고급 마켓</p>
                       <span>어두운 배경 &amp; 고급스러움</span>
@@ -279,7 +279,7 @@ export default function PopSideContentsLayout({ children }) {
                     <div className="icon-check">
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z"></path></svg>
                     </div>
-                    <img src={resolveImageSrc('./img/칠판일러.png')} alt="칠판 일러스트 스타일" loading="lazy"/>
+                    <img src={resolveImageSrc('./img/다채로운-상품-스타일-선택-UI_19.png')} alt="칠판 일러스트 스타일" loading="lazy"/>
                     <div className="text-group">
                       <p>칠판 일러스트</p>
                       <span>친근한 손글씨 느낌</span>
@@ -289,7 +289,7 @@ export default function PopSideContentsLayout({ children }) {
                     <div className="icon-check">
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z"></path></svg>
                     </div>
-                    <img src={resolveImageSrc('./img/팝아트일러.png')} alt="팝아트 일러스트 스타일" loading="lazy"/>
+                    <img src={resolveImageSrc('./img/다채로운-상품-스타일-선택-UI_20.png')} alt="팝아트 일러스트 스타일" loading="lazy"/>
                     <div className="text-group">
                       <p>팝아트 일러스트</p>
                       <span>활기차고 트렌디한 느낌</span>
@@ -299,7 +299,7 @@ export default function PopSideContentsLayout({ children }) {
                     <div className="icon-check">
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z"></path></svg>
                     </div>
-                    <img src={resolveImageSrc('./img/레트로마켓.png')} alt="레트로 마켓 스타일" loading="lazy"/>
+                    <img src={resolveImageSrc('./img/다채로운-상품-스타일-선택-UI_22.png')} alt="레트로 마켓 스타일" loading="lazy"/>
                     <div className="text-group">
                       <p>레트로 마켓</p>
                       <span>8~90년대 빈티지 감성</span>
