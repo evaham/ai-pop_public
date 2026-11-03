@@ -343,7 +343,19 @@ export default function PcSideContentsLayout({ onOpenPopup }) {
             </div>
           </div>
         </div>
+        
       </div>
+
+      <div className="workspace-save-group">
+        <button type="button" className="form-btn-primary">
+          <div>이미지 생성하기</div>
+        </button>
+        <button type="button" className="form-btn-secondary">
+          <div>템플릿으로 저장</div>
+        </button>
+      </div>
+
+
     </div>
   );
 }

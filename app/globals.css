@@ -1275,10 +1275,10 @@
 
     /* 샘플 템플릿 리스트 */
     .sample-list-wrapper { @apply relative gap-2;}
-    .sample-list { @apply grid grid-cols-4 gap-3;}
-    .sample-list > .item { @apply flex flex-col cursor-pointer}
-    .sample-list > .item > .content { @apply overflow-hidden flex items-center justify-center w-full h-69 rounded-lg; }
-    .sample-list > .item > .content > img { @apply flex w-full h-full; }
+    .sample-list { @apply columns-4 gap-3;}
+    .sample-list > .item { @apply inline-flex w-full flex-col mb-3 break-inside-avoid cursor-pointer}
+    .sample-list > .item > .content { @apply overflow-hidden flex items-center justify-center w-full rounded-lg; }
+    .sample-list > .item > .content > img { @apply block w-full h-auto; }
     .sample-list > .item:hover > .content { @apply bg-black; }
     .sample-list > .item:hover > .content > img { @apply opacity-80; }
     .sample-list > .item.selected > .content { @apply bg-black; }

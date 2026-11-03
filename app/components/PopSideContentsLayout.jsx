@@ -1,9 +1,14 @@
 'use client';
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import resolveImageSrc from "../lib/resolveImageSrc";
 
 export default function PopSideContentsLayout({ children }) {
+  const [promotionType, setPromotionType] = useState('product');
+  const [designDirection, setDesignDirection] = useState('landscape');
+  const [selectedStyle, setSelectedStyle] = useState('AI 추천');
+  const [selectedResolution, setSelectedResolution] = useState('일반용');
+
   useEffect(() => {
     const listeners = [];
 
@@ -161,7 +166,7 @@ export default function PopSideContentsLayout({ children }) {
                 <div className="panel-description">디자인 유형과 방향을 선택하세요</div>
               </div>
               <div className="panel-selected-group">
-                <span className="panel-selected-item">상품홍보형</span>·<span className="panel-selected-item">가로형</span>
+                <span className="panel-selected-item">{promotionType === 'product' ? '상품홍보형' : '안내/공지형'}</span>·<span className="panel-selected-item">{designDirection === 'landscape' ? '가로형' : '세로형'}</span>
               </div>
               <div className="panel-toggle">
                 <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></span>
@@ -172,13 +177,13 @@ export default function PopSideContentsLayout({ children }) {
               <div className="panel-fieldset">
                 <div className="panel-label">홍보유형</div>
                 <div className="panel-btn-group" role="tablist" aria-label="유형선택">
-                  <button type="button" className="panel-btn selected">
+                  <button type="button" className={`panel-btn${promotionType === 'product' ? ' selected' : ''}`} aria-pressed={promotionType === 'product'} onClick={() => setPromotionType('product')}>
                     {/* <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#374151" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 5v9.2a2 2 0 0 0 .586 1.414l11.8 11.8a2 2 0 0 0 2.828 0L28.4 18.228a2 2 0 0 0 0-2.828L16.6 3.6A2 2 0 0 0 15.186 3H6a2 2 0 0 0-2 2Z"/><circle cx="9" cy="9" r="1.5"/><path d="m21 4 .7 2.3L24 7l-2.3.7L21 10l-.7-2.3L18 7l2.3-.7L21 4Z"/></svg> */}
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C12.5523 2 13 2.44772 13 3C13 3.55228 12.5523 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 11.4477 20.4477 11 21 11C21.5523 11 22 11.4477 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 6C12.5523 6 13 6.44772 13 7C13 7.55228 12.5523 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16C14.2091 16 16 14.2091 16 12C16 11.4477 16.4477 11 17 11C17.5523 11 18 11.4477 18 12C18 15.3137 15.3137 18 12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6ZM18.5713 2.10059C18.8474 2.1006 19.0712 2.32449 19.0713 2.60059V4.42969C19.0716 4.70553 19.2954 4.92866 19.5713 4.92871H21.3994C21.6754 4.92871 21.8992 5.15275 21.8994 5.42871V6.34375L20.0107 8.23242C19.6358 8.60719 19.1268 8.81824 18.5967 8.81836H16.5967L12.707 12.707C12.3165 13.0974 11.6835 13.0975 11.293 12.707C10.9027 12.3165 10.9026 11.6834 11.293 11.293L15.1826 7.4043V5.4043C15.1826 4.87411 15.3928 4.36526 15.7676 3.99023L17.6572 2.10059H18.5713Z"></path></svg>
                     상품 홍보형
                     <span className="panel-btn-description">상품이나 가격을 강조하는 디자인</span>
                   </button>
-                  <button type="button" className="panel-btn">
+                  <button type="button" className={`panel-btn${promotionType === 'notice' ? ' selected' : ''}`} aria-pressed={promotionType === 'notice'} onClick={() => setPromotionType('notice')}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m12 11 14-6v22l-14-6H6a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h6Z"/><path d="M12 11v10M7 21l1 7h4l-1-7M28 13a4 4 0 0 1 0 6"/></svg>
                     {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9 17C9 17 16 18 19 21H20C20.5523 21 21 20.5523 21 20V13.937C21.8626 13.715 22.5 12.9319 22.5 12C22.5 11.0681 21.8626 10.285 21 10.063V4C21 3.44772 20.5523 3 20 3H19C16 6 9 7 9 7H5C3.89543 7 3 7.89543 3 9V15C3 16.1046 3.89543 17 5 17H6L7 22H9V17ZM11 8.6612C11.6833 8.5146 12.5275 8.31193 13.4393 8.04373C15.1175 7.55014 17.25 6.77262 19 5.57458V18.4254C17.25 17.2274 15.1175 16.4499 13.4393 15.9563C12.5275 15.6881 11.6833 15.4854 11 15.3388V8.6612ZM5 9H9V15H5V9Z"></path></svg> */}
                     안내/공지형
@@ -187,11 +192,11 @@ export default function PopSideContentsLayout({ children }) {
                 </div>
                 <div className="panel-label">디자인 방향(규격)</div>
                 <div className="panel-btn-group" role="tablist" aria-label="방향선택">
-                  <button type="button" className="panel-btn">
+                  <button type="button" className={`panel-btn${designDirection === 'portrait' ? ' selected' : ''}`} aria-pressed={designDirection === 'portrait'} onClick={() => setDesignDirection('portrait')}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"  fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="6" y="2" width="20" height="28" rx="2"/><circle cx="20" cy="9" r="2"/><path d="m8 26 6-7 4 4 2-2 4 4"/></svg>
                     세로형
                   </button>
-                  <button type="button" className="panel-btn selected">
+                  <button type="button" className={`panel-btn${designDirection === 'landscape' ? ' selected' : ''}`} aria-pressed={designDirection === 'landscape'} onClick={() => setDesignDirection('landscape')}>
                     <svg xmlns="http://www.w3.org/2000/svg"  width="32" height="32" viewBox="0 0 32 32"  fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="6" width="28" height="20" rx="2"/><circle cx="22" cy="12" r="2"/><path d="m4 23 7-7 5 5 3-3 9 8"/></svg>
                     가로형
                   </button>
@@ -208,7 +213,7 @@ export default function PopSideContentsLayout({ children }) {
                 <div className="panel-description">디자인 스타일을 선택하세요</div>
               </div>
               <div className="panel-selected-group">
-                <span className="panel-selected-item">미선택 (AI자동)</span>
+                <span className="panel-selected-item">{selectedStyle}</span>
               </div>
               <div className="panel-toggle">
                 <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></span>
@@ -220,7 +225,7 @@ export default function PopSideContentsLayout({ children }) {
               <div className="panel-fieldset">
                 <div className="panel-label">스타일</div>
                 <div className="panel-style-group" aria-label="스타일선택">
-                  <button type="button" className="panel-style-item selected">
+                  <button type="button" className={`panel-style-item${selectedStyle === 'AI 추천' ? ' selected' : ''}`} onClick={() => setSelectedStyle('AI 추천')}>
                     <div className="icon-check">
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z"></path></svg>
                     </div>
@@ -230,7 +235,7 @@ export default function PopSideContentsLayout({ children }) {
                       <span>AI 추천으로 자동 생성</span>
                     </div>
                   </button>
-                  <button type="button" className="panel-style-item">
+                  <button type="button" className={`panel-style-item${selectedStyle === '신선 마켓' ? ' selected' : ''}`} onClick={() => setSelectedStyle('신선 마켓')}>
                     <div className="icon-check">
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z"></path></svg>
                     </div>
@@ -240,7 +245,7 @@ export default function PopSideContentsLayout({ children }) {
                       <span>산지직송 신선식품 느낌</span>
                     </div>
                   </button>
-                  <button type="button" className="panel-style-item">
+                  <button type="button" className={`panel-style-item${selectedStyle === '컬러 임펙트' ? ' selected' : ''}`} onClick={() => setSelectedStyle('컬러 임펙트')}>
                     <div className="icon-check">
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z"></path></svg>
                     </div>
@@ -250,7 +255,7 @@ export default function PopSideContentsLayout({ children }) {
                       <span>색상 대비로 시선 집중</span>
                     </div>
                   </button>
-                  <button type="button" className="panel-style-item">
+                  <button type="button" className={`panel-style-item${selectedStyle === '네추럴 심플' ? ' selected' : ''}`} onClick={() => setSelectedStyle('네추럴 심플')}>
                     <div className="icon-check">
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z"></path></svg>
                     </div>
@@ -260,7 +265,7 @@ export default function PopSideContentsLayout({ children }) {
                       <span>밝은 배경 &amp; 심플한 느낌</span>
                     </div>
                   </button>
-                  <button type="button" className="panel-style-item">
+                  <button type="button" className={`panel-style-item${selectedStyle === '고급 마켓' ? ' selected' : ''}`} onClick={() => setSelectedStyle('고급 마켓')}>
                     <div className="icon-check">
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z"></path></svg>
                     </div>
@@ -270,7 +275,7 @@ export default function PopSideContentsLayout({ children }) {
                       <span>어두운 배경 &amp; 고급스러움</span>
                     </div>
                   </button>
-                  <button type="button" className="panel-style-item">
+                  <button type="button" className={`panel-style-item${selectedStyle === '칠판 일러스트' ? ' selected' : ''}`} onClick={() => setSelectedStyle('칠판 일러스트')}>
                     <div className="icon-check">
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z"></path></svg>
                     </div>
@@ -280,7 +285,7 @@ export default function PopSideContentsLayout({ children }) {
                       <span>친근한 손글씨 느낌</span>
                     </div>
                   </button>
-                  <button type="button" className="panel-style-item">
+                  <button type="button" className={`panel-style-item${selectedStyle === '팝아트 일러스트' ? ' selected' : ''}`} onClick={() => setSelectedStyle('팝아트 일러스트')}>
                     <div className="icon-check">
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z"></path></svg>
                     </div>
@@ -290,7 +295,7 @@ export default function PopSideContentsLayout({ children }) {
                       <span>활기차고 트렌디한 느낌</span>
                     </div>
                   </button>
-                  <button type="button" className="panel-style-item">
+                  <button type="button" className={`panel-style-item${selectedStyle === '레트로 마켓' ? ' selected' : ''}`} onClick={() => setSelectedStyle('레트로 마켓')}>
                     <div className="icon-check">
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M382-221.91 135.91-468l75.66-75.65L382-373.22l366.43-366.43L824.09-664 382-221.91Z"></path></svg>
                     </div>
@@ -324,7 +329,7 @@ export default function PopSideContentsLayout({ children }) {
             </div>
           </div>
           {/* <!-- 3.상품홍보형-상품정보 --> */}
-          <div className="panel-box collapsed">
+          <div className="panel-box collapsed" style={{display: promotionType === 'product' ? undefined : 'none'}}>
             <div className="panel-header">
               <div className="panel-icon-num">3</div>
               <div className="panel-header-content">
@@ -392,7 +397,7 @@ export default function PopSideContentsLayout({ children }) {
             </div>
           </div>
           {/* 안내·공지 내용 */}
-          <div className="panel-box collapsed">
+          <div className="panel-box collapsed" style={{display: promotionType === 'notice' ? undefined : 'none'}}>
             <div className="panel-header">
               <div className="panel-icon-num">3</div>
               <div className="panel-header-content">
@@ -480,7 +485,7 @@ export default function PopSideContentsLayout({ children }) {
                 <div className="panel-description">이미지의 크기를 선택하세요</div>
               </div>
               <div className="panel-selected-group">
-                <span className="panel-selected-item">모바일 화면용</span>
+                <span className="panel-selected-item">{selectedResolution}</span>
               </div>
               <div className="panel-toggle">
                 <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></span>
@@ -501,32 +506,32 @@ export default function PopSideContentsLayout({ children }) {
                   </label> */}
                   {/* <!-- 일반용 --> */}
                   <label className="panel-radio-group" htmlFor="imageResolutionHigh">
-                    <input id="imageResolutionHigh" type="radio" name="imageResolution" defaultValue="medium" />
+                    <input id="imageResolutionHigh" type="radio" name="imageResolution" value="medium" checked={selectedResolution === '일반용'} onChange={() => setSelectedResolution('일반용')} />
                     <div className="panel-radio-content">
                       <div className="panel-radio-title">일반용 <span className="panel-radio-sub">(1K)</span></div>
                       <div className="panel-radio-description">1024 * 1354 px / 소형POP 및 일반 인쇄용</div>
                     </div>
-                    <div className="panel-radio-price"><span>500</span> TS</div>
+                      {/* <div className="panel-radio-price"><span>500</span> TS</div> */}
                   </label>
 
                   {/* <!-- 고화질용 --> */}
                   <label className="panel-radio-group" htmlFor="imageResolutionUltra">
-                    <input id="imageResolutionUltra" type="radio" name="imageResolution" defaultValue="high" />
+                    <input id="imageResolutionUltra" type="radio" name="imageResolution" value="high" checked={selectedResolution === '고화질용'} onChange={() => setSelectedResolution('고화질용')} />
                     <div className="panel-radio-content">
                       <div className="panel-radio-title">고화질용 <span className="panel-radio-sub">(2K)</span></div>
                       <div className="panel-radio-description">2048 * 2708 px / AI이미지 및 선명한 인쇄용</div>
                     </div>
-                    <div className="panel-radio-price"><span>700</span> TS</div>
+                    {/* <div className="panel-radio-price"><span>700</span> TS</div> */}
                   </label>
 
                   {/* <!-- 대형 포스터용 --> */}
                   <label className="panel-radio-group" htmlFor="imageResolutionPoster">
-                    <input id="imageResolutionPoster" type="radio" name="imageResolution" defaultValue="high" />
+                    <input id="imageResolutionPoster" type="radio" name="imageResolution" value="poster" checked={selectedResolution === '대형 포스터용'} onChange={() => setSelectedResolution('대형 포스터용')} />
                     <div className="panel-radio-content">
                       <div className="panel-radio-title">대형 포스터용 <span className="panel-radio-sub">(4K)</span></div>
                       <div className="panel-radio-description">4096 * 5416 px / A3 포스터 및 고화질 인쇄용</div>
                     </div>
-                    <div className="panel-radio-price"><span>1,500</span> TS</div>
+                    {/* <div className="panel-radio-price"><span>1,500</span> TS</div> */}
                   </label>
                 </div>
               </div>
@@ -537,12 +542,14 @@ export default function PopSideContentsLayout({ children }) {
       <div className="panel-pay-wrapper bg-white">
         <div className="panel-pay-info">
           <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"><path d="M13 5C13 6.10457 10.5376 7 7.5 7C4.46243 7 2 6.10457 2 5M13 5C13 3.89543 10.5376 3 7.5 3C4.46243 3 2 3.89543 2 5M13 5V9.45715C11.7785 9.82398 11 10.3789 11 11M2 5V17C2 18.1046 4.46243 19 7.5 19C8.82963 19 10.0491 18.8284 11 18.5429V11M2 9C2 10.1046 4.46243 11 7.5 11C8.82963 11 10.0491 10.8284 11 10.5429M2 13C2 14.1046 4.46243 15 7.5 15C8.82963 15 10.0491 14.8284 11 14.5429M22 11C22 12.1046 19.5376 13 16.5 13C13.4624 13 11 12.1046 11 11M22 11C22 9.89543 19.5376 9 16.5 9C13.4624 9 11 9.89543 11 11M22 11V19C22 20.1046 19.5376 21 16.5 21C13.4624 21 11 20.1046 11 19V11M22 15C22 16.1046 19.5376 17 16.5 17C13.4624 17 11 16.1046 11 15" stroke="#26499d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          <div className="panel-pay-info-item">보유<span>235,300</span> TS</div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#999"><path d="M1.99974 13.0001L1.9996 11.0002L18.1715 11.0002L14.2218 7.05044L15.636 5.63623L22 12.0002L15.636 18.3642L14.2218 16.9499L18.1716 13.0002L1.99974 13.0001Z"></path></svg>
-          <div className="panel-pay-info-item">차감후 <span>234,800</span>TS</div>
+          <div className="panel-pay-info-item">보유<span>235,300</span> 금액</div>
+          {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#999"><path d="M1.99974 13.0001L1.9996 11.0002L18.1715 11.0002L14.2218 7.05044L15.636 5.63623L22 12.0002L15.636 18.3642L14.2218 16.9499L18.1716 13.0002L1.99974 13.0001Z"></path></svg>
+          <div className="panel-pay-info-item">차감후 <span>234,800</span>TS</div> */}
         </div>
         <button type="button" className="form-btn-primary">
-          <div>AI 이미지 생성 (500TS 차감)</div>
+          <div>AI 이미지 생성 
+            {/* (500TS 차감) */}
+          </div>
         </button>
       </div>
     </div>

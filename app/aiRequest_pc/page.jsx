@@ -27,14 +27,7 @@ export default function AiRequestPc() {
 
 						{/* 편집 UI 화면 */}
 						<div className="workspace-editor" style={{width: "450px", height: "810px"}}>
-							<div className="workspace-save-group">
-								<button type="button" className="form-btn-primary">
-									<div>이미지 생성하기</div>
-								</button>
-								<button type="button" className="form-btn-secondary">
-									<div>템플릿으로 저장</div>
-								</button>
-							</div>
+
 							{/* <!-- 배율 --> */}
 							<div className="workspace-flex-row">
 								<div className="workspace-title">화면 확대
@@ -241,11 +234,6 @@ export default function AiRequestPc() {
 									<div id="pricecardEditFont" className="workspace-box">
 										<div className="workspace-box-title">텍스트</div>
 										<div className="workspace-grid-tbl">
-											<div className="workspace-grid-th">내용</div>
-											<div className="workspace-grid-td">
-												<input type="text" className="form-input w-full" />
-											</div>
-
 											{/* <!-- 글꼴 --> */}
 											<div className="workspace-grid-th">글꼴 </div>
 											<div className="workspace-grid-td">
@@ -375,7 +363,7 @@ export default function AiRequestPc() {
 						</div>
 					</div>
 				</div>
-				<div className="absolute top-0 left-0 flex w-[810px] z-2 p-1 text-sm border-b border-gray-200 bg-white">
+				{/* <div className="absolute top-0 left-0 flex w-[810px] z-2 p-1 text-sm border-b border-gray-200 bg-white">
 					<div className="workspace-flex-row mx-auto w-90!">
 						<div className="workspace-title">화면 확대
 							<div className="workspace-help tooltip1 ml-1" data-tooltip="· 왼쪽 편집창 영역을 클릭 후 아래의 키를 동시에 누르시면 배율을 더 세밀하게 조정하실 수 있습니다.
@@ -396,7 +384,7 @@ export default function AiRequestPc() {
 							</button>
 						</div>
 					</div>
-				</div>
+				</div> */}
 			</div>
 			{isPopupOpen && (
 				<LayerPopupView onClose={() => setIsPopupOpen(false)} />
