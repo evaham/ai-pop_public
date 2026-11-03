@@ -48,7 +48,6 @@ export default function AiRequestPc() {
 										<div className="" style={{letterSpacing: "0"}}>3×</div>
 									</button>
 								</div>
-								
 							</div>
 							<div className="workspace-flex-row">
 								{/* <!-- 편집모드 --> */}

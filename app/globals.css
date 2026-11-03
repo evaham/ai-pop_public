@@ -451,7 +451,7 @@
     /* 업로드 끝 */
     /* 공통 페이징 영역 시작 */
     .pagination { @apply flex justify-center items-center gap-2 mt-4 }
-    .pagination__list { @apply flex gap-1; }
+    .pagination__list { @apply flex gap-2; }
     .pagination__list button { @apply flex size-8 items-center justify-center ring-1 ring-gray-200 rounded text-sm bg-white cursor-pointer; }
     .pagination__list button svg { @apply size-6; }
     .pagination__list button:hover { @apply bg-gray-100; }
