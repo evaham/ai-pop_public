@@ -24,7 +24,7 @@ export default function AiImage() {
 			imageId: 275,
 			service: 2,
 			status: 'S',
-			thumb: 'http://tdc-api-dev-3.togethers.kr:2004/ImageAI/20260928/1001_20260928_105757072_Thumb.jpg',
+			thumb: './img/1001_20260807_162127100_Thumb.jpg',
 			badge: 'POP이미지',
 			text: '보관기간 : 45일',
 			hdTS: '500.0',
@@ -40,7 +40,7 @@ export default function AiImage() {
 			imageId: 274,
 			service: 2,
 			status: 'S',
-			thumb: 'http://tdc-api-dev-3.togethers.kr:2004/ImageAI/20260928/1001_20260928_105731471_Thumb.jpg',
+			thumb: './img/1001_20260819_165744432.jpg',
 			badge: 'POP이미지',
 			text: '보관기간 : 45일',
 			hdTS: '500.0',
@@ -86,7 +86,7 @@ export default function AiImage() {
                     </div>
                   ):(
                     <div className="item__imgbox">
-                      <img src={image.thumb} alt={image.text} />
+                      <img className="thumb__img" src={image.thumb} alt={image.text} />
                     </div>
                   )}
                   <div className="item__txtbox">
